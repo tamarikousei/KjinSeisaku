@@ -1,0 +1,9 @@
+﻿  Character.cpp
+  Player.cpp
+  SceneMain.cpp
+  Shot.cpp
+C:\Users\TamariKousei\Desktop\Program\2DGame\Shot.cpp(32,26): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\TamariKousei\Desktop\Program\2DGame\Shot.cpp(32,17): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  main.cpp
+  コードを生成中...
+  2DGame.vcxproj -> C:\Users\TamariKousei\Desktop\Program\2DGame\x64\Debug\2DGame.exe
