@@ -4,7 +4,7 @@
 namespace
 {
 	constexpr float kGravity = 1.5f; // 重力
-	constexpr float kGround = 343.0f; // 地面設定
+	constexpr float kGround = 700.0f; // 地面設定
 }
 
 Character::Character():

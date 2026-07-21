@@ -52,7 +52,7 @@ Shot* Player::CreateShot()
 	if (Pad::IsTrigger(PAD_INPUT_2))
 	{
 		Shot* pShot = new Shot();
-
+		pShot->SetInfo(m_pos, m_isRight);
 		return pShot;
 	}
 	return nullptr;
@@ -136,7 +136,7 @@ void Player::Draw()
 	//	);
 	//}
 	*/
-	DrawRectRotaGraphF(m_pos.x + Game::kScreenWidth / 2, m_pos.y + Game::kScreenHeight / 2,
+	DrawRectRotaGraphF(m_pos.x, m_pos.y,
 		0, 0, kWidth, kHeigth,
 		1, 0,
 		m_handle, true, !m_isRight

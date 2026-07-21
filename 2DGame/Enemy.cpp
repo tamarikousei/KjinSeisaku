@@ -35,7 +35,7 @@ void Enemy::Update()
 void Enemy::Draw()
 {
 //	DrawGraph(150, 0, m_handle, true);
-	DrawRectRotaGraphF(m_pos.x + Game::kScreenWidth / 2, m_pos.y + Game::kScreenHeight / 2,
+	DrawRectRotaGraphF(m_pos.x, m_pos.y,
 		0, 0, kWidth, kHeigth,
 		1, 0,
 		m_handle, true, !m_isRight

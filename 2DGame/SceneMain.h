@@ -13,14 +13,20 @@ public:
 	void Update();
 	void Draw();
 
-	
+	void UpdateShot();
+
+	void DeleteShot(int index);
 
 	
 private:
 	Player*  m_pPlayer;
 	Enemy* m_pEnemy;
+	Shot* m_pShot[3];
+
 
 	int m_frameCount;
+
+
 
 
 };
