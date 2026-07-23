@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "Vec2.h"
+#include "Rect.h"
 
 /// <summary>
 ///  キャラクターの基礎クラス
@@ -33,6 +34,12 @@ public:
 	/// </summary>
 	virtual void Draw();
 
+	/// <summary>
+	/// 当たり判定を取得 
+	/// </summary>
+	/// <returns>当たり判定情報</returns>
+	Rect GetColRect() const { return m_colRect; }
+
 protected:
 
 	double m_angle;
@@ -42,6 +49,7 @@ protected:
 
 	Vec2 m_pos;
 	Vec2 m_move; // 
+	Rect m_colRect; // あたり判定用の短形
 
 
 	bool m_isRight; // キャラクターが右を向いているか
@@ -53,5 +61,6 @@ protected:
 	int m_jumpFrame;
 
 	bool m_isJumpPreparing;
+
 };
 

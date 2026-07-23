@@ -82,13 +82,13 @@ void SceneMain::UpdateShot()
 
 		m_pShot[i]->Update();
 
-		// 画面外に出たら削除する
-		bool isDelete = false;
-		isDelete = m_pShot[i]->GetPos().x < 0 || m_pShot[i]->GetPos().x > kScreenWidth;
-		if (isDelete) 
-		{
-			DeleteShot(i);
-		}
+	//	// 画面外に出たら削除する
+	//	bool isDelete = false;
+	//	isDelete = m_pShot[i]->GetPos().x < 0 || m_pShot[i]->GetPos().x > kScreenWidth;
+		bool isColEnemy = m_pShot[i]->GetColRect().IsCollision(m_pEnemy->GetColRect());
+
+		bool isOffScreen = m_pShot[i]->GetPos().x < 0 || m_pShot[i]->GetPos().x > kScreenWidth;
+		if (isOffScreen || isColEnemy) DeleteShot(i);
 	}
 }
 

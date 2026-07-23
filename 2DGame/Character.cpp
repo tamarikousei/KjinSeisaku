@@ -1,10 +1,13 @@
-﻿#include "Character.h"
+﻿#include "DxLib.h"
+#include "Character.h"
 #include "Player.h"
+
 
 namespace
 {
 	constexpr float kGravity = 1.5f; // 重力
 	constexpr float kGround = 700.0f; // 地面設定
+	constexpr float kCharaSize = 64.0f; // キャラクターサイズ
 }
 
 Character::Character():
@@ -41,11 +44,23 @@ void Character::Update()
 	}
 	m_pos += m_move;
 
+	// あたり判定更新
+	m_colRect.SetCenter(m_pos.x, m_pos.y, kCharaSize, kCharaSize);
 }
 
 void Character::Draw()
 {
+	float drawX = m_pos.x - kCharaSize * 0.5f;
+	float drawY = m_pos.y - kCharaSize * 0.5f;
 
+	if (m_isRight)
+	{
+		DrawGraphF(drawX, drawY, m_handle, true);
+	}
+	else
+	{
+		DrawTurnGraphF(drawX, drawY, m_handle, true);
+	}
 }
 void Character::Gravity()
 {

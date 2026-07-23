@@ -1,12 +1,13 @@
 ﻿#pragma once
 #include "Vec2.h"
+#include "Rect.h"
 /// <summary>
 /// 弾の管理クラス
 /// </summary>
 class Shot
 {
 public:
-	
+
 	/// <summary>
 	/// コンストラクタ
 	/// </summary>
@@ -40,7 +41,15 @@ public:
 	void SetInfo(const Vec2& pos, bool isRight);
 
 	Vec2 GetPos() const { return m_pos; }
-	
+
+	/// <summary>
+	/// 当たり判定を取得 
+	/// </summary>
+	/// <returns>当たり判定情報</returns>
+	Rect GetColRect() const { return m_colRect; }
+
+
+
 protected:
 	int m_handle;
 
@@ -48,5 +57,8 @@ protected:
 	Vec2 m_pos;
 	// 移動量
 	Vec2 m_move;
+
+	// 当たり判定用の短形
+	Rect m_colRect;
 };
 
