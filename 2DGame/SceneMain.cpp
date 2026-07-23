@@ -85,7 +85,7 @@ void SceneMain::UpdateShot()
 		// 画面外に出たら削除する
 		bool isDelete = false;
 		isDelete = m_pShot[i]->GetPos().x < 0 || m_pShot[i]->GetPos().x > kScreenWidth;
-		if (isDelete) return;
+		if (isDelete) 
 		{
 			DeleteShot(i);
 		}

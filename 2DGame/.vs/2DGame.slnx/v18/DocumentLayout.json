@@ -1,65 +1,69 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\",
+  "WorkspaceRootPath": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Shot.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Shot.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Rect.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Rect.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\SceneMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\SceneMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:SceneMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Shot.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Shot.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Shot.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Character.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Character.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\SceneMain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:SceneMain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Shot.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Shot.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Character.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Character.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\SceneMain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:SceneMain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Character.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Character.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Character.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Vec2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Vec2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Vec2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Pad.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Pad.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Pad.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Pad.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Pad.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Pad.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -70,28 +74,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
+              "Title": "Rect.h",
+              "DocumentMoniker": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Rect.h",
+              "RelativeDocumentMoniker": "Rect.h",
+              "ToolTip": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Rect.h",
+              "RelativeToolTip": "Rect.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-07-23T01:56:44.302Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Player.cpp",
-              "DocumentMoniker": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Player.cpp",
+              "DocumentMoniker": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Player.cpp",
               "RelativeDocumentMoniker": "Player.cpp",
-              "ToolTip": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Player.cpp",
+              "ToolTip": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Player.cpp",
               "RelativeToolTip": "Player.cpp",
-              "ViewState": "AgIAAG8AAAAAAAAAAAAAAIoAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAAIoAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-07-15T07:51:04.283Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Player.h",
-              "DocumentMoniker": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Player.h",
+              "DocumentMoniker": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Player.h",
               "RelativeDocumentMoniker": "Player.h",
-              "ToolTip": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Player.h",
+              "ToolTip": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Player.h",
               "RelativeToolTip": "Player.h",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAAMAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -102,22 +119,22 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "SceneMain.cpp",
-              "DocumentMoniker": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\SceneMain.cpp",
+              "DocumentMoniker": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\SceneMain.cpp",
               "RelativeDocumentMoniker": "SceneMain.cpp",
-              "ToolTip": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\SceneMain.cpp",
+              "ToolTip": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\SceneMain.cpp",
               "RelativeToolTip": "SceneMain.cpp",
-              "ViewState": "AgIAACEAAAAAAAAAAADgvzYAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAFcAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-07-17T00:57:57.637Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "SceneMain.h",
-              "DocumentMoniker": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\SceneMain.h",
+              "DocumentMoniker": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\SceneMain.h",
               "RelativeDocumentMoniker": "SceneMain.h",
-              "ToolTip": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\SceneMain.h",
+              "ToolTip": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\SceneMain.h",
               "RelativeToolTip": "SceneMain.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -126,11 +143,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Character.cpp",
-              "DocumentMoniker": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Character.cpp",
+              "DocumentMoniker": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Character.cpp",
               "RelativeDocumentMoniker": "Character.cpp",
-              "ToolTip": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Character.cpp",
+              "ToolTip": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Character.cpp",
               "RelativeToolTip": "Character.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -139,11 +156,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "Shot.cpp",
+              "DocumentMoniker": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Shot.cpp",
+              "RelativeDocumentMoniker": "Shot.cpp",
+              "ToolTip": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Shot.cpp",
+              "RelativeToolTip": "Shot.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-07-17T07:30:30.685Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Shot.h",
-              "DocumentMoniker": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Shot.h",
+              "DocumentMoniker": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Shot.h",
               "RelativeDocumentMoniker": "Shot.h",
-              "ToolTip": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Shot.h",
+              "ToolTip": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Shot.h",
               "RelativeToolTip": "Shot.h",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAACkAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -152,37 +182,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Character.h",
-              "DocumentMoniker": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Character.h",
+              "DocumentMoniker": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Character.h",
               "RelativeDocumentMoniker": "Character.h",
-              "ToolTip": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Character.h",
+              "ToolTip": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Character.h",
               "RelativeToolTip": "Character.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-07-15T07:30:50.856Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-15T07:30:50.856Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Shot.cpp",
-              "DocumentMoniker": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Shot.cpp",
-              "RelativeDocumentMoniker": "Shot.cpp",
-              "ToolTip": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Shot.cpp",
-              "RelativeToolTip": "Shot.cpp",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-07-17T07:30:30.685Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Pad.h",
-              "DocumentMoniker": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Pad.h",
+              "DocumentMoniker": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Pad.h",
               "RelativeDocumentMoniker": "Pad.h",
-              "ToolTip": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Pad.h",
+              "ToolTip": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Pad.h",
               "RelativeToolTip": "Pad.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -190,11 +206,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Pad.cpp",
-              "DocumentMoniker": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Pad.cpp",
+              "DocumentMoniker": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Pad.cpp",
               "RelativeDocumentMoniker": "Pad.cpp",
-              "ToolTip": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Pad.cpp",
+              "ToolTip": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Pad.cpp",
               "RelativeToolTip": "Pad.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -202,24 +218,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Enemy.cpp",
-              "DocumentMoniker": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Enemy.cpp",
+              "DocumentMoniker": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Enemy.cpp",
               "RelativeDocumentMoniker": "Enemy.cpp",
-              "ToolTip": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Enemy.cpp",
+              "ToolTip": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Enemy.cpp",
               "RelativeToolTip": "Enemy.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-07-15T07:53:50.267Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-15T07:53:50.267Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Vec2.h",
-              "DocumentMoniker": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Vec2.h",
+              "DocumentMoniker": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Vec2.h",
               "RelativeDocumentMoniker": "Vec2.h",
-              "ToolTip": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Vec2.h",
+              "ToolTip": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Vec2.h",
               "RelativeToolTip": "Vec2.h",
               "ViewState": "AgIAABMAAAAAAAAAAAASwCsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -227,11 +242,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "Enemy.h",
-              "DocumentMoniker": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Enemy.h",
+              "DocumentMoniker": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Enemy.h",
               "RelativeDocumentMoniker": "Enemy.h",
-              "ToolTip": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Enemy.h",
+              "ToolTip": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Enemy.h",
               "RelativeToolTip": "Enemy.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -239,11 +254,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Game.h",
-              "DocumentMoniker": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Game.h",
+              "DocumentMoniker": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Game.h",
               "RelativeDocumentMoniker": "Game.h",
-              "ToolTip": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Game.h",
+              "ToolTip": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\Game.h",
               "RelativeToolTip": "Game.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -251,11 +266,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\main.cpp",
+              "DocumentMoniker": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\main.cpp",
               "RelativeDocumentMoniker": "main.cpp",
-              "ToolTip": "C:\\Users\\TamariKousei\\Documents\\GitHub\\KjinSeisaku\\2DGame\\main.cpp",
+              "ToolTip": "C:\\Users\\Tamari\\Documents\\GitHub\\KjinSeisaku\\2DGame\\main.cpp",
               "RelativeToolTip": "main.cpp",
               "ViewState": "AgIAABoAAAAAAAAAAADgvzkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
