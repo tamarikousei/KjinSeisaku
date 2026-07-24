@@ -44,5 +44,10 @@ void Enemy::Draw()
 	// 当たり判定を表示
 	m_colRect.Draw(0xff0000, false);
 #endif 
+#ifdef _DEBUG
+	// HP 表示
+	DrawFormatString(0, 20, 0xffffff, "敵HP: %d", m_hp);
+#endif 
+
 
 }

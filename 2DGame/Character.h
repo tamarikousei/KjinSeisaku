@@ -34,11 +34,24 @@ public:
 	/// </summary>
 	virtual void Draw();
 
+
+	/// <summary>
+	/// ダメージを受けた場合の処理
+	/// </summary>
+	void OnDamage();
+
+
 	/// <summary>
 	/// 当たり判定を取得 
 	/// </summary>
 	/// <returns>当たり判定情報</returns>
 	Rect GetColRect() const { return m_colRect; }
+
+	/// <summary>
+	/// HP取得
+	/// </summary>
+	/// <returns>HP</returns>
+	int GetHp() const { return m_hp; }  
 
 protected:
 
@@ -53,14 +66,17 @@ protected:
 
 
 	bool m_isRight; // キャラクターが右を向いているか
+	bool m_isGround; // 地面に着地しているか
+	bool m_isJumpPreparing;
+
+
+
+	int m_jumpFrame;
+	int m_damageFrame; // ダメージを受けてから経過フレーム数
+	int m_hp; // HP
 
 	void Gravity();
 
-	bool m_isGround; // 地面に着地しているか
-
-	int m_jumpFrame;
-
-	bool m_isJumpPreparing;
 
 };
 

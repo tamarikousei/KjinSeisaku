@@ -17,6 +17,9 @@ public:
 
 	void DeleteShot(int index);
 
+	// キャラクターが死亡したチェックする
+	void CheckCharacterDeath();
+
 	
 private:
 	Player*  m_pPlayer;

@@ -8,6 +8,8 @@ namespace
 	constexpr float kGravity = 1.5f; // 重力
 	constexpr float kGround = 700.0f; // 地面設定
 	constexpr float kCharaSize = 64.0f; // キャラクターサイズ
+	constexpr float kMaxHp = 10; // 最大HP
+	constexpr int kInvincibleFrame = 50; // 無敵フレーム数
 }
 
 Character::Character():
@@ -15,8 +17,10 @@ Character::Character():
 	m_handle(-1),
 	m_isRight(true),
 	m_isGround(false),
+	m_isJumpPreparing(false),
+	m_damageFrame(0),
 	m_jumpFrame(0),
-	m_isJumpPreparing(false)
+	m_hp(kMaxHp)
 {
 }
 
@@ -30,6 +34,8 @@ void Character::Init()
 
 void Character::Update()
 {
+	m_damageFrame--; // 無敵時間の更新
+
 	Gravity();
 	// 着地処理
 	if (m_pos.y >= kGround)
@@ -61,6 +67,13 @@ void Character::Draw()
 	{
 		DrawTurnGraphF(drawX, drawY, m_handle, true);
 	}
+}
+void Character::OnDamage()
+{
+
+	if (m_damageFrame > 0) return;
+	m_damageFrame = kInvincibleFrame;
+	m_hp--;
 }
 void Character::Gravity()
 {
