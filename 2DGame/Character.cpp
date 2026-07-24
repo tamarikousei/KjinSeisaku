@@ -6,7 +6,7 @@
 namespace
 {
 	constexpr float kGravity = 1.5f; // 重力
-	constexpr float kGround = 700.0f; // 地面設定
+	constexpr float kGround = 653.0f; // 地面設定
 	constexpr float kCharaSize = 64.0f; // キャラクターサイズ
 	constexpr float kMaxHp = 10; // 最大HP
 	constexpr int kInvincibleFrame = 50; // 無敵フレーム数

@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Shot.h"
+#include "Bg.h"
 
 namespace
 {
@@ -18,6 +19,7 @@ SceneMain::SceneMain()
 {
 	m_pPlayer = new Player;
 	m_pEnemy = new Enemy;
+	m_pBg = new Bg;
 	for (int i = 0; i < kShotMax; i++)
 	{
 		m_pShot[i] = nullptr;
@@ -41,6 +43,7 @@ void SceneMain::Update()
 {
 	m_frameCount++;
 
+	m_pBg->Update();
 	if (m_pPlayer) m_pPlayer->Update();
 	if (m_pEnemy) m_pEnemy->Update();
 	UpdateShot();
@@ -55,6 +58,7 @@ void SceneMain::Update()
 
 void SceneMain::Draw()
 {
+	m_pBg->Draw();
 	if(m_pPlayer) m_pPlayer->Draw();
 	if(m_pEnemy)  m_pEnemy->Draw();
 	for (int i = 0; i < kShotMax; i++)
@@ -122,7 +126,7 @@ void SceneMain::CheckCharacterDeath()
 		delete m_pPlayer;
 		m_pPlayer = nullptr;
 	}
-	if (m_pPlayer && m_pEnemy->GetHp() <= 0)
+	if (m_pEnemy && m_pEnemy->GetHp() <= 0)
 	{
 		delete m_pEnemy;
 		m_pEnemy = nullptr;
