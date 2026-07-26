@@ -1,8 +1,15 @@
 ﻿#pragma once
 #include "Player.h"
 #include "Enemy.h"
+#include "Bg.h"
+class Player;
+class Enemy;
+class Bg;
+
 class SceneMain
 {
+
+
 public:
 	SceneMain();
 	~SceneMain();
@@ -17,19 +24,23 @@ public:
 
 	void DeleteShot(int index);
 
+	// キャラクターが死亡したチェックする
+	void CheckCharacterDeath();
+
 	
 private:
 	Player*  m_pPlayer;
-	Enemy* m_pEnemy;
 	Shot* m_pShot[3];
+	Enemy* m_pEnemy;
+
+	Bg* m_pBg;
+
 
 
 	int m_frameCount;
 
 
-
-
 };
-class Player;
-class Enemy;
 	
+
+

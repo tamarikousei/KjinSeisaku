@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Shot.h"
+#include "Bg.h"
 
 namespace
 {
@@ -18,6 +19,7 @@ SceneMain::SceneMain()
 {
 	m_pPlayer = new Player;
 	m_pEnemy = new Enemy;
+	m_pBg = new Bg;
 	for (int i = 0; i < kShotMax; i++)
 	{
 		m_pShot[i] = nullptr;
@@ -41,15 +43,24 @@ void SceneMain::Update()
 {
 	m_frameCount++;
 
-	m_pPlayer->Update();
-	m_pEnemy->Update();
+	m_pBg->Update();
+	if (m_pPlayer) m_pPlayer->Update();
+	if (m_pEnemy) m_pEnemy->Update();
 	UpdateShot();
+	CheckCharacterDeath();
+	
+	if (!m_pPlayer || !m_pEnemy) return;
+
+	// プレイヤーが敵にあたった場合
+	bool isDamage = m_pPlayer->GetColRect().IsCollision(m_pEnemy->GetColRect());
+	if (isDamage) m_pPlayer->OnDamage();
 }
 
 void SceneMain::Draw()
 {
-	m_pPlayer->Draw();
-	m_pEnemy->Draw();
+	m_pBg->Draw();
+	if(m_pPlayer) m_pPlayer->Draw();
+	if(m_pEnemy)  m_pEnemy->Draw();
 	for (int i = 0; i < kShotMax; i++)
 	{
 		if (!m_pShot[i]) continue;
@@ -57,14 +68,18 @@ void SceneMain::Draw()
 
 	}
 
-	DrawString(0, 0, "SceneMain", 0xffffff);
-	DrawFormatString(0, 16,0xffffff ,"Frame Count: %d", m_frameCount);
+//	DrawString(0, 0, "SceneMain", 0xffffff);
+//	DrawFormatString(0, 16,0xffffff ,"Frame Count: %d", m_frameCount);
 }
 
 void SceneMain::UpdateShot()
 {
-	Shot* newShot = m_pPlayer->CreateShot();
-	if (newShot != nullptr)
+	Shot* newShot = nullptr;
+	if (m_pPlayer)
+	{
+		newShot = m_pPlayer->CreateShot();
+	}
+	
 	{
 		for (int i = 0; i < kShotMax; i++)
 		{
@@ -82,13 +97,17 @@ void SceneMain::UpdateShot()
 
 		m_pShot[i]->Update();
 
-		// 画面外に出たら削除する
-		bool isDelete = false;
-		isDelete = m_pShot[i]->GetPos().x < 0 || m_pShot[i]->GetPos().x > kScreenWidth;
-		if (isDelete) return;
-		{
-			DeleteShot(i);
-		}
+		// 弾が敵に当たった場合
+		bool isColEnemy = m_pEnemy && m_pShot[i]->GetColRect().IsCollision(m_pEnemy->GetColRect());
+		
+		if (isColEnemy) m_pEnemy->OnDamage();
+
+	//	// 画面外に出たら削除する
+	//	bool isDelete = false;
+	//	isDelete = m_pShot[i]->GetPos().x < 0 || m_pShot[i]->GetPos().x > kScreenWidth;
+
+		bool isOffScreen = m_pShot[i]->GetPos().x < 0 || m_pShot[i]->GetPos().x > kScreenWidth;
+		if (isOffScreen || isColEnemy) DeleteShot(i);
 	}
 }
 
@@ -98,5 +117,19 @@ void SceneMain::DeleteShot(int index)
 
 	delete m_pShot[index];
 	m_pShot[index] = nullptr;
+}
+
+void SceneMain::CheckCharacterDeath()
+{
+	if (m_pPlayer && m_pPlayer->GetHp() <= 0)
+	{
+		delete m_pPlayer;
+		m_pPlayer = nullptr;
+	}
+	if (m_pEnemy && m_pEnemy->GetHp() <= 0)
+	{
+		delete m_pEnemy;
+		m_pEnemy = nullptr;
+	}
 }
 

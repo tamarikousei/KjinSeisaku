@@ -141,5 +141,14 @@ void Player::Draw()
 		1, 0,
 		m_handle, true, !m_isRight
 	);
+#ifdef _DEBUG
+	// 当たり判定を表示
+	m_colRect.Draw(0x0000ff, false);
+#endif
+#ifdef _DEBUG
+	// HP 表示
+	DrawFormatString(0, 0, 0xffffff, "プレイヤーHP:%d", m_hp);
+#endif 
+
 
 }

@@ -1,12 +1,44 @@
-﻿  Character.cpp
+﻿  Bg.cpp
+C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Bg.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Bg.cpp' をコンパイルしています)
+  
+  Character.cpp
+C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Character.cpp' をコンパイルしています)
+  
+C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Character.cpp(23,6): warning C4244: '初期化中': 'const float' から 'int' への変換です。データが失われる可能性があります。
   Enemy.cpp
+C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Enemy.cpp' をコンパイルしています)
+  
   main.cpp
-  Pad.cpp
+C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'main.cpp' をコンパイルしています)
+  
+C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Bg.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'main.cpp' をコンパイルしています)
+  
   Player.cpp
+C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Player.cpp' をコンパイルしています)
+  
+  Rect.cpp
+C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Rect.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Rect.cpp' をコンパイルしています)
+  
   SceneMain.cpp
+C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
+  
+C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Bg.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
+  
   Shot.cpp
+C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Shot.cpp' をコンパイルしています)
+  
+C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Shot.cpp(46,26): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Shot.cpp(46,17): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   コードを生成中...
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Shot.cpp(37,26): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Shot.cpp(37,17): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-  LINK : 前回のインクリメンタル リンクで C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\x64\Debug\2DGame.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
   2DGame.vcxproj -> C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\x64\Debug\2DGame.exe
