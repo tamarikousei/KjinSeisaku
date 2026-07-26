@@ -1,9 +1,12 @@
 ﻿  Character.cpp
+  Enemy.cpp
+  main.cpp
+  Pad.cpp
   Player.cpp
   SceneMain.cpp
   Shot.cpp
-C:\Users\TamariKousei\Documents\GitHub\KjinSeisaku\2DGame\Shot.cpp(37,26): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\TamariKousei\Documents\GitHub\KjinSeisaku\2DGame\Shot.cpp(37,17): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-  main.cpp
   コードを生成中...
-  2DGame.vcxproj -> C:\Users\TamariKousei\Documents\GitHub\KjinSeisaku\2DGame\x64\Debug\2DGame.exe
+C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Shot.cpp(37,26): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Shot.cpp(37,17): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  LINK : 前回のインクリメンタル リンクで C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\x64\Debug\2DGame.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
+  2DGame.vcxproj -> C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\x64\Debug\2DGame.exe
