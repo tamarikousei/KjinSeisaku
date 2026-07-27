@@ -19,7 +19,7 @@ SceneMain::SceneMain()
 {
 	m_pPlayer = new Player;
 	m_pEnemy = new Enemy;
-	m_pBg = new Bg;
+	m_pBg = new Bg(m_pPlayer);
 	for (int i = 0; i < kShotMax; i++)
 	{
 		m_pShot[i] = nullptr;

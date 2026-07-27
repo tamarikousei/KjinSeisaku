@@ -51,7 +51,9 @@ public:
 	/// HP取得
 	/// </summary>
 	/// <returns>HP</returns>
-	int GetHp() const { return m_hp; }  
+	int GetHp() const { return m_hp; } 
+
+	Vec2 GetPos() const { return m_pos; }
 
 protected:
 

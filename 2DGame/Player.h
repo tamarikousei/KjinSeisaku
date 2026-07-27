@@ -42,6 +42,7 @@ public:
 	/// <returns>Shotポインタ</returns>
 	Shot* CreateShot();
 
+	Vec2 GetPos() const { return m_pos; }
 
 private:
 

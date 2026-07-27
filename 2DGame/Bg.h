@@ -1,9 +1,19 @@
 #pragma once
 #include "Vec2.h"
+#include "Game.h"
+
+class Player;
+
+struct Size
+{
+	int width;
+	int heigth;
+};
+
 class Bg
 {
 public:
-	Bg();
+	Bg(Player* pPlayer);
 	~Bg();
 
 	void Init();
@@ -14,6 +24,19 @@ public:
 
 	void Draw();
 
+
+
+	/// <summary>
+	/// 横スクロール量を設定する
+	/// </summary>
+	/// <returns>横スクロール量を決定する</returns>
+	int GetScrollX();
+
+	/// <summary>
+	/// 縦のスクロール量を決定する
+	/// </summary>
+	/// <returns>縦のスクロール量</returns>
+	int GetScorllY();
 
 	/// <summary>
 	/// 背景設定
@@ -26,6 +49,8 @@ protected:
 	int m_imageHeight;
 
 	Vec2 m_pos;
+	Player* m_pPlayer;
+	Size m_bgSize;
 
 
 
