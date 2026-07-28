@@ -8,6 +8,7 @@
 namespace
 {
 	constexpr float kScreenWidth = 1980.0f;
+	constexpr float kMapWidth = 3000.0f; // マップ幅
 
 	constexpr int kShotMax = 3;
 
@@ -20,6 +21,8 @@ SceneMain::SceneMain()
 	m_pPlayer = new Player;
 	m_pEnemy = new Enemy;
 	m_pBg = new Bg(m_pPlayer);
+	m_pPlayer->SetBgPointer(m_pBg);
+	m_pEnemy->SetBgPointer(m_pBg);
 	for (int i = 0; i < kShotMax; i++)
 	{
 		m_pShot[i] = nullptr;
@@ -106,7 +109,7 @@ void SceneMain::UpdateShot()
 	//	bool isDelete = false;
 	//	isDelete = m_pShot[i]->GetPos().x < 0 || m_pShot[i]->GetPos().x > kScreenWidth;
 
-		bool isOffScreen = m_pShot[i]->GetPos().x < 0 || m_pShot[i]->GetPos().x > kScreenWidth;
+		bool isOffScreen = m_pShot[i]->GetPos().x < 0 || m_pShot[i]->GetPos().x > kMapWidth;
 		if (isOffScreen || isColEnemy) DeleteShot(i);
 	}
 }

@@ -1,1 +1,59 @@
-﻿  2DGame.vcxproj -> C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\x64\Debug\2DGame.exe
+﻿  Bg.cpp
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Bg.cpp' をコンパイルしています)
+  
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Bg.cpp' をコンパイルしています)
+  
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.cpp(50,22): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.cpp(64,23): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.cpp(78,28): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.cpp(81,72): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  Character.cpp
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Character.cpp' をコンパイルしています)
+  
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Character.cpp' をコンパイルしています)
+  
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Character.cpp(25,6): warning C4244: '初期化中': 'const float' から 'int' への変換です。データが失われる可能性があります。
+  Enemy.cpp
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Enemy.cpp' をコンパイルしています)
+  
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Enemy.cpp' をコンパイルしています)
+  
+  Player.cpp
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Player.cpp' をコンパイルしています)
+  
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Player.cpp' をコンパイルしています)
+  
+  SceneMain.cpp
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
+  
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
+  
+  Shot.cpp
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Shot.cpp' をコンパイルしています)
+  
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Shot.cpp' をコンパイルしています)
+  
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Shot.cpp(48,26): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Shot.cpp(48,17): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  main.cpp
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'main.cpp' をコンパイルしています)
+  
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'main.cpp' をコンパイルしています)
+  
+  コードを生成中...
+  2DGame.vcxproj -> C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\x64\Debug\2DGame.exe

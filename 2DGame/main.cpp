@@ -3,6 +3,7 @@
 #include "Pad.h"
 #include "SceneMain.h"
 
+
 // プログラムは WinMain から始まります
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow)
 {
@@ -33,6 +34,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		//ゲームの処理
 
 		Pad::Update();
+		// アロー演算子を使う場合ポインタを関して実行してる
 		pScene->Update();
 		pScene->Draw();
 

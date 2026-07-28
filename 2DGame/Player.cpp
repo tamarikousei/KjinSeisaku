@@ -5,6 +5,7 @@
 #include "Pad.h"
 #include "Character.h"
 #include "Shot.h"
+#include "Bg.h"
 
 namespace
 {
@@ -52,7 +53,7 @@ Shot* Player::CreateShot()
 	if (Pad::IsTrigger(PAD_INPUT_2))
 	{
 		Shot* pShot = new Shot();
-		pShot->SetInfo(m_pos, m_isRight);
+		pShot->SetInfo(m_pos, m_isRight,m_pBg);
 		return pShot;
 	}
 	return nullptr;
@@ -143,7 +144,7 @@ void Player::Draw()
 	);
 #ifdef _DEBUG
 	// 当たり判定を表示
-	m_colRect.Draw(0x0000ff, false);
+	m_colRect.DrawScroll(m_pBg->GetScrollX(),m_pBg->GetScrollY(), 0x0000ff, false);
 #endif
 #ifdef _DEBUG
 	// HP 表示

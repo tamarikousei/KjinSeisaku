@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Vec2.h"
 #include "Rect.h"
+#include "Bg.h"
 
 /// <summary>
 ///  キャラクターの基礎クラス
@@ -55,6 +56,12 @@ public:
 
 	Vec2 GetPos() const { return m_pos; }
 
+	/// <summary>
+	/// Bgクラスのポインタをセットする
+	/// </summary>
+	/// <param name="pBg">Bgクラスポインタ</param>
+	void SetBgPointer(Bg* pBg) { m_pBg = pBg; }
+
 protected:
 
 	double m_angle;
@@ -65,6 +72,7 @@ protected:
 	Vec2 m_pos;
 	Vec2 m_move; // 
 	Rect m_colRect; // あたり判定用の短形
+	Bg* m_pBg;
 
 
 	bool m_isRight; // キャラクターが右を向いているか

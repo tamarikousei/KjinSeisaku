@@ -91,6 +91,15 @@ public:
 	/// <returns>当たってるかどうか</returns>
 	bool IsCollision(const Rect& rect);
 
+	/// <summary>
+	/// スクロール情報を適用した短形の描画 
+	/// </summary>
+	/// <param name="scrollX">横スクロール量</param>
+	/// <param name="scrollY">縦スクロール量</param>
+	/// <param name="color">短形の色</param>
+	/// <param name="isFill">太さ</param>
+	void DrawScroll(int scrollX, int scrollY, unsigned int color, bool isFill);
+
 public:
 	float m_left;
 	float m_top;

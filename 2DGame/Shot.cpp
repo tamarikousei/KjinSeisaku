@@ -2,6 +2,7 @@
 #include "DxLib.h"
 #include "Game.h"
 #include "Rect.h"
+#include "Bg.h"
 
 namespace
 {
@@ -17,7 +18,8 @@ namespace
 
 Shot::Shot():
 	m_pos({0,0}),
-	m_move({kSpeed, 0})
+	m_move({kSpeed, 0}),
+	m_pBg(nullptr)
 {
 	m_handle = LoadGraph("date/shot.png");
 }
@@ -40,20 +42,22 @@ void Shot::Update()
 
 void Shot::Draw()
 {
-	float drawX = m_pos.x - kShotSize * 0.5f;
-	float drawY = m_pos.y - kShotSize * 0.5f;
+	float drawX = m_pos.x - m_pBg->GetScrollX() - kShotSize * 0.5f;
+	float drawY = m_pos.y - m_pBg->GetScrollY() - kShotSize * 0.5f;
 
 	DrawGraph(m_pos.x, m_pos.y, m_handle, true);
 
 #ifdef _DEBUG
-	m_colRect.Draw(0x00ff00, false);
+	m_colRect.DrawScroll(m_pBg->GetScrollX(), m_pBg->GetScrollY(), 0x0000ff, false);
 #endif 
 
 }
 
-void Shot::SetInfo(const Vec2& pos, bool isRight)
+void Shot::SetInfo(const Vec2& pos, bool isRight, Bg* pBg)
 {
 	m_pos = pos;
+
+	m_pBg = pBg;
 
 	if (isRight)
 	{

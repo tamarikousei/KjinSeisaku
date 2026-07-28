@@ -1,6 +1,7 @@
 ﻿#include "DxLib.h"
 #include "Character.h"
 #include "Player.h"
+#include "Bg.h"
 
 
 namespace
@@ -8,13 +9,14 @@ namespace
 	constexpr float kGravity = 1.5f; // 重力
 	constexpr float kGround = 653.0f; // 地面設定
 	constexpr float kCharaSize = 64.0f; // キャラクターサイズ
-	constexpr float kMaxHp = 10; // 最大HP
+	constexpr float kMaxHp = 10.0f; // 最大HP
 	constexpr int kInvincibleFrame = 50; // 無敵フレーム数
 }
 
 Character::Character():
 	m_angle(0),
 	m_handle(-1),
+	m_pBg(nullptr),
 	m_isRight(true),
 	m_isGround(false),
 	m_isJumpPreparing(false),
@@ -56,8 +58,8 @@ void Character::Update()
 
 void Character::Draw()
 {
-	float drawX = m_pos.x - kCharaSize * 0.5f;
-	float drawY = m_pos.y - kCharaSize * 0.5f;
+	float drawX = m_pos.x - m_pBg->GetScrollX() - kCharaSize * 0.5f;
+	float drawY = m_pos.y - m_pBg->GetScrollY() - kCharaSize * 0.5f;
 
 	if (m_isRight)
 	{

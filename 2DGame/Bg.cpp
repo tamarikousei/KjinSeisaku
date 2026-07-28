@@ -9,21 +9,33 @@ namespace
 	constexpr float kMapHeight = 1080.0f;    // マップ全体の高さ
 	constexpr float kScreenWidth = 1920.0f;  // スクリーンの幅
 	constexpr float kScreenHeight = 1080.0f; // スクリーンの高さ
+	
 }
 
 Bg::Bg(Player* pPlayer):
 	m_imageHeight(0),
 	m_imageWidth(0),
+	m_graphChipNumX(0),
+	m_garahChipNumY(0),
 	m_pos{0,0},
 	m_pPlayer(pPlayer),
 	m_bgSize(0)
 {
+	// 画像のマップチップ数を数える
+
+
+
+
 	m_bgHandle = LoadGraph("date/Bg.png");
+	m_mapHandle = LoadGraph("date/mapchip.png");
+
+	
 }
 
 Bg::~Bg()
 {
 	DeleteGraph(m_bgHandle);
+	DeleteGraph(m_mapHandle);
 }
 
 void Bg::Update()
@@ -33,6 +45,7 @@ void Bg::Update()
 void Bg::Draw()
 {
 	DrawBg();
+	DrawMapChip();
 }
 
 int Bg::GetScrollX()
@@ -49,7 +62,7 @@ int Bg::GetScrollX()
 	return result;
 }
 
-int Bg::GetScorllY()
+int Bg::GetScrollY()
 {
 	int result = static_cast<int>(m_pPlayer->GetPos().y - kScreenHeight * 0.5);
 	if (result < 0)
@@ -71,7 +84,12 @@ void Bg::DrawBg()
 
 	int scrollBg = GetScrollX() % m_bgSize.width;
 
+	// スクロース
 	DrawGraph(-scrollBg, m_pos.y, m_bgHandle, true);
+	if (scrollBg > 0)
+	{
+		DrawGraph(m_bgSize.width - scrollBg, kScreenHeight - m_bgSize.heigth - 360 , m_bgHandle, true);
+	}
 //	DrawExtendGraph(0, 0, Game::kScreenWidth, Game::kScreenHeight, m_bgHandle, false);
 //	DrawExtendGraph(-scrollBg,m_pos.x,Game::kScreenWidth,Game::kScreenHeight, m_bgHandle, true);
 
@@ -83,4 +101,9 @@ void Bg::DrawBg()
 //		}
 //	}
 
+}
+
+void Bg::DrawMapChip()
+{
+	DrawGraph(0, 0, m_mapHandle, true);
 }

@@ -1,6 +1,9 @@
 ﻿#pragma once
 #include "Vec2.h"
 #include "Rect.h"
+
+class Bg;
+
 /// <summary>
 /// 弾の管理クラス
 /// </summary>
@@ -38,7 +41,8 @@ public:
 	/// </summary>
 	/// <param name="pos">座標</param>
 	/// <param name="isRight">右方向に移動するか</param>
-	void SetInfo(const Vec2& pos, bool isRight);
+	/// <param name="pBg>背景クラスポインタ</param>
+	void SetInfo(const Vec2& pos, bool isRight, Bg* pBg);
 
 	Vec2 GetPos() const { return m_pos; }
 
@@ -60,5 +64,7 @@ protected:
 
 	// 当たり判定用の短形
 	Rect m_colRect;
+
+	Bg* m_pBg;
 };
 
