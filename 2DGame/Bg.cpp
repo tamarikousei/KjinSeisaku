@@ -45,7 +45,7 @@ void Bg::Update()
 void Bg::Draw()
 {
 	DrawBg();
-	DrawMapChip();
+//	DrawMapChip();
 }
 
 int Bg::GetScrollX()
@@ -97,13 +97,5 @@ void Bg::DrawBg()
 //	{
 //		for (int x = 0; x < Game::kScreenWidth; x += imageHeight)
 //		{
-//			DrawGraph(m_pos.x, m_pos.y, m_bgHandle, true);
-//		}
-//	}
-
-}
-
-void Bg::DrawMapChip()
-{
-	DrawGraph(0, 0, m_mapHandle, true);
+//	DrawGraph(0, 0, m_mapHandle, true);
 }

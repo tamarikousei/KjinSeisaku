@@ -46,7 +46,7 @@ public:
 	/// <summary>
 	/// マップチップ表示 
 	/// </summary>
-	void DrawMapChip();
+//	void DrawMapChip();
 
 protected:
 	int m_bgHandle; // 弾の画像
