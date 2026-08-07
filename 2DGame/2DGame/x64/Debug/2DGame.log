@@ -1,13 +1,15 @@
 ﻿  Bg.cpp
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Bg.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Bg.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'Bg.cpp' をコンパイルしています)
   
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'Bg.cpp' をコンパイルしています)
   
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Bg.cpp(60,22): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Bg.cpp(74,23): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Bg.cpp(88,28): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Bg.cpp(91,72): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-  2DGame.vcxproj -> C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\x64\Debug\2DGame.exe
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.cpp(95,22): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.cpp(109,23): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.cpp(123,28): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.cpp(126,72): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.cpp(167,20): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.cpp(167,14): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+  2DGame.vcxproj -> C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\x64\Debug\2DGame.exe

@@ -9,7 +9,9 @@ struct Size
 	int width = 1280;
 	int heigth = 720;
 };
-
+/// <summary>
+/// 背景管理クラス
+/// </summary>
 class Bg
 {
 public:
@@ -46,7 +48,7 @@ public:
 	/// <summary>
 	/// マップチップ表示 
 	/// </summary>
-//	void DrawMapChip();
+	void DrawMapChip();
 
 protected:
 	int m_bgHandle; // 弾の画像
