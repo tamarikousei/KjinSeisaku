@@ -56,6 +56,7 @@ public:
 
 protected:
 	int m_handle;
+	int m_bounceCount; // バウンドの回数
 
 
 	Vec2 m_pos;

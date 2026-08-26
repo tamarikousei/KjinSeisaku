@@ -18,6 +18,8 @@ namespace
 	
 	constexpr float kGravity = 1.5f; // 重力
 
+	constexpr float kJumpPrepareFriction = 0.8f; // 溜め中に減速させる
+
 	constexpr int kSmallJumpFrame = 8;
 	constexpr int kMediumJumpFrame = 13;
 	constexpr float kSmallJumpHeigth = 0.5f;
@@ -100,6 +102,13 @@ void Player::Jump()
 
 void Player::Move()
 {
+	// ジャンプ溜め中に移動入力を受け付けない
+	if (m_isJumpPreparing)
+	{
+		// 溜め中は徐々に減速させる
+		m_move.x *= kJumpPrepareFriction;
+		return;
+	}
 	if (Pad::IsPress(PAD_INPUT_LEFT))
 	{
 		m_move.x = -kSpeed;
@@ -118,6 +127,9 @@ void Player::Move()
 
 void Player::Draw()
 {
+	int scro11X = m_pBg->GetScrollX();
+	int scro11Y = m_pBg->GetScrollY();
+
 	/*
 	//if (m_isRight)
 	//{
@@ -137,7 +149,7 @@ void Player::Draw()
 	//	);
 	//}
 	*/
-	DrawRectRotaGraphF(m_pos.x, m_pos.y,
+	DrawRectRotaGraphF(m_pos.x - scro11X, m_pos.y - scro11Y,
 		0, 0, kWidth, kHeigth,
 		1, 0,
 		m_handle, true, !m_isRight

@@ -23,6 +23,7 @@ SceneMain::SceneMain()
 	m_pBg = new Bg(m_pPlayer);
 	m_pPlayer->SetBgPointer(m_pBg);
 	m_pEnemy->SetBgPointer(m_pBg);
+	m_pEnemy->SetPlayer(m_pPlayer);
 	for (int i = 0; i < kShotMax; i++)
 	{
 		m_pShot[i] = nullptr;
@@ -82,15 +83,22 @@ void SceneMain::UpdateShot()
 	{
 		newShot = m_pPlayer->CreateShot();
 	}
-	
+	if (newShot != nullptr)
 	{
+		bool isAdded = false;
 		for (int i = 0; i < kShotMax; i++)
 		{
 			if (m_pShot[i] == nullptr)
 			{
 				m_pShot[i] = newShot;
+				isAdded = true;
 				break;
 			}
+		}
+		// 空きスロットがなく登録できなかった場合はリークを防ぐため削除する
+		if (!isAdded)
+		{
+			delete newShot;
 		}
 	}
 
@@ -108,8 +116,10 @@ void SceneMain::UpdateShot()
 	//	// 画面外に出たら削除する
 	//	bool isDelete = false;
 	//	isDelete = m_pShot[i]->GetPos().x < 0 || m_pShot[i]->GetPos().x > kScreenWidth;
-
-		bool isOffScreen = m_pShot[i]->GetPos().x < 0 || m_pShot[i]->GetPos().x > kMapWidth;
+		float scrollX = m_pBg->GetScrollX();
+		float screenRelativeX = m_pShot[i]->GetPos().x - scrollX;
+		bool isOffScreen = screenRelativeX < 0 || screenRelativeX > kScreenWidth;
+	//	bool isOffScreen = m_pShot[i]->GetPos().x < 0 || m_pShot[i]->GetPos().x > kMapWidth;
 		if (isOffScreen || isColEnemy) DeleteShot(i);
 	}
 }
