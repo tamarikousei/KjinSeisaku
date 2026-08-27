@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "2DGame\\x64\\Debug\\SceneGameClear.obj",
+            "outputs": [
+                "2DGame\\x64\\Debug\\SceneGameClear.cpp.obj.dt.module.json",
+                "2DGame\\x64\\Debug\\SceneGameClear.cpp.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

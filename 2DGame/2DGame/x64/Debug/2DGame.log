@@ -5,13 +5,5 @@ C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning
 C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Bg.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
   
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\SceneMain.cpp(119,17): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
-  Shot.cpp
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'Shot.cpp' をコンパイルしています)
-  
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Bg.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'Shot.cpp' をコンパイルしています)
-  
-  コードを生成中...
+C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\SceneMain.cpp(131,17): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
   2DGame.vcxproj -> C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\x64\Debug\2DGame.exe

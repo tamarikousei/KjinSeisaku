@@ -2,7 +2,17 @@
 #include "Game.h"
 #include "Pad.h"
 #include "SceneMain.h"
+#include "SceneGameClear.h"
 
+namespace
+{
+	// 現在のシーンの種類を表す
+	enum class SceneType
+	{
+		kMain,
+		kGameClear,
+	};
+}
 
 // プログラムは WinMain から始まります
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow)
@@ -21,8 +31,10 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 	//裏の画面に描画するようにする
 	SetDrawScreen(DX_SCREEN_BACK);
+	SceneType currentScene = SceneType::kMain;
 	SceneMain* pScene = new SceneMain;
 	pScene->Init();
+	SceneGameClear* pSceneGameClear = nullptr; // クリア時に生成する
 	
 	while (ProcessMessage() == 0)
 	{
@@ -34,9 +46,28 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		//ゲームの処理
 
 		Pad::Update();
-		// アロー演算子を使う場合ポインタを関して実行してる
-		pScene->Update();
-		pScene->Draw();
+		switch (currentScene)
+		{
+		case SceneType::kMain:
+
+			// アロー演算子を使う場合ポインタを関して実行してる
+			pScene->Update();
+			pScene->Draw();
+			if (pScene->IsClear())
+			{
+				delete pScene;
+				pScene = nullptr;
+
+				pSceneGameClear = new SceneGameClear;
+				pSceneGameClear->Init();
+				currentScene = SceneType::kGameClear;
+			}
+			break;
+			case SceneType::kGameClear:
+				pSceneGameClear->Update();
+				pSceneGameClear->Draw();
+				break;
+		}
 
 
 		//画面の書き換えを待つ

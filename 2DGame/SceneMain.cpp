@@ -14,16 +14,20 @@ namespace
 
 }
 
-SceneMain::SceneMain()
-	: m_frameCount(0),
-	m_pShot(nullptr)
+SceneMain::SceneMain(): 
+	m_pShot(nullptr),
+	m_frameCount(0),
+	m_isClear(false)
 {
 	m_pPlayer = new Player;
 	m_pEnemy = new Enemy;
 	m_pBg = new Bg(m_pPlayer);
+	m_pGoal = new Goal;
 	m_pPlayer->SetBgPointer(m_pBg);
 	m_pEnemy->SetBgPointer(m_pBg);
 	m_pEnemy->SetPlayer(m_pPlayer);
+	m_pGoal->SetBgPointer(m_pBg);
+	m_pGoal->Init(Vec2{ 2800.0f,300.0f }); //仮のゴール座標
 	for (int i = 0; i < kShotMax; i++)
 	{
 		m_pShot[i] = nullptr;
@@ -54,6 +58,13 @@ void SceneMain::Update()
 	CheckCharacterDeath();
 	
 	if (!m_pPlayer || !m_pEnemy) return;
+	// プレイヤーがゴールに触れたらクリア扱いにする
+	if (m_pPlayer->GetColRect().IsCollision(m_pGoal->GetColRect()))
+	{
+		m_isClear = true;
+	}
+
+	if (!m_pEnemy)return;
 
 	// プレイヤーが敵にあたった場合
 	bool isDamage = m_pPlayer->GetColRect().IsCollision(m_pEnemy->GetColRect());
@@ -65,6 +76,7 @@ void SceneMain::Draw()
 	m_pBg->Draw();
 	if(m_pPlayer) m_pPlayer->Draw();
 	if(m_pEnemy)  m_pEnemy->Draw();
+	if (m_pGoal) m_pGoal->Draw();
 	for (int i = 0; i < kShotMax; i++)
 	{
 		if (!m_pShot[i]) continue;

@@ -154,10 +154,12 @@
     <ClCompile Include="Bg.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Goal.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pad.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rect.cpp" />
+    <ClCompile Include="SceneGameClear.cpp" />
     <ClCompile Include="SceneMain.cpp" />
     <ClCompile Include="Shot.cpp" />
   </ItemGroup>
@@ -166,9 +168,11 @@
     <ClInclude Include="Character.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Goal.h" />
     <ClInclude Include="Pad.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rect.h" />
+    <ClInclude Include="SceneGameClear.h" />
     <ClInclude Include="SceneMain.h" />
     <ClInclude Include="Shot.h" />
     <ClInclude Include="Vec2.h" />
