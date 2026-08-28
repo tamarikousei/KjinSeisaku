@@ -290,7 +290,9 @@
             "c:\\users\\renas\\ドキュメント\\github\\kjinseisaku\\2dgame\\bg.h",
             "c:\\users\\renas\\ドキュメント\\github\\kjinseisaku\\2dgame\\shot.h",
             "c:\\users\\renas\\ドキュメント\\github\\kjinseisaku\\2dgame\\enemy.h",
-            "c:\\users\\renas\\ドキュメント\\github\\kjinseisaku\\2dgame\\goal.h"
+            "c:\\users\\renas\\ドキュメント\\github\\kjinseisaku\\2dgame\\goal.h",
+            "c:\\users\\renas\\ドキュメント\\github\\kjinseisaku\\2dgame\\scenegameclear.h",
+            "c:\\users\\renas\\ドキュメント\\github\\kjinseisaku\\2dgame\\scenetitle.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

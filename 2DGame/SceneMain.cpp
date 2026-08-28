@@ -16,18 +16,41 @@ namespace
 
 SceneMain::SceneMain(): 
 	m_pShot(nullptr),
+	m_pSceneGameClear(nullptr),
+	m_pSceneMain(nullptr),
+	m_pSceneTitle(nullptr),
 	m_frameCount(0),
-	m_isClear(false)
+	m_isClear(false),
+	m_isEnemyDefeated(false)
 {
 	m_pPlayer = new Player;
+//	Enemy* m_pEnemy = new Enemy;
 	m_pEnemy = new Enemy;
+
+	// 1体目の敵を生成する
+	Enemy* pEnemy1 = new Enemy;
+	pEnemy1->Init();
+	pEnemy1->SetBgPointer(m_pBg);
+	pEnemy1->SetPlayer(m_pPlayer);
+	m_enemies.push_back(pEnemy1);
+
+	// 2体目の敵を生成する（座標を分けたい場合はInit()の引数や専用のSetPos()で調整が必要）
+	Enemy* pEnemy2 = new Enemy;
+	pEnemy2->SetPos(Vec2{ 1200.0f, 300.0f });
+	pEnemy2->Init();
+	pEnemy2->SetBgPointer(m_pBg);
+	pEnemy2->SetPlayer(m_pPlayer);
+	m_enemies.push_back(pEnemy2);
+
 	m_pBg = new Bg(m_pPlayer);
 	m_pGoal = new Goal;
 	m_pPlayer->SetBgPointer(m_pBg);
+	m_pEnemy->Init();
 	m_pEnemy->SetBgPointer(m_pBg);
 	m_pEnemy->SetPlayer(m_pPlayer);
+	m_enemies.push_back(m_pEnemy);
 	m_pGoal->SetBgPointer(m_pBg);
-	m_pGoal->Init(Vec2{ 2800.0f,300.0f }); //仮のゴール座標
+	m_pGoal->Init(Vec2{ 3000.0f,653.0f }); //仮のゴール座標
 	for (int i = 0; i < kShotMax; i++)
 	{
 		m_pShot[i] = nullptr;
@@ -53,29 +76,36 @@ void SceneMain::Update()
 
 	m_pBg->Update();
 	if (m_pPlayer) m_pPlayer->Update();
-	if (m_pEnemy) m_pEnemy->Update();
+	// 敵全員を更新する
+	for (Enemy* pEnemy : m_enemies)
+	{
+		pEnemy->Update();
+	}
 	UpdateShot();
 	CheckCharacterDeath();
 	
-	if (!m_pPlayer || !m_pEnemy) return;
+	if (!m_pPlayer) return;
 	// プレイヤーがゴールに触れたらクリア扱いにする
 	if (m_pPlayer->GetColRect().IsCollision(m_pGoal->GetColRect()))
 	{
 		m_isClear = true;
 	}
 
-	if (!m_pEnemy)return;
-
-	// プレイヤーが敵にあたった場合
-	bool isDamage = m_pPlayer->GetColRect().IsCollision(m_pEnemy->GetColRect());
-	if (isDamage) m_pPlayer->OnDamage();
+	for (Enemy* pEnemy : m_enemies)
+	{
+		bool isDamage = m_pPlayer->GetColRect().IsCollision(pEnemy->GetColRect());
+		if (isDamage) m_pPlayer->OnDamage();
+	}
 }
-
 void SceneMain::Draw()
 {
 	m_pBg->Draw();
 	if(m_pPlayer) m_pPlayer->Draw();
-	if(m_pEnemy)  m_pEnemy->Draw();
+	// 敵全員を描画する
+	for (Enemy* pEnemy : m_enemies)
+	{
+		pEnemy->Draw();
+	}
 	if (m_pGoal) m_pGoal->Draw();
 	for (int i = 0; i < kShotMax; i++)
 	{
@@ -121,9 +151,16 @@ void SceneMain::UpdateShot()
 		m_pShot[i]->Update();
 
 		// 弾が敵に当たった場合
-		bool isColEnemy = m_pEnemy && m_pShot[i]->GetColRect().IsCollision(m_pEnemy->GetColRect());
-		
-		if (isColEnemy) m_pEnemy->OnDamage();
+//		bool isColEnemy = m_pEnemy && m_pShot[i]->GetColRect().IsCollision(m_pEnemy->GetColRect());
+		bool isColEnemy = false;
+		for (Enemy* pEnemy : m_enemies)
+		{
+			if (m_pShot[i]->GetColRect().IsCollision(pEnemy->GetColRect()))
+			{
+				pEnemy->OnDamage();
+				isColEnemy = true;
+			}
+		}
 
 	//	// 画面外に出たら削除する
 	//	bool isDelete = false;
@@ -151,10 +188,30 @@ void SceneMain::CheckCharacterDeath()
 		delete m_pPlayer;
 		m_pPlayer = nullptr;
 	}
-	if (m_pEnemy && m_pEnemy->GetHp() <= 0)
+	// HPが0以下の歩く敵をリストから取り除く
+	for (size_t i = 0; i < m_enemies.size();)
 	{
-		delete m_pEnemy;
-		m_pEnemy = nullptr;
+		if (m_enemies[i]->GetHp() <= 0)
+		{
+			delete m_enemies[i];
+			m_enemies.erase(m_enemies.begin() + i);
+		}
+		else
+		{
+			i++;
+		}
+	}
+	// HPが0以下になった敵をリストから取り除く
+	for (size_t i = 0; i < m_enemies.size();)
+	{
+		if (m_enemies[i]->GetHp() <= 0)
+		{
+			delete m_enemies[i];
+			m_enemies.erase(m_enemies.begin() + i);
+		}
+		else
+		{
+			i++;
+		}
 	}
 }
-

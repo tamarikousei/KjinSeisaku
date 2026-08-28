@@ -9,6 +9,7 @@ namespace
 	// 現在のシーンの種類を表す
 	enum class SceneType
 	{
+		kTitle,
 		kMain,
 		kGameClear,
 	};
@@ -31,11 +32,12 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 	//裏の画面に描画するようにする
 	SetDrawScreen(DX_SCREEN_BACK);
-	SceneType currentScene = SceneType::kMain;
+	SceneType currentScene = SceneType::kTitle;
+	SceneTitle* pSceneTitle = new SceneTitle;
 	SceneMain* pScene = new SceneMain;
-	pScene->Init();
+	pSceneTitle->Init();
 	SceneGameClear* pSceneGameClear = nullptr; // クリア時に生成する
-	
+
 	while (ProcessMessage() == 0)
 	{
 		//現在のフレーム開始時刻を取得
@@ -48,11 +50,25 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		Pad::Update();
 		switch (currentScene)
 		{
-		case SceneType::kMain:
+		case SceneType::kTitle:
 
 			// アロー演算子を使う場合ポインタを関して実行してる
+			pSceneTitle->Update();
+			pSceneTitle->Draw();
+			if (pSceneTitle->IsGameStart())
+			{
+				delete pSceneTitle;
+				pSceneTitle = nullptr;
+
+				pScene = new SceneMain;
+				pScene->Init();
+				currentScene = SceneType::kMain;
+			}
+			break;
+		case SceneType::kMain:
 			pScene->Update();
 			pScene->Draw();
+			// メインシーンがクリアされたら、クリアシーンに切り替える
 			if (pScene->IsClear())
 			{
 				delete pScene;
@@ -63,16 +79,29 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 				currentScene = SceneType::kGameClear;
 			}
 			break;
-			case SceneType::kGameClear:
-				pSceneGameClear->Update();
-				pSceneGameClear->Draw();
-				break;
+
+		case SceneType::kGameClear:
+			pSceneGameClear->Update();
+			pSceneGameClear->Draw();
+
+			// クリア画面でスペースが押されたらタイトルへ戻る
+			if (pSceneGameClear->IsReturnToTitle())
+			{
+				delete pSceneGameClear;
+				pSceneGameClear = nullptr;
+
+				pSceneTitle = new SceneTitle;
+				pSceneTitle->Init();
+				currentScene = SceneType::kTitle;
+			}
+
+			break;
 		}
 
 
 		//画面の書き換えを待つ
 		ScreenFlip();
-		
+
 		//ESCキーが押されたらループを抜ける
 		if (CheckHitKey(KEY_INPUT_ESCAPE)) break;
 
@@ -89,6 +118,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		}
 
 	}
+	delete pSceneTitle;
+	delete pScene;
+	delete pSceneGameClear;
 	DxLib_End();				// ＤＸライブラリ使用の終了処理
 
 	return 0;				// ソフトの終了 

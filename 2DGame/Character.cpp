@@ -16,6 +16,8 @@ namespace
 Character::Character():
 	m_angle(0),
 	m_handle(-1),
+	m_pos(Vec2{ 0.0f, 0.0f }),   
+	m_move(Vec2{ 0.0f, 0.0f }),
 	m_pBg(nullptr),
 	m_isRight(true),
 	m_isGround(false),
