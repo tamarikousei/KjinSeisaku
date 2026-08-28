@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\EnemyThrower.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:EnemyThrower.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EnemyThrower.cpp",
+              "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\EnemyThrower.cpp",
+              "RelativeDocumentMoniker": "EnemyThrower.cpp",
+              "ToolTip": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\EnemyThrower.cpp",
+              "RelativeToolTip": "EnemyThrower.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-08-28T19:15:13.771Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
