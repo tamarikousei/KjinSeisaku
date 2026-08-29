@@ -89,7 +89,7 @@ public:
 	/// </summary>
 	/// <param name="rect">矩形情報</param>
 	/// <returns>当たってるかどうか</returns>
-	bool IsCollision(const Rect& rect);
+	bool IsCollision(const Rect& rect)const;
 
 	/// <summary>
 	/// スクロール情報を適用した短形の描画 

@@ -1,4 +1,4 @@
-#include "DxLib.h"
+﻿#include "DxLib.h"
 #include "EnemyShot.h"
 #include "Bg.h"
 

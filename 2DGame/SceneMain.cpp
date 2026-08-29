@@ -21,36 +21,34 @@ SceneMain::SceneMain():
 	m_pSceneTitle(nullptr),
 	m_frameCount(0),
 	m_isClear(false),
-	m_isEnemyDefeated(false)
+	m_isEnemyDefeated(false),
+	m_isGameOver(false)
 {
 	m_pPlayer = new Player;
 //	Enemy* m_pEnemy = new Enemy;
-	m_pEnemy = new Enemy;
-
-	// 1体目の敵を生成する
-	Enemy* pEnemy1 = new Enemy;
-	pEnemy1->Init();
-	pEnemy1->SetBgPointer(m_pBg);
-	pEnemy1->SetPlayer(m_pPlayer);
-	m_enemies.push_back(pEnemy1);
-
-	// 2体目の敵を生成する（座標を分けたい場合はInit()の引数や専用のSetPos()で調整が必要）
-	Enemy* pEnemy2 = new Enemy;
-	pEnemy2->SetPos(Vec2{ 1200.0f, 300.0f });
-	pEnemy2->Init();
-	pEnemy2->SetBgPointer(m_pBg);
-	pEnemy2->SetPlayer(m_pPlayer);
-	m_enemies.push_back(pEnemy2);
-
 	m_pBg = new Bg(m_pPlayer);
-	m_pGoal = new Goal;
 	m_pPlayer->SetBgPointer(m_pBg);
+	
+	m_pGoal = new Goal;
+	m_pGoal->SetBgPointer(m_pBg);
+	m_pGoal->Init(Vec2{ 3000.0f,653.0f }); //仮のゴール座標
+	
+	// 歩く敵を1体生成する
+	m_pEnemy = new Enemy;
 	m_pEnemy->Init();
 	m_pEnemy->SetBgPointer(m_pBg);
 	m_pEnemy->SetPlayer(m_pPlayer);
-	m_enemies.push_back(m_pEnemy);
-	m_pGoal->SetBgPointer(m_pBg);
-	m_pGoal->Init(Vec2{ 3000.0f,653.0f }); //仮のゴール座標
+
+	// 投げてくる敵を1体生成する
+	m_pEnemyThrower = new EnemyThrower;
+	m_pEnemyThrower->Init();
+	m_pEnemyThrower->SetBgPointer(m_pBg);
+	m_pEnemyThrower->SetPlayer(m_pPlayer);
+
+//	m_pEnemy->Init();
+//	m_pEnemy->SetBgPointer(m_pBg);
+//	m_pEnemy->SetPlayer(m_pPlayer);
+//	m_enemies.push_back(m_pEnemy);
 	for (int i = 0; i < kShotMax; i++)
 	{
 		m_pShot[i] = nullptr;
@@ -60,6 +58,21 @@ SceneMain::SceneMain():
 
 SceneMain::~SceneMain()
 {
+	delete m_pPlayer;
+	delete m_pBg;
+	delete m_pGoal;
+	delete m_pEnemy;
+	delete m_pEnemyThrower;
+
+	for (EnemyShot* pShot : m_enemyShots)
+	{
+		delete pShot;
+	}
+
+	for (int i = 0; i < kShotMax; i++)
+	{
+		delete m_pShot[i];
+	}
 }
 
 void SceneMain::Init()
@@ -76,12 +89,11 @@ void SceneMain::Update()
 
 	m_pBg->Update();
 	if (m_pPlayer) m_pPlayer->Update();
-	// 敵全員を更新する
-	for (Enemy* pEnemy : m_enemies)
-	{
-		pEnemy->Update();
-	}
+	if (m_pEnemy) m_pEnemy->Update();
+	if (m_pEnemyThrower) m_pEnemyThrower->Update();
+
 	UpdateShot();
+	UpdateEnemyShot();
 	CheckCharacterDeath();
 	
 	if (!m_pPlayer) return;
@@ -91,21 +103,45 @@ void SceneMain::Update()
 		m_isClear = true;
 	}
 
-	for (Enemy* pEnemy : m_enemies)
+	// プレイヤーが歩く敵に触れた場合
+	if (m_pEnemy && m_pPlayer->GetColRect().IsCollision(m_pEnemy->GetColRect()))
 	{
-		bool isDamage = m_pPlayer->GetColRect().IsCollision(pEnemy->GetColRect());
-		if (isDamage) m_pPlayer->OnDamage();
+		m_pPlayer->OnDamage();
+
+	}// プレイヤーが投げる敵の本体に触れた場合
+	if (m_pEnemyThrower && m_pPlayer->GetColRect().IsCollision(m_pEnemyThrower->GetColRect()))
+	{
+		m_pPlayer->OnDamage();
+	}
+
+	// 投げる敵が「このフレームで投げる」状態なら、敵弾を生成する
+	if (m_pEnemyThrower && m_pEnemyThrower->IsThrowRequested())
+	{
+		EnemyShot* pEnemyShot = new EnemyShot;
+		pEnemyShot->SetInfo(m_pEnemyThrower->GetPos(), m_pEnemyThrower->GetTargetPos(), m_pBg);
+		m_enemyShots.push_back(pEnemyShot);
 	}
 }
 void SceneMain::Draw()
 {
 	m_pBg->Draw();
-	if(m_pPlayer) m_pPlayer->Draw();
-	// 敵全員を描画する
-	for (Enemy* pEnemy : m_enemies)
+
+	// デバッグ用：各キャラクターの状態を一括表示
+	DrawFormatString(0, 120, 0xffffff, "Thrower: %s", m_pEnemyThrower ? "OK" : "NULL");
+	if (m_pEnemyThrower)
 	{
-		pEnemy->Draw();
+		DrawFormatString(0, 140, 0xffffff, "ThrowerHP:%d X:%.1f Y:%.1f", m_pEnemyThrower->GetHp(), m_pEnemyThrower->GetPos().x, m_pEnemyThrower->GetPos().y);
 	}
+
+	if(m_pPlayer) m_pPlayer->Draw();
+	if (m_pEnemy) m_pEnemy->Draw();
+	if (m_pEnemyThrower) m_pEnemyThrower->Draw();
+
+	for (EnemyShot* pShot : m_enemyShots)
+	{
+		pShot->Draw();
+	}
+
 	if (m_pGoal) m_pGoal->Draw();
 	for (int i = 0; i < kShotMax; i++)
 	{
@@ -113,7 +149,25 @@ void SceneMain::Draw()
 		m_pShot[i]->Draw();
 
 	}
+	
+	// デバッグ用：各キャラクターの状態を一括表示
+	DrawFormatString(0, 0, 0xffffff, "Player: %s", m_pPlayer ? "OK" : "NULL");
+	if (m_pPlayer)
+	{
+		DrawFormatString(0, 20, 0xffffff, "PlayerPos X:%.1f Y:%.1f", m_pPlayer->GetPos().x, m_pPlayer->GetPos().y);
+	}
 
+	DrawFormatString(0, 40, 0xffffff, "Enemy: %s", m_pEnemy ? "OK" : "NULL");
+	if (m_pEnemy)
+	{
+		DrawFormatString(0, 60, 0xffffff, "EnemyHP:%d X:%.1f Y:%.1f", m_pEnemy->GetHp(), m_pEnemy->GetPos().x, m_pEnemy->GetPos().y);
+	}
+
+	DrawFormatString(0, 80, 0xffffff, "Thrower: %s", m_pEnemyThrower ? "OK" : "NULL");
+	if (m_pEnemyThrower)
+	{
+		DrawFormatString(0, 100, 0xffffff, "ThrowerHP:%d X:%.1f Y:%.1f", m_pEnemyThrower->GetHp(), m_pEnemyThrower->GetPos().x, m_pEnemyThrower->GetPos().y);
+	}
 //	DrawString(0, 0, "SceneMain", 0xffffff);
 //	DrawFormatString(0, 16,0xffffff ,"Frame Count: %d", m_frameCount);
 }
@@ -153,15 +207,16 @@ void SceneMain::UpdateShot()
 		// 弾が敵に当たった場合
 //		bool isColEnemy = m_pEnemy && m_pShot[i]->GetColRect().IsCollision(m_pEnemy->GetColRect());
 		bool isColEnemy = false;
-		for (Enemy* pEnemy : m_enemies)
+		if (m_pEnemy && m_pShot[i]->GetColRect().IsCollision(m_pEnemy->GetColRect()))
 		{
-			if (m_pShot[i]->GetColRect().IsCollision(pEnemy->GetColRect()))
-			{
-				pEnemy->OnDamage();
-				isColEnemy = true;
-			}
+			m_pEnemy->OnDamage();
+			isColEnemy = true;
 		}
-
+		if (m_pEnemyThrower && m_pShot[i]->GetColRect().IsCollision(m_pEnemyThrower->GetColRect()))
+		{
+			m_pEnemyThrower->OnDamage();
+			isColEnemy = true;
+		}
 	//	// 画面外に出たら削除する
 	//	bool isDelete = false;
 	//	isDelete = m_pShot[i]->GetPos().x < 0 || m_pShot[i]->GetPos().x > kScreenWidth;
@@ -170,6 +225,31 @@ void SceneMain::UpdateShot()
 		bool isOffScreen = screenRelativeX < 0 || screenRelativeX > kScreenWidth;
 	//	bool isOffScreen = m_pShot[i]->GetPos().x < 0 || m_pShot[i]->GetPos().x > kMapWidth;
 		if (isOffScreen || isColEnemy) DeleteShot(i);
+	}
+}
+void SceneMain::UpdateEnemyShot()
+{
+	for (size_t i = 0; i < m_enemyShots.size();)
+	{
+		EnemyShot* pShot = m_enemyShots[i];
+		pShot->Update();
+
+		bool isHitPlayer = m_pPlayer && pShot->GetColRect().IsCollision(m_pPlayer->GetColRect());
+		if (isHitPlayer)
+		{
+			m_pPlayer->OnDamage();
+		}
+
+		// プレイヤーに当たったか、地面に落ちたら削除する
+		if (isHitPlayer || pShot->IsDead())
+		{
+			delete pShot;
+			m_enemyShots.erase(m_enemyShots.begin() + i);
+		}
+		else
+		{
+			i++;
+		}
 	}
 }
 
@@ -181,37 +261,24 @@ void SceneMain::DeleteShot(int index)
 	m_pShot[index] = nullptr;
 }
 
+
 void SceneMain::CheckCharacterDeath()
 {
 	if (m_pPlayer && m_pPlayer->GetHp() <= 0)
 	{
+		m_isGameOver = true;
+
 		delete m_pPlayer;
 		m_pPlayer = nullptr;
 	}
-	// HPが0以下の歩く敵をリストから取り除く
-	for (size_t i = 0; i < m_enemies.size();)
+	if (m_pEnemy && m_pEnemy->GetHp() <= 0)
 	{
-		if (m_enemies[i]->GetHp() <= 0)
-		{
-			delete m_enemies[i];
-			m_enemies.erase(m_enemies.begin() + i);
-		}
-		else
-		{
-			i++;
-		}
+		delete m_pEnemy;
+		m_pEnemy = nullptr;
 	}
-	// HPが0以下になった敵をリストから取り除く
-	for (size_t i = 0; i < m_enemies.size();)
+	if (m_pEnemyThrower && m_pEnemyThrower->GetHp() <= 0)
 	{
-		if (m_enemies[i]->GetHp() <= 0)
-		{
-			delete m_enemies[i];
-			m_enemies.erase(m_enemies.begin() + i);
-		}
-		else
-		{
-			i++;
-		}
+		delete m_pEnemyThrower;
+		m_pEnemyThrower = nullptr;
 	}
 }

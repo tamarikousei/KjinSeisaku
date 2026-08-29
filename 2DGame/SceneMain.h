@@ -42,13 +42,15 @@ public:
 
 	// このシーンがクリアされたかどうか（WinMain側がこれを見てシーン遷移する）
 	bool IsClear() const { return m_isClear; }
+
+	// プレイヤーが死亡してゲームオーバーになったかどうか
+	bool IsGameOver() const { return m_isGameOver; }
 	
 private:
 	Player*  m_pPlayer;
 	Shot* m_pShot[3];
-	Enemy* m_pEnemy;
-	std::vector<Enemy*> m_enemies;              // 歩く敵（複数対応）
-	std::vector<EnemyThrower*> m_enemyThrowers;  // 投げる敵（複数対応）
+	Enemy* m_pEnemy;           // 歩く敵（複数対応）
+	EnemyThrower* m_pEnemyThrower; // 投げる敵（複数対応）
 	std::vector<EnemyShot*> m_enemyShots;        // 敵が投げた弾
 	Bg* m_pBg;
 	Goal* m_pGoal;
@@ -62,7 +64,7 @@ private:
 	int m_frameCount;
 	bool m_isClear;
 	bool m_isEnemyDefeated; // すべての敵を倒したかどうか
-
+	bool m_isGameOver;
 };
 	
 

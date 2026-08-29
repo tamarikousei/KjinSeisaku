@@ -17,6 +17,10 @@ public:
 	bool IsGameStart() const { return m_isGameStart; }
 
 private:
+	int m_handle;
+	int m_messageFontHandle;
+	int m_frameCount;
 	bool m_isGameStart;
+
 };
 

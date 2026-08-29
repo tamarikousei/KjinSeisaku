@@ -1,53 +1,12 @@
-﻿  EnemyShot.cpp
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\EnemyShot.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\EnemyShot.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'EnemyShot.cpp' をコンパイルしています)
-  
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'EnemyShot.cpp' をコンパイルしています)
-  
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Bg.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'EnemyShot.cpp' をコンパイルしています)
-  
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\EnemyShot.cpp(35,15): error C2065: 'kArcFrames': 定義されていない識別子です。
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\EnemyShot.cpp(36,16): error C2065: 'diffX': 定義されていない識別子です。
-  main.cpp
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'main.cpp' をコンパイルしています)
-  
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Bg.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'main.cpp' をコンパイルしています)
-  
+﻿  EnemyThrower.cpp
+C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\EnemyThrower.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
 C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\EnemyThrower.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'main.cpp' をコンパイルしています)
+  (ソース ファイル 'EnemyThrower.cpp' をコンパイルしています)
   
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\EnemyShot.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'main.cpp' をコンパイルしています)
-  
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\SceneGameClear.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'main.cpp' をコンパイルしています)
-  
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\SceneTitle.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'main.cpp' をコンパイルしています)
-  
-  SceneMain.cpp
 C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
+  (ソース ファイル 'EnemyThrower.cpp' をコンパイルしています)
   
 C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Bg.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
+  (ソース ファイル 'EnemyThrower.cpp' をコンパイルしています)
   
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\EnemyThrower.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
-  
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\EnemyShot.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
-  
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\SceneGameClear.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
-  
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\SceneTitle.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
-  
-C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\SceneMain.cpp(168,17): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
-  コードを生成中...
+  2DGame.vcxproj -> C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\x64\Debug\2DGame.exe

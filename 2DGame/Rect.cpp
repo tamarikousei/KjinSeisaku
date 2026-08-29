@@ -56,7 +56,7 @@ Vec2 Rect::GetCenter() const
 	return Vec2{ x,y };
 }
 
-bool Rect::IsCollision(const Rect& rect)
+bool Rect::IsCollision(const Rect& rect)const
 {
 	// 絶対に当たらないパターンをはじいてく
 	if (m_left > rect.m_right) return false;

@@ -33,6 +33,7 @@ public:
 private:
     Player* m_pPlayer;
     int m_throwCoolTime;         // 次に投げられるまでの残りフレーム数
-    bool m_isThrowRequested; // このフレームで投げるべきかどうか
+    bool m_isThrowRequested;// このフレームで投げるべきかどうか
+    float m_flightHeight;
 };
 
