@@ -41,6 +41,11 @@ void Character::Update()
 	m_damageFrame--; // 無敵時間の更新
 
 	Gravity();
+
+	// マップチップの地形に基づいて、現在位置の地面の高さを取得する
+	// Bgが未設定の場合は、念のため既存の固定値にフォールバックする
+	float groundY = m_pBg ? m_pBg->GetGroundY(m_pos.x) : kGround;
+	
 	// 着地処理
 	if (m_pos.y >= kGround)
 	{
@@ -51,6 +56,12 @@ void Character::Update()
 		// ジャンプ準備中は飛ばす
 		if (m_isJumpPreparing) return;
 		m_jumpFrame = 0;
+	}
+	else
+	{
+		// 地面から離れている（穴に落ちた・ジャンプ中など）ので、
+		// 「地面にいる」フラグを下ろす（これが無いと、穴に落ちても地上判定のままになる）
+		m_isGround = false;
 	}
 	m_pos += m_move;
 
