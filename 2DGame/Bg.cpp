@@ -8,12 +8,12 @@
 namespace
 {
 	constexpr float kMapWidth = 5000.0f;	 // マップ全体の幅
-//	constexpr float kMapHeight = 1080.0f;    // マップ全体の高さ
-//	constexpr float kScreenWidth = 1920.0f;  // スクリーンの幅
-//	constexpr float kScreenHeight = 1080.0f; // スクリーンの高さ
+	//	constexpr float kMapHeight = 1080.0f;    // マップ全体の高さ
+	//	constexpr float kScreenWidth = 1920.0f;  // スクリーンの幅
+	//	constexpr float kScreenHeight = 1080.0f; // スクリーンの高さ
 
 	constexpr int kChipSize = 64;
-//	constexpr int kChipHeight = 45;
+	//	constexpr int kChipHeight = 45;
 
 	constexpr float kChipScale = 1.0f; // マップチップ拡大率
 
@@ -30,27 +30,53 @@ namespace
 	constexpr int kFloatChipLeft = 3;
 	constexpr int kFloatChipRight = 4;
 
+	// 地面の行数（下から何行分を地面として敷き詰めるか）
+	constexpr int kGroundRowCount = 2;
+
 	// 地面が途切れる「穴」の区間（列番号の開始〜終了）。ここを好きに増減すれば穴の位置を調整できる
 	struct PitRange { int startCol; int endCol; };
 	constexpr PitRange kPits[] =
 	{
-		{ 30, 31 },
-		{ 55, 57 },
+		{ 10, 11 }, // 序盤の小さな穴
+		{ 27, 29 }, // 階段の頂上から飛び越える大きな穴
+		{ 40, 46 }, // 浮遊足場をはさむ大きな穴
+		{ 55, 56 }, // 中盤の小さな穴
 	};
 
-	// 浮いているブロックを置く位置（列番号, 行番号）。行番号は上から数える
+	// 階段・高台の地形（列番号と、その列の地面の高さ〈タイル数〉のペア）。
+	// 高さを1列ごとに増減させることで、マリオのような段差の地形を作る
+	struct StairStep { int col; int height; };
+	constexpr StairStep kStairs[] =
+	{
+		// 上り階段（穴27-29の手前）
+		{ 20, 3 }, { 21, 4 }, { 22, 5 }, { 23, 6 }, { 24, 7 },
+		// 頂上の足場（助走・着地用に2マス確保）
+		{ 25, 7 }, { 26, 7 },
+		// 下り階段（穴27-29の後、通常の地面の高さまで戻す）
+		{ 30, 7 }, { 31, 6 }, { 32, 5 }, { 33, 4 }, { 34, 3 }, { 35, 2 },
+
+		// ゴール手前の最終階段
+		{ 65, 3 }, { 66, 4 }, { 67, 5 }, { 68, 6 }, { 69, 7 },
+		// ゴール手前の高台（ここにゴールを置く想定）
+		{ 70, 7 }, { 71, 7 }, { 72, 7 }, { 73, 7 }, { 74, 7 },
+		{ 75, 7 }, { 76, 7 }, { 77, 7 }, { 78, 7 },
+	};
+	// 穴の途中に置く、空中の中継足場
+	struct FloatPlatform { int startCol; int endCol; int row; };
+	constexpr FloatPlatform kFloatPlatforms[] =
+	{
+		{ 41, 45, 6 }, // 穴40-46の間にかかる浮遊足場
+	};
+
+	// 空中の単体・連続ブロック（「？ブロック」のような演出）
 	struct FloatBlockPos { int col; int row; };
 	constexpr FloatBlockPos kFloatBlocks[] =
-	{ 
-		{ 10, 8 }, 
-		{ 11, 8 },
-		{ 20, 6 },
+	{
+		{ 50, 7 }, { 51, 7 }, // 連続ブロック
+		{ 53, 7 },            // 単体ブロック
+		{ 60, 7 }, { 61, 7 }, // 連続ブロック
 	};
-
-	// 地面の行数（下から何行分を地面として敷き詰めるか）
-	constexpr int kGroundRowCount = 2;
 }
-
 Bg::Bg(Player* pPlayer):
 	m_imageHeight(0),
 	m_imageWidth(0),
@@ -84,7 +110,56 @@ void Bg::BuildChipData()
 {
 	// まず全マスを「空白」で埋める
 	m_chipData.assign(kChipNumY, std::vector<int>(kChipNumX, kChipEmpty));
+	// 通常の地面（厚みkGroundRowCount分）を敷き詰める（穴の区間は空けておく）
+	for (int col = 0; col < kChipNumX; col++)
+	{
+		bool isPit = false;
+		for (const PitRange& pit : kPits)
+		{
+			if (col >= pit.startCol && col <= pit.endCol)
+			{
+				isPit = true;
+				break;
+			}
+		}
+		if (isPit) continue;
 
+		for (int row = kChipNumY - kGroundRowCount; row < kChipNumY; row++)
+		{
+			m_chipData[row][col] = kGroundChipPattern[col % 3];
+		}
+	}
+
+	// 階段・高台を積み上げる。
+	// 「その列の地面の高さ」を指定した分だけ、下（kChipNumY-1）から上に向かって
+	// 隙間なく積むことで、通常の地面より高い段差を作る
+	for (const StairStep& step : kStairs)
+	{
+		if (step.col < 0 || step.col >= kChipNumX) continue;
+
+		int topRow = kChipNumY - step.height;
+		if (topRow < 0) topRow = 0;
+
+		for (int row = topRow; row < kChipNumY; row++)
+		{
+			m_chipData[row][step.col] = kGroundChipPattern[step.col % 3];
+		}
+	}
+
+	// 穴の途中に浮遊足場を配置する（1行だけを埋め、上下は空けたままにする）
+	for (const FloatPlatform& platform : kFloatPlatforms)
+	{
+		if (platform.row < 0 || platform.row >= kChipNumY) continue;
+
+		for (int col = platform.startCol; col <= platform.endCol; col++)
+		{
+			if (col < 0 || col >= kChipNumX) continue;
+
+			m_chipData[platform.row][col] = kGroundChipPattern[col % 3];
+		}
+	}
+
+	/*
 	// 下から kGroundRowCount 行分を地面として敷き詰める（穴の区間は空けておく）
 	for (int row = kChipNumY - kGroundRowCount; row < kChipNumY; row++)
 	{
@@ -106,14 +181,26 @@ void Bg::BuildChipData()
 			m_chipData[row][col] = kGroundChipPattern[col % 3];
 		}
 	}
-
-	// 浮いているブロックを配置する
+	*/
+	// 空中の単体・連続ブロックを配置する。
+	// 自分の左隣に別のブロックがあれば右端チップ、なければ左端チップを使い、
+	// 連続したブロックが1枚の板のように見えるようにする
 	for (const FloatBlockPos& block : kFloatBlocks)
 	{
 		if (block.row < 0 || block.row >= kChipNumY) continue;
 		if (block.col < 0 || block.col >= kChipNumX) continue;
 
-		m_chipData[block.row][block.col] = kFloatChipLeft;
+		bool hasLeftNeighbor = false;
+		for (const FloatBlockPos& other : kFloatBlocks)
+		{
+			if (other.row == block.row && other.col == block.col - 1)
+			{
+				hasLeftNeighbor = true;
+				break;
+			}
+		}
+
+		m_chipData[block.row][block.col] = hasLeftNeighbor ? kFloatChipRight : kFloatChipLeft;
 	}
 }
 

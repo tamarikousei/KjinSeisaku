@@ -10,6 +10,11 @@ class Character
 {
 public:
 
+	// キャラクターサイズ（当たり判定用）。壁判定など、派生クラスからも使うため公開する
+	static constexpr float kCharaSize = 64.0f;
+
+	
+
 	/// <summary>
 	/// コンストラクタ
 	/// </summary>

@@ -10,7 +10,7 @@ namespace
 	constexpr int kHeigth = 32;
 
 	constexpr float kSpeed = 5.0f;
-	constexpr float kStopDistance = 5.0f;
+	constexpr float kStopDistance = 70.0f;
 
 	// 左右移動用
 	constexpr float kMoveRange = 100.0f; // 初期位置から左右何pxまで移動するか

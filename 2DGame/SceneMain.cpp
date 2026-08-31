@@ -31,7 +31,7 @@ SceneMain::SceneMain():
 	
 	m_pGoal = new Goal;
 	m_pGoal->SetBgPointer(m_pBg);
-	m_pGoal->Init(Vec2{ 3000.0f,653.0f }); //仮のゴール座標
+	m_pGoal->Init(Vec2{ 4700.0f,330.0f }); //仮のゴール座標
 	
 	// 歩く敵を1体生成する
 	m_pEnemy = new Enemy;
@@ -85,6 +85,8 @@ void SceneMain::End()
 
 void SceneMain::Update()
 {
+	DrawBox(600, 0, 900, 300, 0x0000ff, TRUE);
+
 	m_frameCount++;
 
 	m_pBg->Update();

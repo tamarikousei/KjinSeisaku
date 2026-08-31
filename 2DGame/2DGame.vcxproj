@@ -152,7 +152,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bg.cpp" />
-    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="Character.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyShot.cpp" />
     <ClCompile Include="EnemyThrower.cpp" />

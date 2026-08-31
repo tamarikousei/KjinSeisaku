@@ -3,19 +3,43 @@
   "WorkspaceRootPath": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Bg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Bg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\include\\vector||{3B902123-F8A7-4915-9F01-361F908088D0}|"
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Rect.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Rect.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Character.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Character.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Bg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Bg.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\SceneMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:SceneMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Character.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Character.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Bg.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Bg.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\include\\vector||{3B902123-F8A7-4915-9F01-361F908088D0}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\EnemyThrower.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -24,10 +48,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\EnemyThrower.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:EnemyThrower.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\SceneMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:SceneMain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\EnemyShot.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -66,10 +86,6 @@
       "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Rect.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Rect.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Rect.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4446785B-393A-490A-95F9-254D0BF7FA9D}|2DGame.vcxproj|solutionrelative:Rect.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
@@ -85,26 +101,13 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "vector",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\include\\vector",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\include\\vector",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\include\\vector",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\include\\vector",
-              "ViewState": "AgIAAH8HAAAAAAAAAAAYwJEHAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-08-30T13:49:44.321Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Character.cpp",
               "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Character.cpp",
               "RelativeDocumentMoniker": "Character.cpp",
               "ToolTip": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Character.cpp",
               "RelativeToolTip": "Character.cpp",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAD8AAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAD4AAAAAE4PAyjkawF0AAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-08-30T13:02:08.255Z",
               "EditorCaption": ""
@@ -112,25 +115,51 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Bg.h",
-              "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Bg.h",
-              "RelativeDocumentMoniker": "Bg.h",
-              "ToolTip": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Bg.h",
-              "RelativeToolTip": "Bg.h",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACMAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-08-30T12:38:07.749Z",
+              "Title": "Enemy.cpp",
+              "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Enemy.cpp",
+              "RelativeDocumentMoniker": "Enemy.cpp",
+              "ToolTip": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Enemy.cpp",
+              "RelativeToolTip": "Enemy.cpp",
+              "ViewState": "AgIAACcAAAAAAAAAAAAYwFAAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-08-31T10:00:02.328Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Rect.cpp",
+              "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Rect.cpp",
+              "RelativeDocumentMoniker": "Rect.cpp",
+              "ToolTip": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Rect.cpp",
+              "RelativeToolTip": "Rect.cpp",
+              "ViewState": "AgIAACIAAAAAAAAAAAAYwE4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-08-29T15:08:54.817Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Player.cpp",
+              "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Player.cpp",
+              "RelativeDocumentMoniker": "Player.cpp",
+              "ToolTip": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Player.cpp",
+              "RelativeToolTip": "Player.cpp",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAAYwLoAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-08-31T09:49:29.112Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Bg.cpp",
               "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Bg.cpp",
               "RelativeDocumentMoniker": "Bg.cpp",
               "ToolTip": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Bg.cpp",
               "RelativeToolTip": "Bg.cpp",
-              "ViewState": "AgIAALEAAAAAAAAAAAAAAMsAAAACAAAAAAAAAA==",
+              "ViewState": "AgIAAKAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-08-30T12:31:31.414Z",
               "EditorCaption": ""
@@ -138,6 +167,67 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "SceneMain.cpp",
+              "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\SceneMain.cpp",
+              "RelativeDocumentMoniker": "SceneMain.cpp",
+              "ToolTip": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\SceneMain.cpp",
+              "RelativeToolTip": "SceneMain.cpp",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAcwFcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-08-29T13:22:13.202Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Character.h",
+              "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Character.h",
+              "RelativeDocumentMoniker": "Character.h",
+              "ToolTip": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Character.h",
+              "RelativeToolTip": "Character.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-08-31T09:50:27.026Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Player.h",
+              "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Player.h",
+              "RelativeDocumentMoniker": "Player.h",
+              "ToolTip": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Player.h",
+              "RelativeToolTip": "Player.h",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAADUAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-08-31T09:51:33.439Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Bg.h",
+              "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Bg.h",
+              "RelativeDocumentMoniker": "Bg.h",
+              "ToolTip": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Bg.h",
+              "RelativeToolTip": "Bg.h",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwEcAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-08-30T12:38:07.749Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "vector",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\include\\vector",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\include\\vector",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\include\\vector",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\include\\vector",
+              "ViewState": "AgIAAH8HAAAAAAAAAAAYwJEHAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-08-30T13:49:44.321Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "EnemyThrower.h",
               "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\EnemyThrower.h",
               "RelativeDocumentMoniker": "EnemyThrower.h",
@@ -149,7 +239,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "SceneGameClear.cpp",
               "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\SceneGameClear.cpp",
               "RelativeDocumentMoniker": "SceneGameClear.cpp",
@@ -161,7 +251,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "EnemyThrower.cpp",
               "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\EnemyThrower.cpp",
               "RelativeDocumentMoniker": "EnemyThrower.cpp",
@@ -169,12 +259,11 @@
               "RelativeToolTip": "EnemyThrower.cpp",
               "ViewState": "AgIAAC0AAAAAAAAAAAAAAAwAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-08-28T19:15:13.771Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-28T19:15:13.771Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "SceneGameOver.cpp",
               "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\SceneGameOver.cpp",
               "RelativeDocumentMoniker": "SceneGameOver.cpp",
@@ -186,19 +275,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "SceneMain.cpp",
-              "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\SceneMain.cpp",
-              "RelativeDocumentMoniker": "SceneMain.cpp",
-              "ToolTip": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\SceneMain.cpp",
-              "RelativeToolTip": "SceneMain.cpp",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAcwF8AAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-08-29T13:22:13.202Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "EnemyShot.cpp",
               "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\EnemyShot.cpp",
               "RelativeDocumentMoniker": "EnemyShot.cpp",
@@ -210,7 +287,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 15,
               "Title": "SceneTitle.cpp",
               "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\SceneTitle.cpp",
               "RelativeDocumentMoniker": "SceneTitle.cpp",
@@ -222,7 +299,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 16,
               "Title": "SceneGameClear.h",
               "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\SceneGameClear.h",
               "RelativeDocumentMoniker": "SceneGameClear.h",
@@ -234,7 +311,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 17,
               "Title": "SceneTitle.h",
               "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\SceneTitle.h",
               "RelativeDocumentMoniker": "SceneTitle.h",
@@ -246,7 +323,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 18,
               "Title": "SceneGameOver.h",
               "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\SceneGameOver.h",
               "RelativeDocumentMoniker": "SceneGameOver.h",
@@ -258,7 +335,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 19,
               "Title": "SceneMain.h",
               "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\SceneMain.h",
               "RelativeDocumentMoniker": "SceneMain.h",
@@ -270,7 +347,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 20,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\main.cpp",
               "RelativeDocumentMoniker": "main.cpp",
@@ -282,19 +359,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Rect.cpp",
-              "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Rect.cpp",
-              "RelativeDocumentMoniker": "Rect.cpp",
-              "ToolTip": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Rect.cpp",
-              "RelativeToolTip": "Rect.cpp",
-              "ViewState": "AgIAACIAAAAAAAAAAAAYwE4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-08-29T15:08:54.817Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "Rect.h",
               "DocumentMoniker": "C:\\Users\\renas\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\KjinSeisaku\\2DGame\\Rect.h",
               "RelativeDocumentMoniker": "Rect.h",
