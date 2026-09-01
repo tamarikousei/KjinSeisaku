@@ -45,7 +45,7 @@ void Player::Init()
 
 void Player::Update()
 {
-	DrawBox(300, 0, 600, 300, 0x00ff00, TRUE);
+//	DrawBox(300, 0, 600, 300, 0x00ff00, TRUE);
 	Move();
 	Jump();
 	// 登れない壁（自分より高い段差）に向かっていたら、横移動をキャンセルする。

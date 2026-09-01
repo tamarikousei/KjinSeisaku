@@ -39,7 +39,7 @@ void Character::Init()
 void Character::Update()
 {
 
-	DrawBox(0, 0, 400, 400, 0xff0000, TRUE); // 画面左上に巨大な赤い四角
+//	DrawBox(0, 0, 400, 400, 0xff0000, TRUE); // 画面左上に巨大な赤い四角
 
 	m_damageFrame--; // 無敵時間の更新
 

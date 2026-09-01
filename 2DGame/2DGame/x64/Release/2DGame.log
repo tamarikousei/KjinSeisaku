@@ -1,78 +1,11 @@
-﻿  Bg.cpp
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'Bg.cpp' をコンパイルしています)
-  
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.cpp(230,22): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
-  Character.cpp
+﻿  Character.cpp
 C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'Character.cpp' をコンパイルしています)
   
 C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Character.cpp(27,6): warning C4244: '初期化中': 'const float' から 'int' への変換です。データが失われる可能性があります。
-  Enemy.cpp
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'Enemy.cpp' をコンパイルしています)
-  
-  EnemyShot.cpp
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\EnemyShot.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'EnemyShot.cpp' をコンパイルしています)
-  
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'EnemyShot.cpp' をコンパイルしています)
-  
-  EnemyThrower.cpp
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\EnemyThrower.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\EnemyThrower.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'EnemyThrower.cpp' をコンパイルしています)
-  
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'EnemyThrower.cpp' をコンパイルしています)
-  
-  Goal.cpp
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Goal.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'Goal.cpp' をコンパイルしています)
-  
-  main.cpp
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'main.cpp' をコンパイルしています)
-  
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\EnemyThrower.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'main.cpp' をコンパイルしています)
-  
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\EnemyShot.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'main.cpp' をコンパイルしています)
-  
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\SceneGameClear.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'main.cpp' をコンパイルしています)
-  
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\SceneTitle.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'main.cpp' をコンパイルしています)
-  
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\SceneMain.h(67,6): error C2086: 'int SceneMain::m_bgmHandle': 再定義されました。
-  (ソース ファイル 'main.cpp' をコンパイルしています)
-  
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\SceneGameOver.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'main.cpp' をコンパイルしています)
-  
-  Pad.cpp
   Player.cpp
 C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'Player.cpp' をコンパイルしています)
-  
-  Rect.cpp
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'Rect.cpp' をコンパイルしています)
-  
-  SceneGameClear.cpp
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\SceneGameClear.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\SceneGameClear.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'SceneGameClear.cpp' をコンパイルしています)
-  
-  SceneGameOver.cpp
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\SceneGameOver.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\SceneGameOver.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'SceneGameOver.cpp' をコンパイルしています)
   
   SceneMain.cpp
 C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
@@ -90,16 +23,10 @@ C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\SceneGameClear.h(1,1): warni
 C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\SceneTitle.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
   
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\SceneMain.h(67,6): error C2086: 'int SceneMain::m_bgmHandle': 再定義されました。
-  (ソース ファイル 'SceneMain.cpp' をコンパイルしています)
-  
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\SceneMain.cpp(239,17): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
-  SceneTitle.cpp
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\SceneTitle.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\SceneTitle.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'SceneTitle.cpp' をコンパイルしています)
-  
-  Shot.cpp
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'Shot.cpp' をコンパイルしています)
-  
+C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\SceneMain.cpp(234,17): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
+  コード生成しています。
+  5 of 350 functions ( 1.4%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    2 functions had inline decision re-evaluated but remain unchanged
+  コード生成が終了しました。
+  2DGame.vcxproj -> C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\x64\Release\2DGame.exe

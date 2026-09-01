@@ -159,12 +159,7 @@ void SceneMain::Draw()
 {
 	m_pBg->Draw();
 
-	// デバッグ用：各キャラクターの状態を一括表示
-	DrawFormatString(0, 120, 0xffffff, "Thrower: %s", m_pEnemyThrower ? "OK" : "NULL");
-	if (m_pEnemyThrower)
-	{
-		DrawFormatString(0, 140, 0xffffff, "ThrowerHP:%d X:%.1f Y:%.1f", m_pEnemyThrower->GetHp(), m_pEnemyThrower->GetPos().x, m_pEnemyThrower->GetPos().y);
-	}
+	
 
 	if(m_pPlayer) m_pPlayer->Draw();
 	if (m_pEnemy) m_pEnemy->Draw();

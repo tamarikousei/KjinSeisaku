@@ -63,8 +63,7 @@ private:
 
 	int m_frameCount;
 	int m_bgmHandle;
-	// サウンド
-	int m_bgmHandle;
+	
 	// サウンドのボリューム
 	int m_bgmVol;
 
