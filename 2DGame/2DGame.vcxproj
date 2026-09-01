@@ -152,26 +152,44 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bg.cpp" />
-    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="Character.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyShot.cpp" />
+    <ClCompile Include="EnemyThrower.cpp" />
+    <ClCompile Include="Goal.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pad.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rect.cpp" />
+    <ClCompile Include="SceneGameClear.cpp" />
+    <ClCompile Include="SceneGameOver.cpp" />
     <ClCompile Include="SceneMain.cpp" />
+    <ClCompile Include="SceneTitle.cpp" />
     <ClCompile Include="Shot.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bg.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyShot.h" />
+    <ClInclude Include="EnemyThrower.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Goal.h" />
     <ClInclude Include="Pad.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rect.h" />
+    <ClInclude Include="SceneGameClear.h" />
+    <ClInclude Include="SceneGameOver.h" />
     <ClInclude Include="SceneMain.h" />
+    <ClInclude Include="SceneTitle.h" />
     <ClInclude Include="Shot.h" />
     <ClInclude Include="Vec2.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Log.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

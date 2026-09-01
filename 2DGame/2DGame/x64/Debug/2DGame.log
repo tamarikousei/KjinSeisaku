@@ -1,8 +1,8 @@
-﻿  Bg.cpp
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'Bg.cpp' をコンパイルしています)
+﻿  Player.cpp
+C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Player.cpp' をコンパイルしています)
   
+<<<<<<< HEAD
 C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Rect.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'Bg.cpp' をコンパイルしています)
   
@@ -65,3 +65,6 @@ C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\Bg.h(1,1): warning C4819: �
   コードを生成中...
   LINK : 前回のインクリメンタル リンクで C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\x64\Debug\2DGame.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
   2DGame.vcxproj -> C:\Users\Tamari\Documents\GitHub\KjinSeisaku\2DGame\x64\Debug\2DGame.exe
+=======
+  2DGame.vcxproj -> C:\Users\renas\ドキュメント\GitHub\KjinSeisaku\2DGame\x64\Debug\2DGame.exe
+>>>>>>> 41e10972ce783034ce69e68111eecd185eb5a89a

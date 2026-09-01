@@ -50,5 +50,8 @@ private:
 
 	void Jump();
 
+	// 進行方向に「登れない壁（段差）」があるかどうかを判定する
+	bool IsWallAhead() const;
+
 };
 

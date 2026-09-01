@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "Character.h"
 
+class Player;
+
 /// <summary>
 /// 敵クラス
 /// </summary>
@@ -18,5 +20,17 @@ public:
 
 	virtual void Draw() override;
 
+	// 追従対象のプレイヤーを設定する
+	void SetPlayer(Player* pPlayer) { m_pPlayer = pPlayer; }
+
+	void SetPos(const Vec2& pos) { m_pos = pos; }
+
+private:
+	// 左右移動の処理をアップデートから分離しておく
+	void Move();
+
+	float m_startX = 0.0f;
+
+	Player* m_pPlayer = nullptr;
 };
 

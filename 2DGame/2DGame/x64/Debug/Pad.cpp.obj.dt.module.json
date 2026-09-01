@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "2DGame\\x64\\Debug\\Pad.obj",
+            "outputs": [
+                "2DGame\\x64\\Debug\\Pad.cpp.obj.dt.module.json",
+                "2DGame\\x64\\Debug\\Pad.cpp.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}
