@@ -26,6 +26,7 @@ namespace
 	constexpr float kMediumJumpHeigth = 0.7f;
 	constexpr float kBigJumpHeiGht = 1.0f;
 
+	constexpr int kMaxJumpFrame = 60;
 }
 Player::Player() 
 {
@@ -76,11 +77,15 @@ void Player::Jump()
 	{
 
 		m_isJumpPreparing = true;
-
+		m_jumpFrame = 0;
 		
 	}
 	if (!m_isJumpPreparing) return;
-	m_jumpFrame++;
+	if (m_jumpFrame < kMaxJumpFrame)
+	{
+		m_jumpFrame++;
+	}
+	
 
 	float jumpHeight = kJumpPower;
 

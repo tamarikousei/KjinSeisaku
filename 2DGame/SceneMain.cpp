@@ -4,17 +4,26 @@
 #include "Enemy.h"
 #include "Shot.h"
 #include "Bg.h"
+#include "Game.h"
 
 namespace
 {
 	constexpr float kScreenWidth = 1980.0f;
 	constexpr float kMapWidth = 3000.0f; // マップ幅
+		
+	// 画面下端からこれだけ落ちたら「穴に落ちた」とみなす
+	constexpr float kFallDeathY = Game::kScreenHeight + 653.0f;
 
 	constexpr int kShotMax = 3;
 
+	// BGMファイルのパス。data/soundフォルダ等、プロジェクトの構成に合わせて変更してください
+	const char* const kBgmFilePath = "data/sound/mainBgm.mp3";
+
+	constexpr int kBgmVolume = 180; // BGM音量（0〜255）
 }
 
 SceneMain::SceneMain(): 
+	m_bgmHandle(-1),
 	m_pShot(nullptr),
 	m_pSceneGameClear(nullptr),
 	m_pSceneMain(nullptr),
@@ -24,6 +33,7 @@ SceneMain::SceneMain():
 	m_isEnemyDefeated(false),
 	m_isGameOver(false)
 {
+
 	m_pPlayer = new Player;
 //	Enemy* m_pEnemy = new Enemy;
 	m_pBg = new Bg(m_pPlayer);
@@ -53,6 +63,15 @@ SceneMain::SceneMain():
 	{
 		m_pShot[i] = nullptr;
 	}
+	m_bgmHandle = LoadSoundMem("date/sound/bgm.mp3");
+	// BGMを読み込み、音量を設定してループ再生を開始する
+	m_bgmHandle = LoadSoundMem(kBgmFilePath);
+	if (m_bgmHandle != -1)
+	{
+		ChangeVolumeSoundMem(kBgmVolume, m_bgmHandle);
+		PlaySoundMem(m_bgmHandle, DX_PLAYTYPE_LOOP);
+	}
+
 }
 
 
@@ -73,6 +92,10 @@ SceneMain::~SceneMain()
 	{
 		delete m_pShot[i];
 	}
+
+	// BGMを停止してからハンドルを解放する
+	StopSoundMem(m_bgmHandle);
+	DeleteSoundMem(m_bgmHandle);
 }
 
 void SceneMain::Init()
@@ -85,14 +108,22 @@ void SceneMain::End()
 
 void SceneMain::Update()
 {
-	DrawBox(600, 0, 900, 300, 0x0000ff, TRUE);
+//	DrawBox(600, 0, 900, 300, 0x0000ff, TRUE);
 
 	m_frameCount++;
+
+	
 
 	m_pBg->Update();
 	if (m_pPlayer) m_pPlayer->Update();
 	if (m_pEnemy) m_pEnemy->Update();
 	if (m_pEnemyThrower) m_pEnemyThrower->Update();
+
+	// プレイヤーが穴に落ちて画面外まで落下したら、即死扱いにする
+	if (m_pPlayer && m_pPlayer->GetPos().y > kFallDeathY)
+	{
+		m_pPlayer->Kill();
+	}
 
 	UpdateShot();
 	UpdateEnemyShot();
@@ -152,24 +183,7 @@ void SceneMain::Draw()
 
 	}
 	
-	// デバッグ用：各キャラクターの状態を一括表示
-	DrawFormatString(0, 0, 0xffffff, "Player: %s", m_pPlayer ? "OK" : "NULL");
-	if (m_pPlayer)
-	{
-		DrawFormatString(0, 20, 0xffffff, "PlayerPos X:%.1f Y:%.1f", m_pPlayer->GetPos().x, m_pPlayer->GetPos().y);
-	}
 
-	DrawFormatString(0, 40, 0xffffff, "Enemy: %s", m_pEnemy ? "OK" : "NULL");
-	if (m_pEnemy)
-	{
-		DrawFormatString(0, 60, 0xffffff, "EnemyHP:%d X:%.1f Y:%.1f", m_pEnemy->GetHp(), m_pEnemy->GetPos().x, m_pEnemy->GetPos().y);
-	}
-
-	DrawFormatString(0, 80, 0xffffff, "Thrower: %s", m_pEnemyThrower ? "OK" : "NULL");
-	if (m_pEnemyThrower)
-	{
-		DrawFormatString(0, 100, 0xffffff, "ThrowerHP:%d X:%.1f Y:%.1f", m_pEnemyThrower->GetHp(), m_pEnemyThrower->GetPos().x, m_pEnemyThrower->GetPos().y);
-	}
 //	DrawString(0, 0, "SceneMain", 0xffffff);
 //	DrawFormatString(0, 16,0xffffff ,"Frame Count: %d", m_frameCount);
 }
@@ -255,6 +269,33 @@ void SceneMain::UpdateEnemyShot()
 	}
 }
 
+void SceneMain::CheckCharacterDeath()
+{
+
+	// プレイヤーが死亡した場合、ゲームオーバーフラグを立てて破棄する
+	if (m_pPlayer && m_pPlayer->GetHp() <= 0)
+	{
+		m_isGameOver = true;
+
+		delete m_pPlayer;
+		m_pPlayer = nullptr;
+	}
+
+	// 歩く敵が死亡した場合は破棄する（ゲームオーバーにはしない）
+	if (m_pEnemy && m_pEnemy->GetHp() <= 0)
+	{
+		delete m_pEnemy;
+		m_pEnemy = nullptr;
+	}
+
+	// 投げる敵が死亡した場合は破棄する（ゲームオーバーにはしない）
+	if (m_pEnemyThrower && m_pEnemyThrower->GetHp() <= 0)
+	{
+		delete m_pEnemyThrower;
+		m_pEnemyThrower = nullptr;
+	}
+}
+
 void SceneMain::DeleteShot(int index)
 {
 	if (!m_pShot[index]) return;
@@ -264,23 +305,5 @@ void SceneMain::DeleteShot(int index)
 }
 
 
-void SceneMain::CheckCharacterDeath()
-{
-	if (m_pPlayer && m_pPlayer->GetHp() <= 0)
-	{
-		m_isGameOver = true;
 
-		delete m_pPlayer;
-		m_pPlayer = nullptr;
-	}
-	if (m_pEnemy && m_pEnemy->GetHp() <= 0)
-	{
-		delete m_pEnemy;
-		m_pEnemy = nullptr;
-	}
-	if (m_pEnemyThrower && m_pEnemyThrower->GetHp() <= 0)
-	{
-		delete m_pEnemyThrower;
-		m_pEnemyThrower = nullptr;
-	}
-}
+

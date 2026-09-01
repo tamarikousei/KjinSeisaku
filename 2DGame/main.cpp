@@ -222,7 +222,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		}
 
 		// ここに移動する（if-elseの外）
-		DrawFormatString(0, 300, 0x00ff00, "FadeState: %d, FadeAlpha: %d", (int)fadeState, fadeAlpha);
+	//	DrawFormatString(0, 300, 0x00ff00, "FadeState: %d, FadeAlpha: %d", (int)fadeState, fadeAlpha);
 
 		// フェード用の黒い半透明の四角を描画する処理（既存）
 		if (fadeAlpha > 0)

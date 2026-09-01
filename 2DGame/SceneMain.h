@@ -62,6 +62,12 @@ private:
 
 
 	int m_frameCount;
+	int m_bgmHandle;
+	// サウンド
+	int m_bgmHandle;
+	// サウンドのボリューム
+	int m_bgmVol;
+
 	bool m_isClear;
 	bool m_isEnemyDefeated; // すべての敵を倒したかどうか
 	bool m_isGameOver;

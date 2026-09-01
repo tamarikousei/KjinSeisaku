@@ -20,6 +20,7 @@ private:
 	int m_handle;
 	int m_messageFontHandle;
 	int m_frameCount;
+
 	bool m_isGameStart;
 
 };

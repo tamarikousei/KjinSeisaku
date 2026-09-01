@@ -45,6 +45,9 @@ void Character::Update()
 
 	Gravity();
 
+	// 先に移動を反映する（ジャンプでセットした上向きの速度も、ここで座標に反映される）
+	m_pos += m_move;
+
 	// 自分のX座標におけるマップチップ上の地面の高さを取得する。
 	// 固定のY座標ではなく、階段や浮遊足場の高さに応じて可変になる。
 	float groundY = m_pBg->GetGroundY(m_pos.x);
@@ -70,7 +73,7 @@ void Character::Update()
 		// 「地面にいる」フラグを下ろす（これが無いと、穴に落ちても地上判定のままになる）
 		m_isGround = false;
 	}
-	m_pos += m_move;
+//	m_pos += m_move;
 
 	// あたり判定更新
 	m_colRect.SetCenter(m_pos.x, m_pos.y, kCharaSize, kCharaSize);
