@@ -270,8 +270,9 @@ float Bg::GetGroundY(float worldX)
 			return static_cast<float>(row * kChipSize);
 		}
 	}
-	// その列に何も置かれていない場合は、マップ最下段相当まで落下させる
-	return static_cast<float>(Game::kScreenHeight);
+	// 穴（地面が見つからない）の場合は、画面の下端よりずっと下を返し、
+// 落下し続けさせる（＝着地させない）
+	return static_cast<float>(Game::kScreenHeight) + 10000.0f;
 }
 
 void Bg::DrawBg()

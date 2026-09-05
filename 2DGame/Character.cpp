@@ -65,7 +65,7 @@ void Character::Update()
 
 		// ジャンプ準備中は飛ばす
 		if (m_isJumpPreparing) return;
-		m_jumpFrame = 0;
+	//	m_jumpFrame = 0;
 	}
 	else
 	{

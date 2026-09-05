@@ -69,7 +69,7 @@ public:
 
 	// HPを問答無用で0にする（落下死などの即死処理用）
 	void Kill() { m_hp = 0; }
-
+	
 protected:
 
 	double m_angle;

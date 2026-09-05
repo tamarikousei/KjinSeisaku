@@ -6,6 +6,7 @@
 #include "Character.h"
 #include "Shot.h"
 #include "Bg.h"
+#include <cstdio>
 
 namespace
 {
@@ -48,13 +49,13 @@ void Player::Update()
 //	DrawBox(300, 0, 600, 300, 0x00ff00, TRUE);
 	Move();
 	Jump();
+	Character::Update();
 	// 登れない壁（自分より高い段差）に向かっていたら、横移動をキャンセルする。
 	// こうすることで、段差はジャンプでしか越えられなくなる。
 	if (IsWallAhead())
 	{
 		m_move.x = 0.0f;
 	}
-	Character::Update();
 }
 
 Shot* Player::CreateShot()
@@ -78,18 +79,27 @@ void Player::Jump()
 
 		m_isJumpPreparing = true;
 		m_jumpFrame = 0;
+
+#ifdef _DEBUG
+		OutputDebugStringA("=== Jump Start ===\n");
+#endif
 		
 	}
 	if (!m_isJumpPreparing) return;
-	if (m_jumpFrame < kMaxJumpFrame)
-	{
+//	if (m_jumpFrame < kMaxJumpFrame)
+//	{
 		m_jumpFrame++;
-	}
-	
+//	}
 
 	float jumpHeight = kJumpPower;
 
 	if (!Pad::IsRelease(PAD_INPUT_1)) return;
+
+#ifdef _DEBUG
+	char buf2[128];
+	sprintf_s(buf2, "=== Jump Release! jumpFrame=%d ===\n", m_jumpFrame);
+	OutputDebugStringA(buf2);
+#endif
 
 	if (m_jumpFrame < kSmallJumpFrame)
 	{

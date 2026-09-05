@@ -72,6 +72,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		// フェード中（kFadeOut）はゲームの更新を止めて、暗くなる演出だけ進める
 		if (fadeState == FadeState::kFadeOut)
 		{
+			/*
 			// 現在のシーンは見た目だけ最後の状態を描き続ける
 			switch (currentScene)
 			{
@@ -88,13 +89,32 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 				pSceneGameOver->Draw();
 				break;
 			}
-
+			*/
+			// フェードアウト中は、今のシーンの見た目だけ描画し続ける（操作は受け付けない）
+			switch (currentScene)
+			{
+			case SceneType::kTitle:
+				if (pSceneTitle) pSceneTitle->Draw();
+				break;
+			case SceneType::kMain:
+				if (pScene) pScene->Draw();
+				break;
+			case SceneType::kGameClear:
+				if (pSceneGameClear) pSceneGameClear->Draw();
+				break;
+			case SceneType::kGameOver:
+				if (pSceneGameOver) pSceneGameOver->Draw();
+				break;
+			default:
+				break;
+			}
 			fadeAlpha += kFadeSpeed;
 			if (fadeAlpha >= kFadeMaxAlpha)
 			{
 				fadeAlpha = kFadeMaxAlpha;
 				// 真っ黒になったタイミングで、実際にシーンを切り替える。
-				// 現在のシーンを破棄し、nextSceneに応じた新しいシーンを生成する。
+				
+				/*/ 現在のシーンを破棄し、nextSceneに応じた新しいシーンを生成する。
 				switch (currentScene)
 				{
 				case SceneType::kTitle:
@@ -114,7 +134,38 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 					pSceneGameOver = nullptr;
 					break;
 				}
+				*/
+				switch (nextScene)
+				{
+				case SceneType::kMain:
+					delete pSceneTitle;   pSceneTitle = nullptr;
+					delete pSceneGameOver; pSceneGameOver = nullptr;
+					pScene = new SceneMain;
+					pScene->Init();
+					break;
 
+				case SceneType::kGameClear:
+					delete pScene; pScene = nullptr;
+					pSceneGameClear = new SceneGameClear;
+					pSceneGameClear->Init();
+					break;
+
+				case SceneType::kGameOver:
+					delete pScene; pScene = nullptr;
+					pSceneGameOver = new SceneGameOver;
+					pSceneGameOver->Init();
+					break;
+
+				case SceneType::kTitle:
+					delete pSceneGameClear; pSceneGameClear = nullptr;
+					pSceneTitle = new SceneTitle;
+					pSceneTitle->Init();
+					break;
+
+				default:
+					break;
+				}
+				/*
 				switch (nextScene)
 				{
 				case SceneType::kTitle:
@@ -134,6 +185,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 					pSceneGameOver->Init();
 					break;
 				}
+				*/
 				currentScene = nextScene;
 
 				// ここからは徐々に明るくしていくフェーズに移る
@@ -142,13 +194,10 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		}
 		else
 		{
-
-
 			switch (currentScene)
 			{
 			case SceneType::kTitle:
 
-				// アロー演算子を使う場合ポインタを関して実行してる
 				pSceneTitle->Update();
 				pSceneTitle->Draw();
 				if (pSceneTitle->IsGameStart())
@@ -165,21 +214,24 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 				// メインシーンがクリアされたら、クリアシーンに切り替える
 				if (pScene->IsClear())
 				{
-					delete pScene;
-					pScene = nullptr;
-
-					pSceneGameClear = new SceneGameClear;
-					pSceneGameClear->Init();
-					currentScene = SceneType::kGameClear;
+					nextScene = SceneType::kGameClear;
+					fadeState = FadeState::kFadeOut;
+					fadeAlpha = 0;
 				}
 				else if (pScene->IsGameOver()) //プレイヤー死亡でゲームオーバーへ
 				{
+					/*
 					delete pScene;
 					pScene = nullptr;
 
 					pSceneGameOver = new SceneGameOver;
 					pSceneGameOver->Init();
 					currentScene = SceneType::kGameOver;
+					*/
+					// 即切り替えず、まずフェードアウトを開始する。行き先はゲームオーバー画面
+					nextScene = SceneType::kGameOver;
+					fadeState = FadeState::kFadeOut;
+					fadeAlpha = 0;
 				}
 				break;
 
@@ -187,7 +239,6 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 				pSceneGameClear->Update();
 				pSceneGameClear->Draw();
 
-				// クリア画面でスペースが押されたらタイトルへ戻る
 				if (pSceneGameClear->IsReturnToTitle())
 				{
 					nextScene = SceneType::kTitle;
@@ -195,6 +246,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 					fadeAlpha = 0;
 				}
 				break;
+
 
 			case SceneType::kGameOver:
 				pSceneGameOver->Update();
