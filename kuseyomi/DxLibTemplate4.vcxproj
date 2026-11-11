@@ -155,22 +155,31 @@
     <ClCompile Include="LearnMap.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="SceneMain.cpp" />
-    <ClCompile Include="SceneResult.cpp" />
-    <ClCompile Include="SceneTitle.cpp" />
     <ClCompile Include="Shot.cpp" />
+    <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Geometry.cpp" />
+    <ClCompile Include="Input.cpp" />
+    <ClCompile Include="Scene\Scene.cpp" />
+    <ClCompile Include="Scene\SceneController.cpp" />
+    <ClCompile Include="Scene\TitleScene.cpp" />
+    <ClCompile Include="Scene\GameScene.cpp" />
+    <ClCompile Include="Scene\ResultScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="LearnMap.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="SceneBase.h" />
-    <ClInclude Include="SceneMain.h" />
-    <ClInclude Include="SceneResult.h" />
-    <ClInclude Include="SceneTitle.h" />
     <ClInclude Include="Shot.h" />
     <ClInclude Include="Vec2.h" />
+    <ClInclude Include="Application.h" />
+    <ClInclude Include="Geometry.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="Scene\Scene.h" />
+    <ClInclude Include="Scene\SceneController.h" />
+    <ClInclude Include="Scene\TitleScene.h" />
+    <ClInclude Include="Scene\GameScene.h" />
+    <ClInclude Include="Scene\ResultScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
