@@ -10,7 +10,7 @@ public:
 	static constexpr int kRows = Game::kScreenHeight / kCellSize;	// 縦のマス数（9）
 
 	static constexpr float kFullColorCount = 15.0f;	// この回数で色が一番濃くなる（0.1秒ごと記録 → 5秒分）
-	static constexpr float kDecayRate = 0.999f;		
+	static constexpr float kDecayRate = 0.9986f;		
 	static constexpr int kMaxAlpha = 180;			// 一番濃いときの不透明度（0〜255）
 
 	LearnMap();
