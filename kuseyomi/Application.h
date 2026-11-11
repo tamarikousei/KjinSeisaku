@@ -7,7 +7,7 @@
 class Application
 {
 private:
-	bool requestExit_ = false;	// アプリの終了がリクエストされたか
+	bool requestExit_;	// アプリの終了がリクエストされたか
 	Size wsize_;				// ウィンドウのサイズ
 
 	// コンストラクタを private にして、外側で実体を作らせない

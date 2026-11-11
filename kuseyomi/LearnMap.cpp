@@ -10,7 +10,7 @@ bool LearnMap::PickTargetPos(float& outX, float& outY) const
 	{
 		for (int col = 0; col < kCols; col++)
 		{
-			total += m_count[row][col];
+			total += count_[row][col];
 		}
 	}	
 	if (total <= 0.0f) return false;	// まだ何も記録されていない（合計が0）なら答えられない
@@ -21,7 +21,7 @@ bool LearnMap::PickTargetPos(float& outX, float& outY) const
 	{
 		for (int col = 0; col < kCols; col++)
 		{
-			r -= m_count[row][col];	// 乱数を減らしていく
+			r -= count_[row][col];	// 乱数を減らしていく
 			if (r < 0.0f)	// 0 より小さくなったら、そのマスが当たり（回数0のマスは r が変わらないので、絶対に当たらない）
 			{
 				// 「何マス目か」を座標に戻す（Record の逆の計算）
@@ -49,7 +49,7 @@ void LearnMap::Init()
 	{
 		for (int col = 0; col < kCols; col++)
 		{
-			m_count[row][col] = 0.0f;
+			count_[row][col] = 0.0f;
 		}
 	}
 }
@@ -64,7 +64,7 @@ void LearnMap::Record(float x, float y)
 	if (col < 0 || col >= kCols) return;
 	if (row < 0 || row >= kRows) return;
 
-	m_count[row][col] += 1.0f;
+	count_[row][col] += 1.0f;
 }
 
 bool LearnMap::GetHottestPos(float& outX, float& outY) const
@@ -79,9 +79,9 @@ bool LearnMap::GetHottestPos(float& outX, float& outY) const
 	{
 		for (int col = 0; col < kCols; col++)
 		{
-			if (m_count[row][col] > maxCount)
+			if (count_[row][col] > maxCount)
 			{
-				maxCount = m_count[row][col];
+				maxCount = count_[row][col];
 				maxRow = row;
 				maxCol = col;
 			}
@@ -108,7 +108,7 @@ void LearnMap::DrawDebug() const
 			int y = row * kCellSize;
 
 			// ---- カウントを「濃さ（0.0〜1.0）」に直す ----
-			float rate = m_count[row][col] / kFullColorCount;
+			float rate = count_[row][col] / kFullColorCount;
 			if (rate > 1.0f) rate = 1.0f;	// 上限を超えたら一番濃い色で止める
 
 			// ---- 半透明でオレンジを塗る ----
@@ -129,7 +129,7 @@ void LearnMap::Decay()
 	{
 		for (int col = 0; col < kCols; col++)
 		{
-			m_count[row][col] *= kDecayRate;	// 少しずつ減らす（時間経過で薄くする）
+			count_[row][col] *= kDecayRate;	// 少しずつ減らす（時間経過で薄くする）
 		}
 	}
 }

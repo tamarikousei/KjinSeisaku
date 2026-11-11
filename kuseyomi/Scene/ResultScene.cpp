@@ -69,11 +69,12 @@ void ResultScene::FadeDraw()
 ResultScene::ResultScene(SceneController& ctrl, bool isClear, int playFrame) :
 	Scene(ctrl),
 	isClear_(isClear),
-	playFrame_(playFrame)
+	playFrame_(playFrame),
+	frame_(kFadeInterval),
+	// 最初の状態は「フェードイン」
+	update_(&ResultScene::FadeInUpdate),
+	draw_(&ResultScene::FadeDraw)
 {
-	update_ = &ResultScene::FadeInUpdate;
-	draw_ = &ResultScene::FadeDraw;
-	frame_ = kFadeInterval;
 }
 
 ResultScene::~ResultScene()

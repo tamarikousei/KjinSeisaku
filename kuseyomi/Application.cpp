@@ -21,10 +21,11 @@ Application& Application::GetInstance()
 	return instance;
 }
 
-Application::Application()
-{
+Application::Application() :
+	requestExit_(false),
 	// 【kuseyomi】画面サイズは Game.h の 1280×720（80pxのマスが 16×9 個ぴったり入る）
-	wsize_ = { Game::kScreenWidth, Game::kScreenHeight };
+	wsize_{ Game::kScreenWidth, Game::kScreenHeight }
+{
 }
 
 bool Application::Init()

@@ -1,67 +1,57 @@
 ﻿#include <DxLib.h>
 #include "Enemy.h"
-#include "Game.h"
+#include "Random.h"
 
 namespace
 {
-	constexpr int kSize = 32;	// 敵のサイズ
+	// 出てきてから最初に撃つまでのフレーム数（ランダムにして、敵ごとにタイミングをずらす）
+	constexpr int kFirstShotMin = 30;	// 0.5秒
+	constexpr int kFirstShotMax = 90;	// 1.5秒
 }
 
-Enemy::Enemy() :
-	m_x(0.0f),
-	m_y(0.0f),
-	m_speed(0.0f),
-	m_isExist(false)
+Enemy::Enemy(float x, float y, int size, int hp, unsigned int color) :
+	x_(x),
+	y_(y),
+	size_(size),
+	hp_(hp),
+	color_(color),
+	isDead_(false),
+	shotTimer_(Random::Int(kFirstShotMin, kFirstShotMax))
 {
 }
 
-Enemy::~Enemy()
+void Enemy::TickShotTimer()
 {
+	if (shotTimer_ > 0) shotTimer_--;
 }
 
-void Enemy::Init()
+bool Enemy::IsReadyToShoot() const
 {
-	m_x = 600.0f;
-	m_y = 80.0f;
-	m_speed = 3.0f;
-	m_isExist = true;	// 敵は最初から画面にいる
+	return !isDead_ && shotTimer_ <= 0;	// やられていなくて、タイマーが0
 }
 
-void Enemy::End()
+void Enemy::ResetShotTimer(int frame)
 {
+	shotTimer_ = frame;
 }
 
-void Enemy::Update()
+void Enemy::Draw() const
 {
-	if (!m_isExist) return;
+	if (isDead_) return;	// やられていたら描かない
 
-	m_x += m_speed;	// 横に動く
+	DrawBox(static_cast<int>(x_), static_cast<int>(y_),
+		static_cast<int>(x_) + size_, static_cast<int>(y_) + size_,
+		color_, true);
+}
 
-	// 画面の端に着いたら向きを反対にする
-	if (m_x < 0)
+void Enemy::OnHit(int damage)
+{
+	if (isDead_) return;	// もうやられていたら何もしない
+
+	hp_ -= damage;
+	if (hp_ <= 0)
 	{
-		m_x = 0;
-		m_speed = -m_speed;
+		hp_ = 0;
+		isDead_ = true;
 	}
-	if (m_x > Game::kScreenWidth - kSize)
-	{
-		m_x = Game::kScreenWidth - kSize;
-		m_speed = -m_speed;
-	}
-}
-
-void Enemy::Draw()
-{
-	if (!m_isExist) return;
-	DrawBox(static_cast<int>(m_x), static_cast<int>(m_y), static_cast<int>(m_x) + kSize, static_cast<int>(m_y) + kSize, GetColor(0, 128, 255), true);
-}
-
-int Enemy::GetSize() const
-{
-	return kSize;
-}
-
-void Enemy::Hit()
-{
-	m_isExist = false;
 }

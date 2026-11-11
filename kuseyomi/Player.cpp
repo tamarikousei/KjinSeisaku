@@ -10,12 +10,12 @@ namespace
 }
 
 Player::Player():
-	m_drawhandle(-1),
-	m_x(0.0f),
-	m_y(0.0f),
-	m_speed(0.0f),
-	m_angle(0.0f),
-	m_isExist(false)
+	drawhandle_(-1),
+	x_(0.0f),
+	y_(0.0f),
+	speed_(0.0f),
+	angle_(0.0f),
+	isExist_(false)
 {
 }
 
@@ -26,12 +26,12 @@ Player::~Player()
 
 void Player::Init()
 {
-	m_x = 100.0f;
-	m_y = 100.0f;
+	x_ = 100.0f;
+	y_ = 100.0f;
 
-	m_speed = 4.0f;
-	m_angle = 0.0f;
-	m_isExist = true;
+	speed_ = 4.0f;
+	angle_ = 0.0f;
+	isExist_ = true;
 }
 
 void Player::End()
@@ -41,41 +41,41 @@ void Player::End()
 
 void Player::Update()
 {
-	if (!m_isExist) return;
+	if (!isExist_) return;
 
 	if (CheckHitKey(KEY_INPUT_W) == 1 || CheckHitKey(KEY_INPUT_UP) == 1)
 	{
-		m_y -= m_speed;
+		y_ -= speed_;
 	}
 	if (CheckHitKey(KEY_INPUT_S) == 1 || CheckHitKey(KEY_INPUT_DOWN) == 1)
 	{
-		m_y += m_speed;
+		y_ += speed_;
 	}
 	if (CheckHitKey(KEY_INPUT_A) == 1 || CheckHitKey(KEY_INPUT_LEFT) == 1)
 	{
-		m_x -= m_speed;
+		x_ -= speed_;
 	}
 	if (CheckHitKey(KEY_INPUT_D) == 1 || CheckHitKey(KEY_INPUT_RIGHT) == 1)
 	{
-		m_x += m_speed;
+		x_ += speed_;
 	}
 
 	// ---- 画面の外に出ないようにする ----
-	if (m_x < 0)
+	if (x_ < 0)
 	{
-		m_x = 0;	// 左端
+		x_ = 0;	// 左端
 	}
-	if (m_x > Game::kScreenWidth - kSize)
+	if (x_ > Game::kScreenWidth - kSize)
 	{
-		m_x = Game::kScreenWidth - kSize;	// 右端
+		x_ = Game::kScreenWidth - kSize;	// 右端
 	}
-	if (m_y < 0)
+	if (y_ < 0)
 	{
-		m_y = 0;	// 上端
+		y_ = 0;	// 上端
 	}
-	if (m_y > Game::kScreenHeight - kSize)
+	if (y_ > Game::kScreenHeight - kSize)
 	{
-		m_y = Game::kScreenHeight - kSize;	// 下端
+		y_ = Game::kScreenHeight - kSize;	// 下端
 	}
 
 	// ---- マウスの方向を向く ----
@@ -84,25 +84,25 @@ void Player::Update()
 	GetMousePoint(&mouseX, &mouseY);
 
 	// プレイヤーの真ん中からマウスまでの差
-	float dx = mouseX - (m_x + kSize / 2);
-	float dy = mouseY - (m_y + kSize / 2);
+	float dx = mouseX - (x_ + kSize / 2);
+	float dy = mouseY - (y_ + kSize / 2);
 
 	// atan2f(Y の差, X の差) で、その方向の角度が求まる
-	m_angle = atan2f(dy, dx);
+	angle_ = atan2f(dy, dx);
 }
 
 void Player::Draw()
 {
-	if (!m_isExist) return;
+	if (!isExist_) return;
 
-	DrawBox(static_cast<int>(m_x), static_cast<int>(m_y), static_cast<int>(m_x) + kSize, static_cast<int>(m_y) + kSize, GetColor(255, 0, 0), true);
+	DrawBox(static_cast<int>(x_), static_cast<int>(y_), static_cast<int>(x_) + kSize, static_cast<int>(y_) + kSize, GetColor(255, 0, 0), true);
 
 	// 向いている方向に線を描く（照準）
-	float centerX = m_x + kSize / 2;
-	float centerY = m_y + kSize / 2;
+	float centerX = x_ + kSize / 2;
+	float centerY = y_ + kSize / 2;
 	DrawLine(static_cast<int>(centerX), static_cast<int>(centerY),
-		static_cast<int>(centerX + cosf(m_angle) * kAimLength),
-		static_cast<int>(centerY + sinf(m_angle) * kAimLength),
+		static_cast<int>(centerX + cosf(angle_) * kAimLength),
+		static_cast<int>(centerY + sinf(angle_) * kAimLength),
 		GetColor(255, 255, 255), 2);
 }
 
@@ -113,5 +113,5 @@ int Player::GetSize() const
 
 void Player::Hit()
 {
-	m_isExist = false;
+	isExist_ = false;
 }

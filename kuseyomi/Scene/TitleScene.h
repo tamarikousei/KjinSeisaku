@@ -5,7 +5,7 @@
 class TitleScene : public Scene
 {
 private:
-	int frame_ = 0;	// フェードや点滅に使う、毎フレーム数えるカウンタ
+	int frame_;	// フェードや点滅に使う、毎フレーム数えるカウンタ
 
 	// 「今どの状態か」で呼ぶ関数を切り替えるための、メンバ関数ポインタの型
 	using UpdateFunc_t = void (TitleScene::*)(Input&);

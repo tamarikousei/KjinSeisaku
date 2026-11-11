@@ -2,8 +2,10 @@
 #include "Scene.h"
 #include "../Player.h"
 #include "../Shot.h"
-#include "../Enemy.h"
+#include "../EnemyManager.h"
 #include "../LearnMap.h"
+
+class Enemy;
 
 // ゲーム中のシーン（前の SceneMain の中身を引っ越したもの）
 class GameScene : public Scene
@@ -16,14 +18,14 @@ private:
 
 	Player player_;						// プレイヤー
 	Shot shots_[kShotMax];				// プレイヤーの弾
-	Enemy enemy_;						// 敵
+	EnemyManager enemyManager_;			// 敵の出現と管理（何体でも出せる）
 	Shot enemyShots_[kEnemyShotMax];	// 敵の弾
 	LearnMap learnMap_;					// 学習データ（マスごとの滞在回数）
 
-	int playFrame_ = 0;		// ゲームが始まってからのフレーム数（記録・敵の射撃・タイムに使う）
-	int stateFrame_ = 0;	// フェードや待ち時間に使うカウンタ
-	bool isGameOver_ = false;	// プレイヤーがやられたか
-	bool isClear_ = false;		// 敵を倒したか
+	int playFrame_;		// ゲームが始まってからのフレーム数（記録・敵の射撃・タイムに使う）
+	int stateFrame_;	// フェードや待ち時間に使うカウンタ
+	bool isGameOver_;	// プレイヤーがやられたか
+	bool isClear_;		// 決まった数の敵を倒したか
 
 	// ---- 状態ごとの Update / Draw（TitleScene と同じしくみ） ----
 	using UpdateFunc_t = void (GameScene::*)(Input&);
@@ -42,7 +44,8 @@ private:
 	// ---- NormalUpdate の中身を、役割ごとに分けたもの ----
 	void RecordPlayer();				// 学習：プレイヤーの居場所を記録する
 	void PlayerShoot(Input& input);		// プレイヤーが撃つ
-	void EnemyShoot();					// 敵が撃つ
+	void EnemyShoot();					// 撃てる敵に撃たせる
+	void ShootFrom(const Enemy& enemy);	// 敵1体から、くじ引きで決めたマスへ1発撃つ
 	void CheckHit();					// 当たり判定
 
 public:

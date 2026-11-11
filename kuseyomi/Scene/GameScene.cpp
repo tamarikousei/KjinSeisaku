@@ -6,14 +6,17 @@
 #include "SceneController.h"
 #include "GameScene.h"
 #include "ResultScene.h"
+#include "../Enemy.h"
 
 namespace
 {
 	// 定数は .cpp に置く（ヘッダーに置くと、include したファイル全部にコピーされるため）
 	constexpr float kShotSpeed = 8.0f;		// プレイヤーの弾の速さ
 
-	constexpr int kEnemyShotInterval = 60;	// 敵が弾を撃つ間隔（フレーム数）
+	constexpr int kEnemyShotInterval = 120;	// 敵1体が弾を撃つ間隔（2秒。敵が増えたので前の60より長く）
 	constexpr float kEnemyShotSpeed = 5.0f;	// 敵の弾の速さ
+
+	constexpr int kClearKillCount = 5;		// この数だけ倒したらクリア
 
 	constexpr int kRecordInterval = 6;		// 学習：記録する間隔（60fps × 0.1秒 = 6フレーム）
 
@@ -59,7 +62,7 @@ void GameScene::NormalUpdate(Input& input)
 		shot.Update();
 	}
 
-	enemy_.Update();
+	enemyManager_.Update();	// 出現・全部の敵の動き・やられた敵の削除
 	EnemyShoot();
 
 	for (auto& shot : enemyShots_)
@@ -68,6 +71,12 @@ void GameScene::NormalUpdate(Input& input)
 	}
 
 	CheckHit();
+
+	// 決まった数を倒したらクリア
+	if (enemyManager_.GetKillCount() >= kClearKillCount)
+	{
+		isClear_ = true;
+	}
 
 	// 決着がついたら「少し待つ」状態へ
 	if (isClear_ || isGameOver_)
@@ -133,17 +142,25 @@ void GameScene::PlayerShoot(Input& input)
 
 void GameScene::EnemyShoot()
 {
-	// 一定間隔ごとに撃つ
-	if (!enemy_.IsExist()) return;
-	if (playFrame_ % kEnemyShotInterval != 0) return;
+	// 全部の敵を見て、撃てる敵（射撃タイマーが0の敵）にだけ撃たせる
+	for (auto& enemy : enemyManager_.GetEnemies())
+	{
+		if (!enemy->IsReadyToShoot()) continue;
 
+		ShootFrom(*enemy);
+		enemy->ResetShotTimer(kEnemyShotInterval);	// 次に撃てるまで待たせる
+	}
+}
+
+void GameScene::ShootFrom(const Enemy& enemy)
+{
 	for (auto& shot : enemyShots_)
 	{
 		if (shot.IsExist()) continue;
 
 		// 敵の真ん中から撃つ
-		float x = enemy_.GetX() + (enemy_.GetSize() - shot.GetSize()) / 2;
-		float y = enemy_.GetY() + (enemy_.GetSize() - shot.GetSize()) / 2;
+		float x = enemy.GetX() + (enemy.GetSize() - shot.GetSize()) / 2;
+		float y = enemy.GetY() + (enemy.GetSize() - shot.GetSize()) / 2;
 
 		float targetX;
 		float targetY;
@@ -170,17 +187,22 @@ void GameScene::EnemyShoot()
 void GameScene::CheckHit()
 {
 	// ---- 当たり判定A：プレイヤーの弾 → 敵 ----
+	// 弾1発ずつ、全部の敵と調べる（二重ループ）
 	for (auto& shot : shots_)
 	{
 		if (!shot.IsExist()) continue;	// 弾がないなら調べない
-		if (!enemy_.IsExist()) break;	// 敵がいないなら調べない
 
-		if (IsHitRect(shot.GetX(), shot.GetY(), shot.GetSize(),
-			enemy_.GetX(), enemy_.GetY(), enemy_.GetSize()))
+		for (auto& enemy : enemyManager_.GetEnemies())
 		{
-			shot.Erase();
-			enemy_.Hit();
-			isClear_ = true;
+			if (enemy->IsDead()) continue;	// やられている敵は調べない
+
+			if (IsHitRect(shot.GetX(), shot.GetY(), shot.GetSize(),
+				enemy->GetX(), enemy->GetY(), enemy->GetSize()))
+			{
+				shot.Erase();
+				enemy->OnHit(1);	// 1ダメージ
+				break;	// 弾は消えたので、この弾で他の敵は調べない
+			}
 		}
 	}
 
@@ -216,7 +238,7 @@ void GameScene::NormalDraw()
 		shot.Draw();
 	}
 
-	enemy_.Draw();
+	enemyManager_.Draw();
 	for (auto& shot : enemyShots_)
 	{
 		shot.Draw();
@@ -224,6 +246,8 @@ void GameScene::NormalDraw()
 
 	DrawString(0, 0, L"GameScene", GetColor(255, 255, 255));
 	DrawFormatString(0, 16, GetColor(255, 255, 255), L"FRAME:%d", playFrame_);
+	DrawFormatString(0, 32, GetColor(255, 255, 255), L"倒した数:%d / %d",
+		enemyManager_.GetKillCount(), kClearKillCount);
 	if (isGameOver_)
 	{
 		DrawString(580, 340, L"GAME OVER", GetColor(255, 0, 0));
@@ -243,7 +267,15 @@ void GameScene::FadeDraw()
 
 // ================ 外から呼ばれる関数 ================
 
-GameScene::GameScene(SceneController& ctrl) : Scene(ctrl)
+GameScene::GameScene(SceneController& ctrl) :
+	Scene(ctrl),
+	playFrame_(0),
+	stateFrame_(kFadeInterval),
+	isGameOver_(false),
+	isClear_(false),
+	// 最初の状態は「フェードイン」
+	update_(&GameScene::FadeInUpdate),
+	draw_(&GameScene::FadeDraw)
 {
 	// 前の SceneMain::Init() の中身
 	player_.Init();
@@ -252,25 +284,18 @@ GameScene::GameScene(SceneController& ctrl) : Scene(ctrl)
 		shot.Init();
 	}
 
-	enemy_.Init();
 	for (auto& shot : enemyShots_)
 	{
 		shot.Init();
 	}
 
 	learnMap_.Init();
-
-	// 最初の状態は「フェードイン」
-	update_ = &GameScene::FadeInUpdate;
-	draw_ = &GameScene::FadeDraw;
-	stateFrame_ = kFadeInterval;
 }
 
 GameScene::~GameScene()
 {
 	// 前の SceneMain::End() の中身
 	player_.End();
-	enemy_.End();
 }
 
 void GameScene::Update(Input& input)

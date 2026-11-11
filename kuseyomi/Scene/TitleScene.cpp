@@ -79,12 +79,13 @@ void TitleScene::NormalDraw()
 
 // ================ 外から呼ばれる関数 ================
 
-TitleScene::TitleScene(SceneController& ctrl) : Scene(ctrl)
-{
+TitleScene::TitleScene(SceneController& ctrl) :
+	Scene(ctrl),
+	frame_(kFadeInterval),
 	// 最初の状態は「フェードイン」
-	update_ = &TitleScene::FadeInUpdate;
-	draw_ = &TitleScene::FadeDraw;
-	frame_ = kFadeInterval;
+	update_(&TitleScene::FadeInUpdate),
+	draw_(&TitleScene::FadeDraw)
+{
 }
 
 TitleScene::~TitleScene()

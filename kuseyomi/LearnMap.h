@@ -29,5 +29,5 @@ public:
 	bool PickTargetPos(float& outX, float& outY) const;
 
 private:
-	float m_count[kRows][kCols];	// マスごとの回数 [縦][横]
+	float count_[kRows][kCols];	// マスごとの回数 [縦][横]
 };

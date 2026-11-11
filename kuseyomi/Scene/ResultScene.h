@@ -7,7 +7,7 @@ class ResultScene : public Scene
 private:
 	bool isClear_;		// クリアしたか
 	int playFrame_;		// ゲームにかかったフレーム数
-	int frame_ = 0;		// フェードに使うカウンタ
+	int frame_;			// フェードに使うカウンタ
 
 	using UpdateFunc_t = void (ResultScene::*)(Input&);
 	using DrawFunc_t = void (ResultScene::*)();

@@ -10,9 +10,9 @@ public:
 	void Update();
 	void Draw();
 
-	float GetX() const { return m_x; }//X座標を取得する
-	float GetY() const { return m_y; }//Y座標を取得する
-	bool IsExist() const { return m_isExist; }//存在しているかどうかを取得する
+	float GetX() const { return x_; }//X座標を取得する
+	float GetY() const { return y_; }//Y座標を取得する
+	bool IsExist() const { return isExist_; }//存在しているかどうかを取得する
 	int GetSize() const;//大きさを取得する
 
 	void Fire(float x, float y);//弾を発射する（真上に飛ぶ）
@@ -23,14 +23,14 @@ public:
 
 private:
 
-	float m_x; //X座標
-	float m_y; //Y座標
-	float m_speed; //移動速度
-	float m_vx; //1フレームにXに進む量
-	float m_vy; //1フレームにYに進む量
-	unsigned int m_color; //弾の色
+	float x_; //X座標
+	float y_; //Y座標
+	float speed_; //移動速度
+	float vx_; //1フレームにXに進む量
+	float vy_; //1フレームにYに進む量
+	unsigned int color_; //弾の色
 
-	bool m_isExist; //存在フラグ
+	bool isExist_; //存在フラグ
 
 };
 
