@@ -16,7 +16,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	SetGraphMode(Game::kScreenWidth, Game::kScreenHeight, Game::kColorDepth);
 
 	// ウインドウのタイトル表示を変更
-	SetMainWindowText("DxLibTemplate");
+	SetMainWindowText(L"DxLibTemplate");
 
 	if (DxLib_Init() == -1)		// ＤＸライブラリ初期化処理
 	{

@@ -41,15 +41,15 @@ void SceneResult::Draw()
 {
 	if (m_isClear)
 	{
-		DrawString(600, 300, "CLEAR!", GetColor(255, 255, 0));
+		DrawString(600, 300, L"CLEAR!", GetColor(255, 255, 0));
 	}
 	else
 	{
-		DrawString(580, 300, "GAME OVER", GetColor(255, 0, 0));
+		DrawString(580, 300, L"GAME OVER", GetColor(255, 0, 0));
 	}
 
 	// フレーム数を秒に直して表示（60フレーム = 1秒）
-	DrawFormatString(570, 340, GetColor(255, 255, 255), "TIME : %.2f 秒", m_playFrame / 60.0f);
+	DrawFormatString(570, 340, GetColor(255, 255, 255), L"TIME : %.2f 秒", m_playFrame / 60.0f);
 
-	DrawString(510, 420, "クリック か スペース でタイトルへ", GetColor(200, 200, 200));
+	DrawString(510, 420, L"クリック か スペース でタイトルへ", GetColor(200, 200, 200));
 }

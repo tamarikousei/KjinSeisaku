@@ -42,13 +42,13 @@ std::shared_ptr<SceneBase> SceneTitle::Update()
 
 void SceneTitle::Draw()
 {
-	DrawString(580, 300, "SHOOTING GAME", GetColor(255, 255, 255));
+	DrawString(580, 300, L"SHOOTING GAME", GetColor(255, 255, 255));
 	/*
 	// 30フレームごとに表示・非表示を切り替えて点滅させる
 	if ((m_frameCount / 30) % 2 == 0)
 	{
-		DrawString(520, 400, "クリック か スペース でスタート", GetColor(255, 255, 0));
+		DrawString(520, 400, L"クリック か スペース でスタート", GetColor(255, 255, 0));
 	}
 	*/
-	DrawString(500, 460, "WASD:移動  マウス:狙う  左クリック:撃つ", GetColor(200, 200, 200));
+	DrawString(500, 460, L"WASD:移動  マウス:狙う  左クリック:撃つ", GetColor(200, 200, 200));
 }

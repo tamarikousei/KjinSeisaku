@@ -8,7 +8,7 @@
 			"program": "${workspaceFolder}/x64/Debug/DxLibTemplate4.exe",
 			"args": [],
 			"stopAtEntry": false,
-			"cwd": "c:\\Users\\Tamari\\Desktop\\DxLibTemplate (2)\\",
+			"cwd": "${workspaceFolder}",
 			"environment": [],
 			"console": "internalConsole",
 			"preLaunchTask": "DxLib: Debug ビルド"
@@ -20,7 +20,7 @@
 			"program": "${workspaceFolder}/x64/Release/DxLibTemplate4.exe",
 			"args": [],
 			"stopAtEntry": false,
-			"cwd": "c:\\Users\\Tamari\\Desktop\\DxLibTemplate (2)\\",
+			"cwd": "${workspaceFolder}",
 			"environment": [],
 			"console": "internalConsole",
 			"preLaunchTask": "DxLib: Release ビルド"

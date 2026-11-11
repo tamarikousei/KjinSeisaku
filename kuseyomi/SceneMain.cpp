@@ -86,6 +86,8 @@ std::shared_ptr<SceneBase> SceneMain::Update()
 		m_learnMap.Record(centerX, centerY);
 	}
 
+	m_learnMap.Decay();	// 学習データを少し薄くする
+
 	// ---- プレイヤーが向いている方向に撃つ ----
 	bool isPush = (GetMouseInput() & MOUSE_INPUT_LEFT);
 	if (isPush && !m_isPrevPush)
@@ -124,8 +126,23 @@ std::shared_ptr<SceneBase> SceneMain::Update()
 				// 敵の真ん中から、プレイヤーの真ん中を狙う
 				float x = m_enemy.GetX() + (m_enemy.GetSize() - m_enemyShot[i].GetSize()) / 2;
 				float y = m_enemy.GetY() + (m_enemy.GetSize() - m_enemyShot[i].GetSize()) / 2;
-				float targetX = m_player.GetX() + (m_player.GetSize() - m_enemyShot[i].GetSize()) / 2;
-				float targetY = m_player.GetY() + (m_player.GetSize() - m_enemyShot[i].GetSize()) / 2;
+				
+				float targetX;
+				float targetY;
+
+				float hotX, hotY;
+				if (m_learnMap.GetHottestPos(hotX, hotY))
+				{
+					targetX = hotX - m_enemyShot[i].GetSize() / 2;
+					targetY = hotY - m_enemyShot[i].GetSize() / 2;
+				}
+				else
+				{
+					// まだ何も記録されていないなら、プレイヤーの真ん中を狙う
+					targetX = m_player.GetX() + (m_player.GetSize() - m_enemyShot[i].GetSize()) / 2;
+					targetY = m_player.GetY() + (m_player.GetSize() - m_enemyShot[i].GetSize()) / 2;
+				}
+				
 
 				m_enemyShot[i].FireTo(x, y, targetX, targetY, kEnemyShotSpeed, GetColor(255, 0, 255));
 				break;
@@ -193,15 +210,15 @@ void SceneMain::Draw()
 		m_enemyShot[i].Draw();
 	}
 
-	DrawString(0,0,"SceneMain", GetColor(255,255,255));
-	DrawFormatString(0, 16, GetColor(255, 255, 255), "FRAME:%d", m_frameCount);
+	DrawString(0,0,L"SceneMain", GetColor(255,255,255));
+	DrawFormatString(0, 16, GetColor(255, 255, 255), L"FRAME:%d", m_frameCount);
 	if (m_isGameOver)
 	{
-		DrawString(580, 340, "GAME OVER", GetColor(255, 0, 0));
+		DrawString(580, 340, L"GAME OVER", GetColor(255, 0, 0));
 	}
 	if (m_isClear)
 	{
-		DrawString(600, 340, "CLEAR!", GetColor(255, 255, 0));
+		DrawString(600, 340, L"CLEAR!", GetColor(255, 255, 0));
 	}
 
 }
