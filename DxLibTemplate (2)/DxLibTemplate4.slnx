@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="DxLibTemplate4.vcxproj" Id="c3a63979-cb2f-2cb1-beaf-a155a7a6750f">
+    <Platform Solution="*|x86" Project="Win32" />
+  </Project>
+</Solution>

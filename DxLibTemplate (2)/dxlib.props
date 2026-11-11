@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- DxLib SDK の場所(この PC 用)。DxLib 開発環境(VSCode 拡張機能)が書き直します。 -->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <DxLibDir>c:\DxLib_VC\プロジェクトに追加すべきファイル_VC用</DxLibDir>
+  </PropertyGroup>
+</Project>

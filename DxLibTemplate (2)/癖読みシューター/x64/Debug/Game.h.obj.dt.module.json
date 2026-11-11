@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "DxLibTemplate4\\x64\\Debug\\Game.obj",
+            "outputs": [
+                "DxLibTemplate4\\x64\\Debug\\Game.h.obj.dt.module.json",
+                "DxLibTemplate4\\x64\\Debug\\Game.h.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

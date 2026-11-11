@@ -1,0 +1,29 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "DxLib: デバッグ実行 (Debug)",
+			"type": "cppvsdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/x64/Debug/DxLibTemplate4.exe",
+			"args": [],
+			"stopAtEntry": false,
+			"cwd": "c:\\Users\\Tamari\\Desktop\\DxLibTemplate (2)\\",
+			"environment": [],
+			"console": "internalConsole",
+			"preLaunchTask": "DxLib: Debug ビルド"
+		},
+		{
+			"name": "DxLib: 実行 (Release)",
+			"type": "cppvsdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/x64/Release/DxLibTemplate4.exe",
+			"args": [],
+			"stopAtEntry": false,
+			"cwd": "c:\\Users\\Tamari\\Desktop\\DxLibTemplate (2)\\",
+			"environment": [],
+			"console": "internalConsole",
+			"preLaunchTask": "DxLib: Release ビルド"
+		}
+	]
+}

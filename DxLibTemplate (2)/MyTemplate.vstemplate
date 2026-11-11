@@ -1,0 +1,28 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>DxLibTemplate</Name>
+    <Description>&lt;説明はありません。&gt;</Description>
+    <ProjectType>VC</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>DxLibTemplate</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="DxLibTemplate4.vcxproj" File="DxLibTemplate4.vcxproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="false" TargetFileName="$projectname$.vcxproj.filters">DxLibTemplate4.vcxproj.filters</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="main.cpp">main.cpp</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="SceneMain.cpp">SceneMain.cpp</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="Mouse.cpp">Mouse.cpp</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="Game.h">Game.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="SceneMain.h">SceneMain.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="Vec2.h">Vec2.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="Mouse.h">Mouse.h</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>
