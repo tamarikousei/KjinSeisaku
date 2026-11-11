@@ -24,6 +24,10 @@ public:
 	// まだ何も記録されていない（全部0）なら false を返す
 	bool GetHottestPos(float& outX, float& outY) const;
 
+	// 重み付き乱択（くじ引き）で狙うマスを1つ選び、その「真ん中の座標」を outX, outY に入れる
+	// 回数が多いマスほど選ばれやすい。まだ何も記録されていない（合計が0）なら false を返す
+	bool PickTargetPos(float& outX, float& outY) const;
+
 private:
 	float m_count[kRows][kCols];	// マスごとの回数 [縦][横]
 };

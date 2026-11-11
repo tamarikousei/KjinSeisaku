@@ -1,5 +1,42 @@
 ﻿#include "LearnMap.h"
 #include "DxLib.h"
+#include "Random.h"
+
+bool LearnMap::PickTargetPos(float& outX, float& outY) const
+{
+	float total = 0.0f;
+	// 全部のマスの合計を計算する
+	for (int row = 0; row < kRows; row++)
+	{
+		for (int col = 0; col < kCols; col++)
+		{
+			total += m_count[row][col];
+		}
+	}	
+	if (total <= 0.0f) return false;	// まだ何も記録されていない（合計が0）なら答えられない
+
+	float r = Random::Float(0.0f, total);	// 0〜合計の範囲で乱数を作る
+	// 乱数がどのマスに入るかを探す
+	for (int row = 0; row < kRows; row++)
+	{
+		for (int col = 0; col < kCols; col++)
+		{
+			r -= m_count[row][col];	// 乱数を減らしていく
+			if (r < 0.0f)	// 0 より小さくなったら、そのマスが当たり（回数0のマスは r が変わらないので、絶対に当たらない）
+			{
+				// 「何マス目か」を座標に戻す（Record の逆の計算）
+				// マスの左上 + マスの半分 = マスの真ん中
+				outX = col * kCellSize + kCellSize / 2.0f;
+				outY = row * kCellSize + kCellSize / 2.0f;
+				return true;
+			}
+		}
+	}
+
+	// 小数の誤差で、当たりを通りすぎてしまったとき（まれに起きる）
+	// くじはあるので false ではなく、一番当たりやすいマス（一番多いマス）を返す
+	return GetHottestPos(outX, outY);
+}
 
 LearnMap::LearnMap()
 {
@@ -92,7 +129,7 @@ void LearnMap::Decay()
 	{
 		for (int col = 0; col < kCols; col++)
 		{
-			m_count[row][col] *= kDecayRate;	// 少しずつ減らす（時間経過で薄くする）s
+			m_count[row][col] *= kDecayRate;	// 少しずつ減らす（時間経過で薄くする）
 		}
 	}
 }

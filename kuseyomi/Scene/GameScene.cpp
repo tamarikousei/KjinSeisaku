@@ -149,9 +149,9 @@ void GameScene::EnemyShoot()
 		float targetY;
 
 		float hotX, hotY;
-		if (learnMap_.GetHottestPos(hotX, hotY))
+		if (learnMap_.PickTargetPos(hotX, hotY))
 		{
-			// 一番長くいたマスの真ん中を狙う
+			// くじ引きで選ばれたマスの真ん中を狙う（よくいるマスほど選ばれやすい）
 			targetX = hotX - shot.GetSize() / 2;
 			targetY = hotY - shot.GetSize() / 2;
 		}
