@@ -43,19 +43,22 @@ void Player::Update()
 {
 	if (!isExist_) return;
 
-	if (CheckHitKey(KEY_INPUT_W) == 1 || CheckHitKey(KEY_INPUT_UP) == 1)
+	// パッド1の入力をまとめて取る（左スティック・十字キーの両方が PAD_INPUT_UP などに入る）
+	int pad = GetJoypadInputState(DX_INPUT_PAD1);
+
+	if (CheckHitKey(KEY_INPUT_W) == 1 || CheckHitKey(KEY_INPUT_UP) == 1 || (pad & PAD_INPUT_UP))
 	{
 		y_ -= speed_;
 	}
-	if (CheckHitKey(KEY_INPUT_S) == 1 || CheckHitKey(KEY_INPUT_DOWN) == 1)
+	if (CheckHitKey(KEY_INPUT_S) == 1 || CheckHitKey(KEY_INPUT_DOWN) == 1 || (pad & PAD_INPUT_DOWN))
 	{
 		y_ += speed_;
 	}
-	if (CheckHitKey(KEY_INPUT_A) == 1 || CheckHitKey(KEY_INPUT_LEFT) == 1)
+	if (CheckHitKey(KEY_INPUT_A) == 1 || CheckHitKey(KEY_INPUT_LEFT) == 1 || (pad & PAD_INPUT_LEFT))
 	{
 		x_ -= speed_;
 	}
-	if (CheckHitKey(KEY_INPUT_D) == 1 || CheckHitKey(KEY_INPUT_RIGHT) == 1)
+	if (CheckHitKey(KEY_INPUT_D) == 1 || CheckHitKey(KEY_INPUT_RIGHT) == 1 || (pad & PAD_INPUT_RIGHT))
 	{
 		x_ += speed_;
 	}

@@ -72,7 +72,7 @@ void TitleScene::NormalDraw()
 	// ※ update_ が Normal のときだけ frame_ が増えるので、フェード中は点滅しない
 	if (update_ != &TitleScene::NormalUpdate || (frame_ / kBlinkInterval) % 2 == 0)
 	{
-		DrawString(500, 400, L"クリック か スペース でスタート", GetColor(255, 255, 0));
+		DrawString(500, 400, L"クリックでスタート", GetColor(255, 255, 0));
 	}
 	DrawString(470, 460, L"WASD:移動  マウス:狙う  左クリック:撃つ", GetColor(200, 200, 200));
 }

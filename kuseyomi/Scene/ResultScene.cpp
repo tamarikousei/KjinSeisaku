@@ -53,9 +53,6 @@ void ResultScene::NormalDraw()
 		DrawString(580, 300, L"GAME OVER", GetColor(255, 0, 0));
 	}
 
-	// フレーム数を秒に直して表示（60フレーム = 1秒）
-	DrawFormatString(570, 340, GetColor(255, 255, 255), L"TIME : %.2f 秒", playFrame_ / 60.0f);
-
 	DrawString(510, 420, L"クリック か スペース でタイトルへ", GetColor(200, 200, 200));
 }
 
