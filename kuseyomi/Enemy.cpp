@@ -8,6 +8,7 @@ namespace
 	// 出てきてから最初に撃つまでのフレーム数（ランダムにして、敵ごとにタイミングをずらす）
 	constexpr int kFirstShotMin = 30;	// 0.5秒
 	constexpr int kFirstShotMax = 90;	// 1.5秒
+	constexpr int KDeathFrame = 30;	// やられたときのエフェクトにかけるフレーム数
 }
 
 Enemy::Enemy(float x, float y, int size, int hp, unsigned int color, float speed) :
