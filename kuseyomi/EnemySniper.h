@@ -15,8 +15,6 @@ public:
 private:
 	// 位置・大きさ・HP・色は、親の Enemy が持っているので、ここには書かない
 	// ここには「狙撃型だけ」が持つものを書く
-	float size = 32.0f;	// 大きさ（px）
-	float speed_;	// 横に動く速さ（プラスで右、マイナスで左）
 	float targetX_;	// 狙うマスの X 座標（真ん中）
 	float targetY_;	// 狙うマスの Y 座標（真ん中）
 };

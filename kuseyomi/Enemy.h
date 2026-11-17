@@ -12,7 +12,7 @@ public:
 	// size  : 大きさ(px)
 	// hp    : 体力
 	// color : 描くときの色（画像が入るまでの仮）
-	Enemy(float x, float y, int size, int hp, unsigned int color);
+	Enemy(float x, float y, int size, int hp, unsigned int color, float speed);
 
 	// 親クラスのデストラクタは virtual にしておく
 	// （親の型で持っている子を消すとき、子のデストラクタもちゃんと呼ばれるように）
@@ -50,4 +50,9 @@ protected:
 	unsigned int color_;	// 描くときの色
 	bool isDead_;			// やられたか
 	int shotTimer_;			// 次に撃てるまでのフレーム数（0 で撃てる）
+
+	float speed_;			// 移動速度（px/フレーム）
+
+	// 目的の位置に向かってspeed_
+	bool MoveTo(float targetX, float targetY);	// targetX, targetY まで speed_ の速さで動く。到達したら true を返す
 };

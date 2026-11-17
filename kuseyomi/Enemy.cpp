@@ -1,6 +1,7 @@
 ﻿#include <DxLib.h>
 #include "Enemy.h"
 #include "Random.h"
+#include <cmath>
 
 namespace
 {
@@ -9,14 +10,15 @@ namespace
 	constexpr int kFirstShotMax = 90;	// 1.5秒
 }
 
-Enemy::Enemy(float x, float y, int size, int hp, unsigned int color) :
+Enemy::Enemy(float x, float y, int size, int hp, unsigned int color, float speed) :
 	x_(x),
 	y_(y),
 	size_(size),
 	hp_(hp),
 	color_(color),
 	isDead_(false),
-	shotTimer_(Random::Int(kFirstShotMin, kFirstShotMax))
+	shotTimer_(Random::Int(kFirstShotMin, kFirstShotMax)),
+	speed_(speed)
 {
 }
 
@@ -33,6 +35,23 @@ bool Enemy::IsReadyToShoot() const
 void Enemy::ResetShotTimer(int frame)
 {
 	shotTimer_ = frame;
+}
+
+bool Enemy::MoveTo(float targetX, float targetY)
+{
+	float dx = targetX -x_;
+	float dy = targetY - y_;
+
+	float dist = sqrtf(dx * dx + dy * dy);
+	if (dist <= speed_)
+	{
+		x_ = targetX;
+		y_ = targetY;
+		return true;
+	}
+		x_ += dx / dist * speed_;
+		y_ += dy / dist * speed_;
+		return false;
 }
 
 void Enemy::Draw() const
