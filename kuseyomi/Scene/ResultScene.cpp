@@ -50,10 +50,10 @@ void ResultScene::NormalDraw()
 	}
 	else
 	{
-		DrawString(580, 300, L"GAME OVER", GetColor(255, 0, 0));
+//		DrawString(580, 300, L"GAME OVER", GetColor(255, 0, 0));
 	}
 
-	DrawString(510, 420, L"クリック か スペース でタイトルへ", GetColor(200, 200, 200));
+//	DrawString(510, 420, L"クリック か スペース でタイトルへ", GetColor(200, 200, 200));
 }
 
 void ResultScene::FadeDraw()

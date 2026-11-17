@@ -74,7 +74,7 @@ void TitleScene::NormalDraw()
 	{
 		DrawString(500, 400, L"クリックでスタート", GetColor(255, 255, 0));
 	}
-	DrawString(470, 460, L"WASD:移動  マウス:狙う  左クリック:撃つ", GetColor(200, 200, 200));
+//	DrawString(470, 460, L"WASD:移動  マウス:狙う  左クリック:撃つ", GetColor(200, 200, 200));
 }
 
 // ================ 外から呼ばれる関数 ================

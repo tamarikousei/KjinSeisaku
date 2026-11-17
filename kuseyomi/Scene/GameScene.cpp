@@ -10,13 +10,13 @@
 
 namespace
 {
-	// 定数は .cpp に置く（ヘッダーに置くと、include したファイル全部にコピーされるため）
 	constexpr float kShotSpeed = 8.0f;		// プレイヤーの弾の速さ
 
 	constexpr int kEnemyShotInterval = 120;	// 敵1体が弾を撃つ間隔（2秒。敵が増えたので前の60より長く）
 	constexpr float kEnemyShotSpeed = 5.0f;	// 敵の弾の速さ
 
 	constexpr int kClearKillCount = 5;		// この数だけ倒したらクリア
+	constexpr int kEnemyShotDamage = 10;		// 敵の弾が当たったときのダメージ
 
 	constexpr int kRecordInterval = 6;		// 学習：記録する間隔（60fps × 0.1秒 = 6フレーム）
 
@@ -216,10 +216,13 @@ void GameScene::CheckHit()
 			player_.GetX(), player_.GetY(), player_.GetSize()))
 		{
 			shot.Erase();
-			if (!kDebugInvincible)	// デバッグ用：無敵モード
+		//	if (!kDebugInvincible)	// デバッグ用：無敵モード
 			{
-				player_.Hit();
-				isGameOver_ = true;
+				player_.Hit(kEnemyShotDamage);	// 敵の弾が当たったときのダメージ
+				if (!player_.IsExist())
+				{
+					isGameOver_ = true;
+				}
 			}
 		}
 	}
@@ -244,10 +247,14 @@ void GameScene::NormalDraw()
 		shot.Draw();
 	}
 
-	DrawString(0, 0, L"GameScene", GetColor(255, 255, 255));
-	DrawFormatString(0, 16, GetColor(255, 255, 255), L"FRAME:%d", playFrame_);
-	DrawFormatString(0, 32, GetColor(255, 255, 255), L"倒した数:%d / %d",
-		enemyManager_.GetKillCount(), kClearKillCount);
+
+	DrawBox(10,10,250,26,GetColor(80,80,80),true);
+	int hpWidth = 240*player_.GetHP()/player_.GetMaxHp();
+	DrawBox(10,10,10+hpWidth,26,GetColor(0,255,0),true);
+//	DrawString(0, 0, L"GameScene", GetColor(255, 255, 255));
+//	DrawFormatString(0, 16, GetColor(255, 255, 255), L"FRAME:%d", playFrame_);
+//	DrawFormatString(0, 32, GetColor(255, 255, 255), L"倒した数:%d / %d",
+//		enemyManager_.GetKillCount(), kClearKillCount);
 	if (isGameOver_)
 	{
 		DrawString(580, 340, L"GAME OVER", GetColor(255, 0, 0));
