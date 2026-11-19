@@ -151,12 +151,12 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="EnemyManager.cpp" />
-    <ClCompile Include="LearnMap.cpp" />
+    <ClCompile Include="Game\Enemy.cpp" />
+    <ClCompile Include="Game\EnemyManager.cpp" />
+    <ClCompile Include="Game\LearnMap.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Shot.cpp" />
+    <ClCompile Include="Game\Player.cpp" />
+    <ClCompile Include="Game\Shot.cpp" />
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Geometry.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -166,15 +166,16 @@
     <ClCompile Include="Scene\TitleScene.cpp" />
     <ClCompile Include="Scene\GameScene.cpp" />
     <ClCompile Include="Scene\ResultScene.cpp" />
-    <ClCompile Include="EnemySniper.cpp" />
+    <ClCompile Include="Game\EnemySniper.cpp" />
+    <ClCompile Include="Game\EnemyNormal.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="EnemyManager.h" />
+    <ClInclude Include="Game\Enemy.h" />
+    <ClInclude Include="Game\EnemyManager.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="LearnMap.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Shot.h" />
+    <ClInclude Include="Game\LearnMap.h" />
+    <ClInclude Include="Game\Player.h" />
+    <ClInclude Include="Game\Shot.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Geometry.h" />
@@ -185,7 +186,8 @@
     <ClInclude Include="Scene\TitleScene.h" />
     <ClInclude Include="Scene\GameScene.h" />
     <ClInclude Include="Scene\ResultScene.h" />
-    <ClInclude Include="EnemySniper.h" />
+    <ClInclude Include="Game\EnemySniper.h" />
+    <ClInclude Include="Game\EnemyNormal.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,6 +1,6 @@
 ﻿#include "LearnMap.h"
 #include "DxLib.h"
-#include "Random.h"
+#include "../Random.h"
 
 bool LearnMap::PickTargetPos(float& outX, float& outY) const
 {

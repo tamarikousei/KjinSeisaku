@@ -9,12 +9,14 @@ public:
 	~EnemySniper();
 
 	void Update() override;
+
+	void GetAimPos(const AimInfo& info, float& outX,float& outY)const override;
 	
 	void PickTarget();
 
 private:
 	// 位置・大きさ・HP・色は、親の Enemy が持っているので、ここには書かない
 	// ここには「狙撃型だけ」が持つものを書く
-	float targetX_;	// 狙うマスの X 座標（真ん中）
-	float targetY_;	// 狙うマスの Y 座標（真ん中）
+	float targetX_;	// 移動先
+	float targetY_;	// 移動先
 };

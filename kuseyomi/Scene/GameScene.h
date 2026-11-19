@@ -1,9 +1,9 @@
 ﻿#pragma once
 #include "Scene.h"
-#include "../Player.h"
-#include "../Shot.h"
-#include "../EnemyManager.h"
-#include "../LearnMap.h"
+#include "../Game/Player.h"
+#include "../Game/Shot.h"
+#include "../Game/EnemyManager.h"
+#include "../Game/LearnMap.h"
 
 class Enemy;
 

@@ -6,7 +6,7 @@
 #include "SceneController.h"
 #include "GameScene.h"
 #include "ResultScene.h"
-#include "../Enemy.h"
+#include "../Game/Enemy.h"
 
 namespace
 {
@@ -162,25 +162,22 @@ void GameScene::ShootFrom(const Enemy& enemy)
 		float x = enemy.GetX() + (enemy.GetSize() - shot.GetSize()) / 2;
 		float y = enemy.GetY() + (enemy.GetSize() - shot.GetSize()) / 2;
 
-		float targetX;
-		float targetY;
+		AimInfo info = {
+			player_.GetX() + player_.GetSize() / 2.0f,
+			player_.GetY() + player_.GetSize() / 2.0f,
+			learnMap_
+	};
+		//敵に「どこ狙う？」と聞く
+		float aimX, aimY;
+		enemy.GetAimPos(info, aimX, aimY);
 
-		float hotX, hotY;
-		if (learnMap_.PickTargetPos(hotX, hotY))
-		{
-			// くじ引きで選ばれたマスの真ん中を狙う（よくいるマスほど選ばれやすい）
-			targetX = hotX - shot.GetSize() / 2;
-			targetY = hotY - shot.GetSize() / 2;
-		}
-		else
-		{
-			// まだ何も記録されていないなら、プレイヤーの真ん中を狙う
-			targetX = player_.GetX() + (player_.GetSize() - shot.GetSize()) / 2;
-			targetY = player_.GetY() + (player_.GetSize() - shot.GetSize()) / 2;
-		}
+		//答えは「狙う場所の真ん中」なので、弾の大きさの半分ずらして、弾の左上にする
+		float targetX = aimX - shot.GetSize() / 2.0f;
+		float targetY = aimY - shot.GetSize() / 2.0f;
 
-		shot.FireTo(x, y, targetX, targetY, kEnemyShotSpeed, GetColor(255, 0, 255));
+		shot.FireTo(x, y, targetX, targetY, kEnemyShotSpeed, GetColor(255,0,255));
 		break;
+
 	}
 }
 
@@ -194,7 +191,7 @@ void GameScene::CheckHit()
 
 		for (auto& enemy : enemyManager_.GetEnemies())
 		{
-			if (enemy->IsDead()) continue;	// やられている敵は調べない
+			if (enemy->IsDead() || enemy->IsDying()) continue;	// やられている敵は調べない
 
 			if (IsHitRect(shot.GetX(), shot.GetY(), shot.GetSize(),
 				enemy->GetX(), enemy->GetY(), enemy->GetSize()))

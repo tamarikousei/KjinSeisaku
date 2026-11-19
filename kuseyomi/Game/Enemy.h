@@ -1,5 +1,15 @@
 ﻿#pragma once
 
+class LearnMap;
+
+struct AimInfo
+{
+		float playerX_;		// 真ん中
+		float playerY_;		// 真ん中
+		const LearnMap& learnMap_;	// 学習マップ（敵が撃つときに使う）
+};
+
+
 // すべての敵の「親」になるクラス（基底クラス）
 // 狙撃型・設置型・ボスなどは、全部これを継承して作る
 //
@@ -22,6 +32,10 @@ public:
 	// 「= 0」を付けると「純粋仮想関数」になり、親クラスだけでは実体を作れなくなる
 	virtual void Update() = 0;
 
+	virtual void GetAimPos(const AimInfo& info, float& outX, float& outY)const = 0;
+
+	void UpdateDying();	// やられたときのアニメーション用の Update
+
 	// 描画。親が「四角を描く」という基本の描き方を持っておく
 	// 子クラスで違う描き方をしたいときだけ、上書き（override）すればいい
 	virtual void Draw() const;
@@ -35,6 +49,7 @@ public:
 	void ResetShotTimer(int frame);			// 撃ったあとに呼ぶ。次に撃てるまでのフレーム数をセット
 
 	bool IsDead() const { return isDead_; }	// やられたか
+	bool IsDying() const { return isDying_; }	// やられたときのアニメーション中かどうか
 	float GetX() const { return x_; }		// X座標（左上）
 	float GetY() const { return y_; }		// Y座標（左上）
 	int GetSize() const { return size_; }	// 大きさ
@@ -49,6 +64,8 @@ protected:
 	int hp_;				// 体力
 	unsigned int color_;	// 描くときの色
 	bool isDead_;			// やられたか
+	bool isDying_;			// やられたときのアニメーション中かどうか
+	int deathTimer_;			// やられたときのアニメーション用のタイマー（0 でアニメ終了）
 	int shotTimer_;			// 次に撃てるまでのフレーム数（0 で撃てる）
 
 	float speed_;			// 移動速度（px/フレーム）

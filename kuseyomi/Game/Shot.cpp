@@ -1,7 +1,7 @@
 ﻿#include <DxLib.h>
 #include <cmath>
 #include "Shot.h"
-#include "Game.h"
+#include "../Game.h"
 
 namespace
 {

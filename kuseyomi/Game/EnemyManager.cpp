@@ -1,8 +1,8 @@
 ﻿#include "EnemyManager.h"
 #include "Enemy.h"
 #include "EnemySniper.h"
-#include "Random.h"
-#include "Game.h"
+#include "../Random.h"
+#include "../Game.h"
 
 namespace
 {
@@ -38,8 +38,16 @@ void EnemyManager::Update()
 	// ② 全部の敵を動かす
 	for (auto& enemy : enemies_)
 	{
-		enemy->TickShotTimer();
-		enemy->Update();	// 中身が狙撃型なら、狙撃型の Update が動く（virtual）
+		//やられ中の敵は、動いたり撃ったりせず、消えるまでタイマーだけ減らす
+		if (enemy->IsDying())
+		{
+			enemy->UpdateDying();
+		}
+		else
+		{
+			enemy->TickShotTimer();
+			enemy->Update();	// 中身が狙撃型なら、狙撃型の Update が動く（virtual）
+		}
 	}
 
 	// ③ やられた敵をリストから消す
