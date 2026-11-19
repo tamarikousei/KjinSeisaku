@@ -72,6 +72,12 @@
     <ClCompile Include="Game\LearnMap.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Game\ShotManager.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Collision.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -126,6 +132,12 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\LearnMap.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\ShotManager.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Collision.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,7 @@
 ﻿#include <DxLib.h>
 #include <cmath>
 #include "Player.h"
+#include "../Vec2.h"
 #include "../Game.h"
 
 namespace
@@ -12,6 +13,7 @@ namespace
 	constexpr int kMaxHp = 100;	// プレイヤーの最大HP
 	constexpr int kInvincibleFrame = 60;	// ダメージを受けた後の無敵時間（フレーム数）
 	constexpr int kBlinkInterval = 4;	// 無敵時間中の点滅の間隔（フレーム数）
+	constexpr float kDirUnit = 1.0f;	// 向きの1マス分。速さはspeed_で決める 
 }
 
 Player::Player():
@@ -90,28 +92,38 @@ void Player::Update()
 	
 	int pad = GetJoypadInputState(DX_INPUT_PAD1);
 
+	Vec2 dir;		// 動く向き
+
 	if (CheckHitKey(KEY_INPUT_W) == 1 || CheckHitKey(KEY_INPUT_UP) == 1 || (pad & PAD_INPUT_UP))
 	{
-		y_ -= speed_;
+		dir.y -= kDirUnit;
 		isMove_ = true;
 	}
 	if (CheckHitKey(KEY_INPUT_S) == 1 || CheckHitKey(KEY_INPUT_DOWN) == 1 || (pad & PAD_INPUT_DOWN))
 	{
-		y_ += speed_;
+		dir.y += kDirUnit;
 		isMove_ = true;
 	}
 	if (CheckHitKey(KEY_INPUT_A) == 1 || CheckHitKey(KEY_INPUT_LEFT) == 1 || (pad & PAD_INPUT_LEFT))
 	{
-		x_ -= speed_;
+		dir.x-= kDirUnit;
 		isMove_ = true;
 		isLeft_ = true;		// 左に進んだら左を向く
 	}
 	if (CheckHitKey(KEY_INPUT_D) == 1 || CheckHitKey(KEY_INPUT_RIGHT) == 1 || (pad & PAD_INPUT_RIGHT))
 	{
-		x_ += speed_;
+		dir.x += kDirUnit;
 		isMove_ = true;
 		isLeft_ = false;	// 右に進んだら右を向く
 	}	
+
+	// 斜めでも同じ速さになるように、向きの長さを1にそろえる
+	dir.Normalize();
+
+	// そろえた向きに、速さを動かす
+	x_ += dir.x * speed_;
+	y_ += dir.y * speed_;
+
 	if (wasMove != isMove_)
 	{
 		animFrame_ = 0;	// 移動を始めた瞬間にアニメーションを最初のコマに戻す

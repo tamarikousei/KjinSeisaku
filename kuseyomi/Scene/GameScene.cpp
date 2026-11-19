@@ -7,9 +7,14 @@
 #include "GameScene.h"
 #include "ResultScene.h"
 #include "../Game/Enemy.h"
+#include "../Game/Collision.h"
 
 namespace
 {
+	constexpr int kPlayerShotMax = 40;		// プレイヤーの弾の最大数（連射で画面に約32発出るので余裕をもって40）
+	constexpr int kEnemyShotMax = 20;		// 敵の弾の最大数
+	constexpr int kPlayerShotDamage = 1;	// プレイヤーの弾が敵に当たったときのダメージ
+
 	constexpr float kShotSpeed = 8.0f;		// プレイヤーの弾の速さ
 
 	constexpr int kEnemyShotInterval = 120;	// 敵1体が弾を撃つ間隔（2秒。敵が増えたので前の60より長く）
@@ -24,17 +29,9 @@ namespace
 	constexpr int kEndWaitFrame = 60;		// 決着してからフェードアウトを始めるまでの待ち時間
 	constexpr bool kDebugInvincible = true;	// デバッグ用：無敵モード
 
-	// 2つの四角が重なっているか調べる
-	// (ax, ay) と (bx, by) は左上の位置、aSize と bSize は大きさ
-	bool IsHitRect(float ax, float ay, int aSize, float bx, float by, int bSize)
-	{
-		if (ax + aSize < bx) return false;	// A が B より完全に左
-		if (ax > bx + bSize) return false;	// A が B より完全に右
-		if (ay + aSize < by) return false;	// A が B より完全に上
-		if (ay > by + bSize) return false;	// A が B より完全に下
+	constexpr int kPlayerShotInterval = 5;	// プレイヤーが次に撃てるまでのフレーム数（5 で 1秒に12発）
 
-		return true;	// どれでもなければ重なっている
-	}
+	// ※ 円と円の当たり判定（IsHitCircle）は Collision クラスに引っ越した（Game/Collision.cpp）
 }
 
 // ================ 状態ごとの Update ================
@@ -56,19 +53,11 @@ void GameScene::NormalUpdate(Input& input)
 
 	RecordPlayer();
 	PlayerShoot(input);
-
-	for (auto& shot : shots_)
-	{
-		shot.Update();
-	}
+	playerShots_.Update();	// プレイヤーの弾を全部動かす
 
 	enemyManager_.Update();	// 出現・全部の敵の動き・やられた敵の削除
 	EnemyShoot();
-
-	for (auto& shot : enemyShots_)
-	{
-		shot.Update();
-	}
+	enemyShots_.Update();	// 敵の弾を全部動かす
 
 	CheckHit();
 
@@ -124,19 +113,23 @@ void GameScene::RecordPlayer()
 
 void GameScene::PlayerShoot(Input& input)
 {
-	// 「押した瞬間」だけ撃つ（前の m_isPrevPush の仕事は Input がやってくれる）
-	if (!input.IsTriggered("shot")) return;
-
-	for (auto& shot : shots_)
+	// クールタイムを1減らす（0 より小さくはしない）
+	if (shotCooldown_ > 0)
 	{
-		if (shot.IsExist()) continue;	// 使用中の弾はとばす
+		shotCooldown_--;
+	}
 
-		// プレイヤーの真ん中から、弾の真ん中が出るようにずらす
-		float x = player_.GetX() + (player_.GetSize() - shot.GetSize()) / 2;
-		float y = player_.GetY() + (player_.GetSize() - shot.GetSize()) / 2;
+	if (shotCooldown_ > 0) return;				// まだ待ち中なら撃たない
+	if (!input.IsPressed("shot")) return;		// 押している間ずっと撃てる（押しっぱなしで連射）
 
-		shot.FireAngle(x, y, player_.GetAngle(), kShotSpeed, GetColor(255, 255, 0));
-		break;	// 1発撃ったら終わり
+	// プレイヤーの真ん中から撃つ（弾の大きさのずらしは ShotManager がやってくれる）
+	float centerX = player_.GetX() + player_.GetSize() / 2.0f;
+	float centerY = player_.GetY() + player_.GetSize() / 2.0f;
+
+	// 撃てたときだけ、次に撃てるまで待たせる（弾が全部使用中なら次のフレームでまた試す）
+	if (playerShots_.FireAngle(centerX, centerY, player_.GetAngle(), kShotSpeed, GetColor(255, 255, 0)))
+	{
+		shotCooldown_ = kPlayerShotInterval;
 	}
 }
 
@@ -154,74 +147,36 @@ void GameScene::EnemyShoot()
 
 void GameScene::ShootFrom(const Enemy& enemy)
 {
-	for (auto& shot : enemyShots_)
-	{
-		if (shot.IsExist()) continue;
+	// 敵の真ん中から撃つ
+	float centerX = enemy.GetX() + enemy.GetSize() / 2.0f;
+	float centerY = enemy.GetY() + enemy.GetSize() / 2.0f;
 
-		// 敵の真ん中から撃つ
-		float x = enemy.GetX() + (enemy.GetSize() - shot.GetSize()) / 2;
-		float y = enemy.GetY() + (enemy.GetSize() - shot.GetSize()) / 2;
-
-		AimInfo info = {
-			player_.GetX() + player_.GetSize() / 2.0f,
-			player_.GetY() + player_.GetSize() / 2.0f,
-			learnMap_
+	AimInfo info = {
+		player_.GetX() + player_.GetSize() / 2.0f,
+		player_.GetY() + player_.GetSize() / 2.0f,
+		learnMap_
 	};
-		//敵に「どこ狙う？」と聞く
-		float aimX, aimY;
-		enemy.GetAimPos(info, aimX, aimY);
 
-		//答えは「狙う場所の真ん中」なので、弾の大きさの半分ずらして、弾の左上にする
-		float targetX = aimX - shot.GetSize() / 2.0f;
-		float targetY = aimY - shot.GetSize() / 2.0f;
+	// 敵に「どこ狙う？」と聞く（答えは「狙う場所の真ん中」）
+	float aimX, aimY;
+	enemy.GetAimPos(info, aimX, aimY);
 
-		shot.FireTo(x, y, targetX, targetY, kEnemyShotSpeed, GetColor(255,0,255));
-		break;
-
-	}
+	// 真ん中どうしを渡せば、弾の大きさのずらしは ShotManager がやってくれる
+	enemyShots_.FireTo(centerX, centerY, aimX, aimY, kEnemyShotSpeed, GetColor(255, 0, 255));
 }
 
 void GameScene::CheckHit()
 {
 	// ---- 当たり判定A：プレイヤーの弾 → 敵 ----
-	// 弾1発ずつ、全部の敵と調べる（二重ループ）
-	for (auto& shot : shots_)
-	{
-		if (!shot.IsExist()) continue;	// 弾がないなら調べない
-
-		for (auto& enemy : enemyManager_.GetEnemies())
-		{
-			if (enemy->IsDead() || enemy->IsDying()) continue;	// やられている敵は調べない
-
-			if (IsHitRect(shot.GetX(), shot.GetY(), shot.GetSize(),
-				enemy->GetX(), enemy->GetY(), enemy->GetSize()))
-			{
-				shot.Erase();
-				enemy->OnHit(1);	// 1ダメージ
-				break;	// 弾は消えたので、この弾で他の敵は調べない
-			}
-		}
-	}
+	Collision::CheckShotsToEnemies(playerShots_, enemyManager_, kPlayerShotDamage);
 
 	// ---- 当たり判定B：敵の弾 → プレイヤー ----
-	for (auto& shot : enemyShots_)
-	{
-		if (!shot.IsExist()) continue;
-		if (!player_.IsExist()) break;
+	Collision::CheckShotsToPlayer(enemyShots_, player_, kEnemyShotDamage);
 
-		if (IsHitRect(shot.GetX(), shot.GetY(), shot.GetSize(),
-			player_.GetX(), player_.GetY(), player_.GetSize()))
-		{
-			shot.Erase();
-		//	if (!kDebugInvincible)	// デバッグ用：無敵モード
-			{
-				player_.Hit(kEnemyShotDamage);	// 敵の弾が当たったときのダメージ
-				if (!player_.IsExist())
-				{
-					isGameOver_ = true;
-				}
-			}
-		}
+	// 当たり判定のあとで、プレイヤーがやられていたらゲームオーバー
+	if (!player_.IsExist())
+	{
+		isGameOver_ = true;
 	}
 }
 
@@ -233,16 +188,10 @@ void GameScene::NormalDraw()
 	learnMap_.DrawDebug();
 
 	player_.Draw();
-	for (auto& shot : shots_)
-	{
-		shot.Draw();
-	}
+	playerShots_.Draw();	// プレイヤーの弾を全部描く
 
 	enemyManager_.Draw();
-	for (auto& shot : enemyShots_)
-	{
-		shot.Draw();
-	}
+	enemyShots_.Draw();		// 敵の弾を全部描く
 
 
 	DrawBox(10,10,250,26,GetColor(80,80,80),true);
@@ -273,7 +222,10 @@ void GameScene::FadeDraw()
 
 GameScene::GameScene(SceneController& ctrl) :
 	Scene(ctrl),
+	playerShots_(kPlayerShotMax),	// プレイヤーの弾を kPlayerShotMax 個用意する
+	enemyShots_(kEnemyShotMax),		// 敵の弾を kEnemyShotMax 個用意する
 	playFrame_(0),
+	shotCooldown_(0),
 	stateFrame_(kFadeInterval),
 	isGameOver_(false),
 	isClear_(false),
@@ -283,16 +235,8 @@ GameScene::GameScene(SceneController& ctrl) :
 {
 	// 前の SceneMain::Init() の中身
 	player_.Init();
-	for (auto& shot : shots_)
-	{
-		shot.Init();
-	}
-
-	for (auto& shot : enemyShots_)
-	{
-		shot.Init();
-	}
-
+	playerShots_.Init();
+	enemyShots_.Init();
 	learnMap_.Init();
 }
 

@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "Scene.h"
 #include "../Game/Player.h"
-#include "../Game/Shot.h"
+#include "../Game/ShotManager.h"
 #include "../Game/EnemyManager.h"
 #include "../Game/LearnMap.h"
 
@@ -11,17 +11,13 @@ class Enemy;
 class GameScene : public Scene
 {
 private:
-	// 配列の大きさに使う定数は、ヘッダーの中で見えている必要がある
-	// → クラスの中に static constexpr で置く（このクラス専用の定数になる）
-	static constexpr int kShotMax = 10;			// プレイヤーの弾の最大数
-	static constexpr int kEnemyShotMax = 20;	// 敵の弾の最大数
-
 	Player player_;						// プレイヤー
-	Shot shots_[kShotMax];				// プレイヤーの弾
+	ShotManager playerShots_;			// プレイヤーの弾（最大数は GameScene.cpp の kPlayerShotMax）
 	EnemyManager enemyManager_;			// 敵の出現と管理（何体でも出せる）
-	Shot enemyShots_[kEnemyShotMax];	// 敵の弾
+	ShotManager enemyShots_;			// 敵の弾（最大数は GameScene.cpp の kEnemyShotMax）
 	LearnMap learnMap_;					// 学習データ（マスごとの滞在回数）
 
+	int shotCooldown_;	// プレイヤーが次に打てるまでの残りのフレーム数
 	int playFrame_;		// ゲームが始まってからのフレーム数（記録・敵の射撃・タイムに使う）
 	int stateFrame_;	// フェードや待ち時間に使うカウンタ
 	bool isGameOver_;	// プレイヤーがやられたか
@@ -46,7 +42,7 @@ private:
 	void PlayerShoot(Input& input);		// プレイヤーが撃つ
 	void EnemyShoot();					// 撃てる敵に撃たせる
 	void ShootFrom(const Enemy& enemy);	// 敵1体から、くじ引きで決めたマスへ1発撃つ
-	void CheckHit();					// 当たり判定
+	void CheckHit();					// 当たり判定（中身は Collision クラスにまかせる）
 
 public:
 	GameScene(SceneController& ctrl);

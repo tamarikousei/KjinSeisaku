@@ -1,6 +1,7 @@
 ﻿#include "EnemyManager.h"
 #include "Enemy.h"
 #include "EnemySniper.h"
+#include "EnemyNormal.h"
 #include "../Random.h"
 #include "../Game.h"
 
@@ -85,6 +86,16 @@ void EnemyManager::Spawn()
 		static_cast<float>(Game::kScreenWidth - kSpawnMargin * 2));
 	float y = Random::Float(kSpawnTop, kSpawnBottom);
 
-	// 今は狙撃型だけ。設置型などを作ったら、ここで種類を選ぶ
-	enemies_.push_back(std::make_shared<EnemySniper>(x, y));
+
+	int type = Random::Int(0,1);
+
+	if (type == 0)
+	{
+		enemies_.push_back(std::make_shared<EnemySniper>(x,y));
+	}
+	else
+	{
+		enemies_.push_back(std::make_shared<EnemyNormal>(x, y));
+	}
+
 }
