@@ -19,7 +19,8 @@ namespace
 
 EnemyManager::EnemyManager() :
 	spawnTimer_(kFirstSpawnFrame),
-	killCount_(0)
+	killCount_(0),
+	isSpawnEnabled_(true)	// 最初は「出す」
 {
 }
 
@@ -28,8 +29,8 @@ void EnemyManager::Update()
 	// ① 出現：タイマーが0になったら、1体出す
 	if (--spawnTimer_ <= 0)
 	{
-		// 多すぎるときは出さない（size() はリストに入っている数）
-		if (static_cast<int>(enemies_.size()) < kMaxEnemies)
+		// 出現が止められているとき・多すぎるときは出さない（size() はリストに入っている数）
+		if (isSpawnEnabled_ && static_cast<int>(enemies_.size()) < kMaxEnemies)
 		{
 			Spawn();
 		}
@@ -79,6 +80,17 @@ int EnemyManager::GetKillCount() const
 	return killCount_;
 }
 
+void EnemyManager::SetSpawnEnabled(bool enabled)
+{
+	isSpawnEnabled_ = enabled;	// 受け取った値をそのまま覚える
+}
+
+int EnemyManager::GetEnemyCount() const
+{
+	// list の数を int にして返す（Update の出現チェックと同じ書き方）
+	return static_cast<int>(enemies_.size());
+}
+
 void EnemyManager::Spawn()
 {
 	// 画面の上の方の、ランダムな位置に出す
@@ -87,15 +99,15 @@ void EnemyManager::Spawn()
 	float y = Random::Float(kSpawnTop, kSpawnBottom);
 
 
-	int type = Random::Int(0,1);
+	int type = Random::Int(0,3);
 
 	if (type == 0)
 	{
-		enemies_.push_back(std::make_shared<EnemySniper>(x,y));
+		enemies_.push_back(std::make_shared<EnemyNormal>(x,y));
 	}
 	else
 	{
-		enemies_.push_back(std::make_shared<EnemyNormal>(x, y));
+		enemies_.push_back(std::make_shared<EnemySniper>(x, y));
 	}
 
 }

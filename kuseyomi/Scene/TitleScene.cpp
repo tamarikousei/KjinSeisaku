@@ -6,11 +6,14 @@
 #include "SceneController.h"
 #include "TitleScene.h"
 #include "GameScene.h"
+#include "../Game.h"
 
 namespace
 {
 	constexpr int kFadeInterval = 30;	// フェードにかけるフレーム数（0.5秒）
 	constexpr int kBlinkInterval = 30;	// 「スタート」の文字の点滅間隔
+	constexpr int kLogoY = 90;			// タイトルロゴの上の位置（横は画面の真ん中）
+	constexpr int kStartTextY = 500;	// 「クリックでスタート」の位置（ロゴの下）
 }
 
 // ================ Update（状態ごと） ================
@@ -66,13 +69,20 @@ void TitleScene::FadeDraw()
 
 void TitleScene::NormalDraw()
 {
-	DrawString(560, 300, L"癖読みシューター", GetColor(255, 255, 255));
+	// タイトルロゴを、画面の横の真ん中に描く
+	int logoW = 0;
+	int logoH = 0;
+	GetGraphSize(logoHandle_, &logoW, &logoH);	// 画像の幅と高さを調べる
+	DrawGraph((Game::kScreenWidth - logoW) / 2, kLogoY, logoHandle_, true);	// true：透明な部分は描かない
 
 	// 点滅：frame_ を 30 で割った答えが偶数のときだけ表示
 	// ※ update_ が Normal のときだけ frame_ が増えるので、フェード中は点滅しない
 	if (update_ != &TitleScene::NormalUpdate || (frame_ / kBlinkInterval) % 2 == 0)
 	{
-		DrawString(500, 400, L"クリックでスタート", GetColor(255, 255, 0));
+		// 文字の幅を調べて、横の真ん中に描く
+		const wchar_t* text = L"クリックでスタート";
+		int textW = GetDrawStringWidth(text, static_cast<int>(wcslen(text)));
+		DrawString((Game::kScreenWidth - textW) / 2, kStartTextY, text, GetColor(203, 219, 252));	// ロゴと同じ青白い色
 	}
 //	DrawString(470, 460, L"WASD:移動  マウス:狙う  左クリック:撃つ", GetColor(200, 200, 200));
 }
@@ -86,10 +96,12 @@ TitleScene::TitleScene(SceneController& ctrl) :
 	update_(&TitleScene::FadeInUpdate),
 	draw_(&TitleScene::FadeDraw)
 {
+	logoHandle_ = LoadGraph(L"date/UI/title_logo.png");	// タイトルロゴを読み込む
 }
 
 TitleScene::~TitleScene()
 {
+	DeleteGraph(logoHandle_);	// 読み込んだ画像を片付ける
 }
 
 void TitleScene::Update(Input& input)

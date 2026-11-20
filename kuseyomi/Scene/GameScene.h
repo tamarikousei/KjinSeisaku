@@ -20,6 +20,8 @@ private:
 	int shotCooldown_;	// プレイヤーが次に打てるまでの残りのフレーム数
 	int playFrame_;		// ゲームが始まってからのフレーム数（記録・敵の射撃・タイムに使う）
 	int stateFrame_;	// フェードや待ち時間に使うカウンタ
+	int wave_;			// 今何ウェーブ目か
+	int waveFrame_;		// 今のウェーブが始まってからのフレーム数
 	bool isGameOver_;	// プレイヤーがやられたか
 	bool isClear_;		// 決まった数の敵を倒したか
 

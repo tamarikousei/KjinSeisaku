@@ -22,10 +22,14 @@ public:
 	Enemies_t& GetEnemies();			// 全部の敵（当たり判定・射撃に使う）
 	int GetKillCount() const;			// 倒した数
 
+	void SetSpawnEnabled(bool enabled);	// 敵を出すか出さないかを切り替える（true＝出す）
+	int GetEnemyCount() const;			// 今いる敵の数（やられ中の敵もふくむ）
+
 private:
 	void Spawn();	// 敵を1体出す
 
 	Enemies_t enemies_;	// 今いる敵のリスト
 	int spawnTimer_;	// 次の出現までのフレーム数
 	int killCount_;		// 倒した数
+	bool isSpawnEnabled_;	// 敵を出してもいいか（false なら Spawn しない）
 };

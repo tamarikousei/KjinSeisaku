@@ -6,6 +6,7 @@ class TitleScene : public Scene
 {
 private:
 	int frame_;	// フェードや点滅に使う、毎フレーム数えるカウンタ
+	int logoHandle_;	// タイトルロゴの画像（LoadGraph の戻り値。-1 なら読み込み失敗）
 
 	// 「今どの状態か」で呼ぶ関数を切り替えるための、メンバ関数ポインタの型
 	using UpdateFunc_t = void (TitleScene::*)(Input&);

@@ -20,7 +20,9 @@ namespace
 	constexpr int kEnemyShotInterval = 120;	// 敵1体が弾を撃つ間隔（2秒。敵が増えたので前の60より長く）
 	constexpr float kEnemyShotSpeed = 5.0f;	// 敵の弾の速さ
 
-	constexpr int kClearKillCount = 5;		// この数だけ倒したらクリア
+	constexpr int kWaveMax = 5;				// このウェーブ数を数え終えたらクリア
+	constexpr int kWaveTimeFrame = 1800;	// 1ウェーブで敵が出てくる時間（30秒 × 60fps）
+	constexpr int kWaveBannerFrame = 120;	// 「WAVE　〇/〇」を表示する時間（2秒 × 60fps）
 	constexpr int kEnemyShotDamage = 10;		// 敵の弾が当たったときのダメージ
 
 	constexpr int kRecordInterval = 6;		// 学習：記録する間隔（60fps × 0.1秒 = 6フレーム）
@@ -61,10 +63,28 @@ void GameScene::NormalUpdate(Input& input)
 
 	CheckHit();
 
-	// 決まった数を倒したらクリア
-	if (enemyManager_.GetKillCount() >= kClearKillCount)
+	// ---- ウェーブの流れ ----
+	waveFrame_++;	// 今のウェーブの経過時間を1フレーム進める
+
+	// 時間が来たら、もう敵を出さない
+	if (waveFrame_ >= kWaveTimeFrame)
 	{
-		isClear_ = true;
+		enemyManager_.SetSpawnEnabled(false);
+	}
+
+	// 時間が来ていて、しかも敵が全部いなくなったら → ウェーブ終了
+	if (waveFrame_ >= kWaveTimeFrame && enemyManager_.GetEnemyCount() == 0)
+	{
+		if (wave_ >= kWaveMax)
+		{
+			isClear_ = true;	// 最後のウェーブが終わった → クリア
+		}
+		else
+		{
+			wave_++;								// 次のウェーブへ
+			waveFrame_ = 0;							// 時間をリセット
+			enemyManager_.SetSpawnEnabled(true);	// また敵を出す
+		}
 	}
 
 	// 決着がついたら「少し待つ」状態へ
@@ -201,6 +221,12 @@ void GameScene::NormalDraw()
 //	DrawFormatString(0, 16, GetColor(255, 255, 255), L"FRAME:%d", playFrame_);
 //	DrawFormatString(0, 32, GetColor(255, 255, 255), L"倒した数:%d / %d",
 //		enemyManager_.GetKillCount(), kClearKillCount);
+	// ウェーブが始まってから少しのあいだだけ「WAVE 2/5」のように表示する
+	if (waveFrame_ < kWaveBannerFrame)
+	{
+		// %d には、うしろに書いた数が順番に入る（1つ目の %d → wave_、2つ目の %d → kWaveMax）
+		DrawFormatString(600, 300, GetColor(255, 255, 255), L"WAVE %d/%d", wave_, kWaveMax);
+	}
 	if (isGameOver_)
 	{
 		DrawString(580, 340, L"GAME OVER", GetColor(255, 0, 0));
@@ -224,9 +250,11 @@ GameScene::GameScene(SceneController& ctrl) :
 	Scene(ctrl),
 	playerShots_(kPlayerShotMax),	// プレイヤーの弾を kPlayerShotMax 個用意する
 	enemyShots_(kEnemyShotMax),		// 敵の弾を kEnemyShotMax 個用意する
+	shotCooldown_(0),				// 最初からすぐ撃てる（ヘッダーの順番にそろえて一番上へ）
 	playFrame_(0),
-	shotCooldown_(0),
 	stateFrame_(kFadeInterval),
+	wave_(1),						// 最初は1ウェーブ目から（表示「WAVE 1/○」にそのまま使える）
+	waveFrame_(0),					// まだ時間はたっていない（0 から増えていく）
 	isGameOver_(false),
 	isClear_(false),
 	// 最初の状態は「フェードイン」
