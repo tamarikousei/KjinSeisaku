@@ -7,6 +7,7 @@
 #include "TitleScene.h"
 #include "GameScene.h"
 #include "../Game.h"
+#include "../ImageManager.h"
 
 namespace
 {
@@ -96,12 +97,13 @@ TitleScene::TitleScene(SceneController& ctrl) :
 	update_(&TitleScene::FadeInUpdate),
 	draw_(&TitleScene::FadeDraw)
 {
-	logoHandle_ = LoadGraph(L"date/UI/title_logo.png");	// タイトルロゴを読み込む
+	// タイトルロゴを読み込む（2回目にタイトルへ戻ってきたときは、読み直さずに同じハンドルが返ってくる）
+	logoHandle_ = ImageManager::GetInstance().Load(L"date/UI/title_logo.png");
 }
 
 TitleScene::~TitleScene()
 {
-	DeleteGraph(logoHandle_);	// 読み込んだ画像を片付ける
+	// 画像の片付けは ImageManager::ReleaseAll（ゲーム終了時）がまとめてやる
 }
 
 void TitleScene::Update(Input& input)

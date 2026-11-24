@@ -3,6 +3,8 @@
 #include "Player.h"
 #include "../Vec2.h"
 #include "../Game.h"
+#include "../ImageManager.h"
+#include "../Input.h"
 
 namespace
 {
@@ -39,8 +41,9 @@ Player::~Player()
 
 void Player::Init()
 {
-		// 横長の画像を 48×48 ずつに切って、idleHandle_[0]〜[3] に入れる
-	LoadDivGraph(
+	// 横長の画像を 48×48 ずつに切って、idleHandle_[0]〜[3] に入れる
+	// 読み込みは ImageManager にまかせる（同じ画像は1回しか読まない・片付けもまとめてやってくれる）
+	ImageManager::GetInstance().LoadDiv(
 		L"date/Player/Side/side_idle.png",	// パス
 		kIdleFrameNum,	// 全部のコマ数：4
 		kIdleFrameNum,	// 横に並んでいる数：4
@@ -48,7 +51,7 @@ void Player::Init()
 		48,				// 1コマの幅
 		48,				// 1コマの高さ
 		idleHandle_);	// 入れる先の配列（名前だけ書けば先頭のアドレスになる）
-		LoadDivGraph(
+	ImageManager::GetInstance().LoadDiv(
 		L"date/Player/Side/side_run.png",	// パス
 		kRunFrameNum,	// 全部のコマ数：6
 		kRunFrameNum,	// 横に並んでいる数：6
@@ -67,18 +70,11 @@ void Player::Init()
 
 void Player::End()
 {
-	
-	for (int i = 0; i < kIdleFrameNum; ++i)
-	{
-		DeleteGraph(idleHandle_[i]);	
-	}
-	for (int i = 0; i < kRunFrameNum; ++i)
-	{
-		DeleteGraph(runHandle_[i]);
-	}
+	// 画像の片付けは ImageManager::ReleaseAll（ゲーム終了時）がまとめてやるので、ここでは何もしない
+	// ※ ここで DeleteGraph すると、2回目のゲームで「消えた画像」を描こうとして何も映らなくなる
 }
 
-void Player::Update()
+void Player::Update(const Input& input)
 {
 	if (!isExist_) return;
 
@@ -86,39 +82,32 @@ void Player::Update()
 	{
 		invincibleFrame_--;
 	}
-	
+
 	bool wasMove = isMove_;	// 前のフレームで移動していたかどうかを覚えておく
 	isMove_ = false;	// 今のフレームでは移動していない
-	
-	int pad = GetJoypadInputState(DX_INPUT_PAD1);
 
-	Vec2 dir;		// 動く向き
+	Vec2 dir = input.GetLeftStick();	// まず左スティックを見る（倒していなければ (0,0)）
 
-	if (CheckHitKey(KEY_INPUT_W) == 1 || CheckHitKey(KEY_INPUT_UP) == 1 || (pad & PAD_INPUT_UP))
+	if (dir.SqLength() > 0.0f)
 	{
-		dir.y -= kDirUnit;
-		isMove_ = true;
+		// スティックで動かしているとき：倒した量（0〜1）でそのまま速さが変わる（少し倒すとゆっくり）
+		// ※ ApplyDeadZone で長さは1以下になっているので、Normalize はしない
 	}
-	if (CheckHitKey(KEY_INPUT_S) == 1 || CheckHitKey(KEY_INPUT_DOWN) == 1 || (pad & PAD_INPUT_DOWN))
+	else
 	{
-		dir.y += kDirUnit;
-		isMove_ = true;
-	}
-	if (CheckHitKey(KEY_INPUT_A) == 1 || CheckHitKey(KEY_INPUT_LEFT) == 1 || (pad & PAD_INPUT_LEFT))
-	{
-		dir.x-= kDirUnit;
-		isMove_ = true;
-		isLeft_ = true;		// 左に進んだら左を向く
-	}
-	if (CheckHitKey(KEY_INPUT_D) == 1 || CheckHitKey(KEY_INPUT_RIGHT) == 1 || (pad & PAD_INPUT_RIGHT))
-	{
-		dir.x += kDirUnit;
-		isMove_ = true;
-		isLeft_ = false;	// 右に進んだら右を向く
-	}	
+		// スティックを倒していないときは、キーボード・十字キー（Input の "up" などの表）を見る
+		if (input.IsPressed("up"))    dir.y -= kDirUnit;
+		if (input.IsPressed("down"))  dir.y += kDirUnit;
+		if (input.IsPressed("left"))  dir.x -= kDirUnit;
+		if (input.IsPressed("right")) dir.x += kDirUnit;
 
-	// 斜めでも同じ速さになるように、向きの長さを1にそろえる
-	dir.Normalize();
+		// 斜めでも同じ速さになるように、向きの長さを1にそろえる
+		dir.Normalize();
+	}
+
+	if (dir.SqLength() > 0.0f) isMove_ = true;	// 少しでも動いていれば「移動中」
+	if (dir.x < 0.0f) isLeft_ = true;			// 左に進んだら左を向く
+	if (dir.x > 0.0f) isLeft_ = false;			// 右に進んだら右を向く
 
 	// そろえた向きに、速さを動かす
 	x_ += dir.x * speed_;
@@ -159,17 +148,31 @@ void Player::Update()
 		y_ = Game::kScreenHeight - kSize;	// 下端
 	}
 
-	// ---- マウスの方向を向く ----
-	int mouseX = 0;
-	int mouseY = 0;
-	GetMousePoint(&mouseX, &mouseY);
+	// ---- 照準 ----
+	if (input.IsUsingPad())
+	{
+		// パッドのとき：右スティックを倒した方向を向く（行21）
+		Vec2 aim = input.GetRightStick();
+		if (aim.SqLength() > 0.0f)
+		{
+			angle_ = atan2f(aim.y, aim.x);
+		}
+		// 右スティックをはなしたら、最後に向いていた方向のまま（angle_ を変えない）
+	}
+	else
+	{
+		// キーマウのとき：マウスの方向を向く
+		int mouseX = 0;
+		int mouseY = 0;
+		GetMousePoint(&mouseX, &mouseY);
 
-	// プレイヤーの真ん中からマウスまでの差
-	float dx = mouseX - (x_ + kSize / 2);
-	float dy = mouseY - (y_ + kSize / 2);
+		// プレイヤーの真ん中からマウスまでの差
+		float dx = mouseX - (x_ + kSize / 2);
+		float dy = mouseY - (y_ + kSize / 2);
 
-	// atan2f(Y の差, X の差) で、その方向の角度が求まる
-	angle_ = atan2f(dy, dx);
+		// atan2f(Y の差, X の差) で、その方向の角度が求まる
+		angle_ = atan2f(dy, dx);
+	}
 }
 
 void Player::Draw()

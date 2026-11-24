@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+class Input;	// Update で受け取るだけなので、中身（#include）はいらない。「そういうクラスがある」とだけ伝える
+
 enum class AnimType
 {
 	Idle,
@@ -19,7 +21,7 @@ public:
 
 	 void Init();
 	 void End();
-	 void Update();
+	 void Update(const Input& input);	// 入力（キーマウ・パッド）は Input から受け取る
 	 void Draw();
 
 	 float GetX() const { return x_; }//X座標を取得する

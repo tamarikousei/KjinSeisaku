@@ -4,6 +4,7 @@
 
 #include "Game.h"
 #include "Input.h"
+#include "ImageManager.h"
 #include "Scene/SceneController.h"
 #include "Scene/TitleScene.h"	// 一番最初のシーンだけはアプリケーションで作る
 
@@ -73,7 +74,8 @@ void Application::Run()
 
 void Application::Terminate()
 {
-	DxLib_End();
+	ImageManager::GetInstance().ReleaseAll();	// 読み込んだ画像を全部片付けてから
+	DxLib_End();								// DxLib を終わらせる（順番が逆だと DeleteGraph が効かない）
 }
 
 const Size& Application::GetWindowSize() const

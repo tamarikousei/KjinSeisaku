@@ -4,6 +4,7 @@
 #include "../Game/ShotManager.h"
 #include "../Game/EnemyManager.h"
 #include "../Game/LearnMap.h"
+#include "../Vec2.h"
 
 class Enemy;
 
@@ -18,6 +19,13 @@ private:
 	LearnMap learnMap_;					// 学習データ（マスごとの滞在回数）
 
 	int shotCooldown_;	// プレイヤーが次に打てるまでの残りのフレーム数
+	int ammo_;			// 残りの弾数（0 になったら自動でリロード）
+	int reloadFrame_;	// リロードの残りフレーム数（0 ならリロードしていない）
+
+	// ---- デバッグ表示用（Draw では input を使えないので、Update で写しておく） ----
+	bool debugIsPad_;		// パッドで遊んでいるか
+	Vec2 debugLeftStick_;	// 左スティックの値
+	Vec2 debugRightStick_;	// 右スティックの値
 	int playFrame_;		// ゲームが始まってからのフレーム数（記録・敵の射撃・タイムに使う）
 	int stateFrame_;	// フェードや待ち時間に使うカウンタ
 	int wave_;			// 今何ウェーブ目か
@@ -45,6 +53,8 @@ private:
 	void EnemyShoot();					// 撃てる敵に撃たせる
 	void ShootFrom(const Enemy& enemy);	// 敵1体から、くじ引きで決めたマスへ1発撃つ
 	void CheckHit();					// 当たり判定（中身は Collision クラスにまかせる）
+	void DrawAmmo();					// 残りの弾数（リロード中はゲージ）を描く
+	void DrawDebugInfo();				// デバッグ情報を右上に描く
 
 public:
 	GameScene(SceneController& ctrl);

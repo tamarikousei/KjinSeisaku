@@ -10,10 +10,23 @@ namespace {//無名namespace
         float version=1.0f;//バージョン
         int dataNum=0;//データ数(イベント数)
     };
+
+    constexpr float kDeadZone = 0.25f;          // スティックをこの割合（25%）まで倒しても反応しない（行16）
+    constexpr float kTriggerOn = 0.5f;          // RT をこの割合（半分）より深く押したら「撃つ」
+    constexpr float kXInputStickMax = 32767.0f; // XInput のスティックの最大値（-32768〜32767）
+    constexpr float kXInputTriggerMax = 255.0f; // XInput のトリガーの最大値（0〜255）
+    constexpr float kDInputStickMax = 1000.0f;  // XInput でないパッドのスティックの最大値（-1000〜1000）
 }
 
-Input::Input()
+Input::Input() :
+    leftStick_(),
+    rightStick_(),
+    rightTrigger_(0.0f),
+    device_(InputDevice::keyboardMouse),    // 最初はキーマウとして始める
+    lastMouseX_(0),
+    lastMouseY_(0)
 {
+    GetMousePoint(&lastMouseX_, &lastMouseY_);
     //最初に入力情報をリセット
     ResetInputSetting();
 
@@ -148,6 +161,81 @@ void Input::Update()
         }
     }
 
+    // ---- スティックと RT（行15・16） ----
+    UpdateAnalog();
+
+    // RT は「ボタン」ではなく 0〜1 の量なので、テーブルには書けない。ここで "shot" に足す
+    if (rightTrigger_ >= kTriggerOn) {
+        currentInput_["shot"] = true;
+    }
+
+    // ---- キーマウ／パッドの自動切り替え（行17） ----
+    // 「最後にさわったほう」に切り替える
+    bool padTouched = (padState != 0) ||
+        (leftStick_.SqLength() > 0.0f) || (rightStick_.SqLength() > 0.0f) ||
+        (rightTrigger_ >= kTriggerOn);
+
+    bool keyTouched = (mouseState != 0);
+    for (char k : keyState) {       // どれか1つでもキーが押されていれば
+        if (k != 0) { keyTouched = true; break; }
+    }
+    int mouseX = 0, mouseY = 0;
+    GetMousePoint(&mouseX, &mouseY);
+    if (mouseX != lastMouseX_ || mouseY != lastMouseY_) {   // マウスが動いた
+        keyTouched = true;
+    }
+    lastMouseX_ = mouseX;
+    lastMouseY_ = mouseY;
+
+    if (padTouched) device_ = InputDevice::pad;
+    if (keyTouched) device_ = InputDevice::keyboardMouse;  // 同時なら、キーマウを優先
+}
+
+void Input::UpdateAnalog()
+{
+    leftStick_ = Vec2();    // まず (0,0) に戻しておく（パッドが抜けたときに前の値が残らないように）
+    rightStick_ = Vec2();
+    rightTrigger_ = 0.0f;
+
+    if (GetJoypadNum() <= 0) return;    // パッドがつながっていない
+
+    // XInput（Xbox 系のパッド）なら、スティックもトリガーも細かく取れる
+    XINPUT_STATE xs;
+    if (GetJoypadXInputState(DX_INPUT_PAD1, &xs) == 0) {   // 0 なら成功
+        // XInput のスティックは「上が +」なので、画面（下が +）に合わせて y にマイナスを付ける
+        leftStick_ = ApplyDeadZone(xs.ThumbLX / kXInputStickMax, -xs.ThumbLY / kXInputStickMax);
+        rightStick_ = ApplyDeadZone(xs.ThumbRX / kXInputStickMax, -xs.ThumbRY / kXInputStickMax);
+        rightTrigger_ = xs.RightTrigger / kXInputTriggerMax;
+        return;
+    }
+
+    // XInput でないパッド（DirectInput）。こちらは最初から「下が +」。RT は取れない（RB で撃つ）
+    int lx = 0, ly = 0, rx = 0, ry = 0;
+    GetJoypadAnalogInput(&lx, &ly, DX_INPUT_PAD1);
+    GetJoypadAnalogInputRight(&rx, &ry, DX_INPUT_PAD1);
+    leftStick_ = ApplyDeadZone(lx / kDInputStickMax, ly / kDInputStickMax);
+    rightStick_ = ApplyDeadZone(rx / kDInputStickMax, ry / kDInputStickMax);
+}
+
+Vec2 Input::ApplyDeadZone(float x, float y)
+{
+    Vec2 v(x, y);
+    float len = v.Length();     // 真ん中からどれだけ倒れているか（0〜約1）
+
+    // 真ん中付近（ガタつき）は「倒していない」ことにする
+    if (len < kDeadZone) {
+        return Vec2();
+    }
+    if (len > 1.0f) {
+        len = 1.0f;             // 斜めで1を少し超えることがあるので、1でおさえる
+    }
+
+    // 25%〜100% を 0〜1 に広げ直す（デッドゾーンのすぐ外で急に速く動かないように）
+    float rate = (len - kDeadZone) / (1.0f - kDeadZone);
+    v.Normalize();              // 向きだけにして（長さ1）
+    v.x *= rate;                // 広げ直した長さをかける
+    v.y *= rate;
+    return v;
 }
 
 void Input::Save()
