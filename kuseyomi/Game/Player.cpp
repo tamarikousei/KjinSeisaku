@@ -16,6 +16,9 @@ namespace
 	constexpr int kInvincibleFrame = 60;	// ダメージを受けた後の無敵時間（フレーム数）
 	constexpr int kBlinkInterval = 4;	// 無敵時間中の点滅の間隔（フレーム数）
 	constexpr float kDirUnit = 1.0f;	// 向きの1マス分。速さはspeed_で決める 
+	constexpr float kDashSpeed = 12.0f; // ダッシュのはやさ
+	constexpr int kDashFrame = 10;		// ダッシュが続くフレーム数
+	constexpr int kDashCooldown = 45; // 次にダッシュできるまでのフレーム数
 }
 
 Player::Player():
@@ -30,6 +33,10 @@ Player::Player():
 	isLeft_(false),
 	hp_(kMaxHp),
 	invincibleFrame_(0),	
+	dashFrame_(0),
+	dashCooldown_(0),
+	dashDirX_(0.0f),
+	dashDirY_(0.0f),
 	isExist_(false)
 {
 }
@@ -59,6 +66,14 @@ void Player::Init()
 		48,				// 1コマの幅
 		48,				// 1コマの高さ
 		runHandle_);	// 入れる先の配列（名前だけ書けば先頭のアドレスになる）
+	ImageManager::GetInstance().LoadDiv(
+		L"date/Player/Side/side_dash.png",	// パス
+		kDashFrameNum,	// 全部のコマ数：10
+		kDashFrameNum,	// 横に並んでいる数：10
+		1,				// 縦に並んでいる数：1（横一列だから）
+		48,				// 1コマの幅
+		48,				// 1コマの高さ
+		dashHandle_);	// 入れる先の配列（名前だけ書けば先頭のアドレスになる）
 
 	x_ = 100.0f;
 	y_ = 100.0f;
@@ -81,6 +96,11 @@ void Player::Update(const Input& input)
 	if (invincibleFrame_ > 0)
 	{
 		invincibleFrame_--;
+	}
+	// ダッシュのクールタイムを1フレームずつ減らす
+	if (dashCooldown_ > 0)
+	{
+		dashCooldown_--;
 	}
 
 	bool wasMove = isMove_;	// 前のフレームで移動していたかどうかを覚えておく
@@ -109,9 +129,31 @@ void Player::Update(const Input& input)
 	if (dir.x < 0.0f) isLeft_ = true;			// 左に進んだら左を向く
 	if (dir.x > 0.0f) isLeft_ = false;			// 右に進んだら右を向く
 
-	// そろえた向きに、速さを動かす
-	x_ += dir.x * speed_;
-	y_ += dir.y * speed_;
+	// --- ダッシュを始める ---
+	// 押した瞬間 + クールタイムが終わっている + 動こうとしている、の時だけ
+	if (input.IsTriggered("dash") && dashCooldown_ == 0 && dir.SqLength() > 0.0f)
+	{
+		Vec2 dashDir = dir;		// 今の向きをコピーする
+		dashDir.Normalize();	// 長さを1にそろえる
+		dashDirX_ = dashDir.x;	// 向きを覚えておく
+		dashDirY_ = dashDir.y;
+		dashFrame_ = kDashFrame;// 残りのフレーム : 10
+		dashCooldown_ = kDashCooldown;// クールタイム　: 45
+	}
+
+	if (dashFrame_ > 0)
+	{
+		// ダッシュ中：押した瞬間に覚えた向きに、ダッシュの速さで動く（キー入力は無視）
+		x_ += dashDirX_ * kDashSpeed;
+		y_ += dashDirY_ * kDashSpeed;
+		dashFrame_--;	// 残りフレームを1つ減らす（0になったらダッシュ終わり）
+	}
+	else
+	{
+		// そろえた向きに、速さを動かす
+		x_ += dir.x * speed_;
+		y_ += dir.y * speed_;
+	}
 
 	if (wasMove != isMove_)
 	{
@@ -179,6 +221,14 @@ void Player::Draw()
 {
 	if (!isExist_) return;
 	int handle = isMove_ ? runHandle_[sideidle_] : idleHandle_[sideidle_];
+	if (IsDashing())
+	{
+		// ダッシュ中は dash の絵に差し替える
+		// Draw のときの dashFrame_ は 9 → 8 → … → 1 と減っていくので、
+		// 「9 − dashFrame_」でコマ番号 0 → 1 → … → 8 に変える（前から順番に描くため）
+		int dashIndex = (kDashFrameNum - 1) - dashFrame_;
+		handle = dashHandle_[dashIndex];
+	}
 	if (invincibleFrame_ == 0 || (invincibleFrame_ / kBlinkInterval) % 2 == 0)
 	{
 		DrawRotaGraph(static_cast<int>(x_ + kSize / 2), static_cast<int>(y_ + kSize / 2),

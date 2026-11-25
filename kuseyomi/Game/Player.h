@@ -28,6 +28,7 @@ public:
 	 float GetY() const { return y_; }//Y座標を取得する
 	 float GetAngle() const { return angle_; }//向いている角度を取得する
 	 bool IsExist() const { return isExist_; }//存在しているかどうかを取得する
+	 bool IsDashing() const { return dashFrame_ > 0; }//ダッシュ中かどうかを取得する（残りフレームがあればダッシュ中）
 	 int GetSize() const;//大きさを取得する
 
 	 int GetHP()const;
@@ -45,6 +46,8 @@ private:
 	static constexpr int kIdleFrameNum = 4;	// idle のコマ数（192 ÷ 48 = 4）
 	static constexpr int kRunFrameNum = 6;	// run のコマ数（192 ÷ 48 = 6）
 	int runHandle_[kRunFrameNum];	// run の画像ハンドル（1コマに1つ）
+	static constexpr int kDashFrameNum = 10;	// dash のコマ数（480 ÷ 48 = 10）
+	int dashHandle_[kDashFrameNum];	// dash の画像ハンドル（1コマに1つ）
 	bool isMove_;	// 移動中かどうか（移動中なら true、止まっているなら false）
 	int sideidle_;	// idle のコマの番号（0〜3）
 	int idleHandle_[kIdleFrameNum];	// idle の画像ハンドル（1コマに1つ）
@@ -53,6 +56,10 @@ private:
 
 	int hp_;	// HP（0〜kMaxHp）
 	int invincibleFrame_;	// ダメージを受けた後の無敵時間の残りフレーム数
+	int dashFrame_;// ダッシュの残りフレーム数
+	int dashCooldown_;// 次にダッシュできるまでの残りフレーム数
+	float dashDirX_;// ダッシュする向き
+	float dashDirY_;// ↑と同じ
 
 	bool isExist_; //存在フラグ
 

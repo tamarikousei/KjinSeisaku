@@ -70,6 +70,10 @@ void Input::ResetInputSetting()
         { PeripheralType::mouse,MOUSE_INPUT_LEFT },
         { PeripheralType::pad,PAD_INPUT_Z },//RBボタン
     };
+    inputTable_["dash"] = {
+        { PeripheralType::keybd,KEY_INPUT_LSHIFT },
+        { PeripheralType::pad,PAD_INPUT_Y },//LBボタン
+    };
     inputTable_["up"] = {
         { PeripheralType::keybd,KEY_INPUT_UP },
         { PeripheralType::keybd,KEY_INPUT_W },
