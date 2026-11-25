@@ -59,6 +59,10 @@ void Collision::CheckShotsToPlayer(ShotManager& shots, Player& player, int damag
 		if (IsHitCircle(shot.GetX(), shot.GetY(), shot.GetSize(),
 			player.GetX(), player.GetY(), player.GetSize()))
 		{
+			// ダッシュ中は、弾を消さずにすり抜ける（ダメージもなし）
+			// ※ あとで「見切り（スロー・攻撃力アップ）」の判定をここに入れる
+			if (player.IsDashing()) continue;
+
 			shot.Erase();
 			player.Hit(damage);	// 無敵時間中なら Player::Hit の中でダメージなしになる
 		}
