@@ -1,0 +1,24 @@
+﻿hook_fire.ogg <- Kenney digital-audio\Audio\laser4.ogg
+hook_hit.ogg <- Kenney impact-sounds\Audio\impactMetal_light_002.ogg
+hook_fail.ogg <- Kenney impact-sounds\Audio\impactTin_medium_001.ogg
+zip.ogg <- Kenney digital-audio\Audio\phaserUp3.ogg
+jump.ogg <- Kenney digital-audio\Audio\phaseJump1.ogg
+land.ogg <- Kenney impact-sounds\Audio\footstep_concrete_003.ogg
+step0.ogg <- Kenney impact-sounds\Audio\footstep_concrete_000.ogg
+step1.ogg <- Kenney impact-sounds\Audio\footstep_concrete_001.ogg
+step2.ogg <- Kenney impact-sounds\Audio\footstep_concrete_002.ogg
+crystal.ogg <- Kenney digital-audio\Audio\powerUp2.ogg
+checkpoint.ogg <- Kenney interface-sounds\Audio\confirmation_002.ogg
+death.ogg <- Kenney impact-sounds\Audio\impactPunch_heavy_001.ogg
+death2.ogg <- Kenney digital-audio\Audio\lowDown.ogg
+walljump.ogg <- Kenney impact-sounds\Audio\impactSoft_medium_001.ogg
+release.ogg <- Kenney interface-sounds\Audio\scratch_002.ogg
+ui_move.ogg <- Kenney interface-sounds\Audio\select_002.ogg
+ui_ok.ogg <- Kenney interface-sounds\Audio\confirmation_001.ogg
+ui_back.ogg <- Kenney interface-sounds\Audio\back_002.ogg
+ui_pause.ogg <- Kenney interface-sounds\Audio\maximize_003.ogg
+ui_error.ogg <- Kenney interface-sounds\Audio\error_004.ogg
+go.ogg <- Kenney digital-audio\Audio\threeTone2.ogg
+rank.ogg <- Kenney impact-sounds\Audio\impactBell_heavy_001.ogg
+jingle_clear.ogg <- Kenney music-jingles\Audio\8-Bit jingles\jingles_NES09.ogg
+jingle_start.ogg <- Kenney music-jingles\Audio\8-Bit jingles\jingles_NES02.ogg

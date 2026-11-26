@@ -1,0 +1,26 @@
+SKYLINE ANCHOR - Credits / 素材について
+==========================================
+
+■ 効果音
+  Kenney (www.kenney.nl)
+    - Interface Sounds
+    - Impact Sounds
+    - Digital Audio
+    - Music Jingles
+  ライセンス: Creative Commons Zero (CC0 1.0)
+    http://creativecommons.org/publicdomain/zero/1.0/
+  個人・教育・商用を問わず無料で利用できます（クレジット表記は任意）。
+  使用ファイルと元ファイル名の対応: Assets/Sound/sources.txt
+  ライセンス原文: Assets/Sound/Kenney_License.txt
+
+■ BGM
+  外部素材は使っていません。起動時にプログラム（src/Audio.cpp）で波形を合成して作っています。
+
+■ グラフィック
+  画像ファイルは使っていません。キャラクター・背景・エフェクトはすべてプログラムで描画しています。
+
+■ フォント
+  Windows に標準で入っている「メイリオ」「Bahnschrift」を使用しています（配布物には含みません）。
+
+■ ライブラリ
+  DX Library © Takumi Yamada (https://dxlib.xsrv.jp/)
