@@ -194,6 +194,7 @@
     <ClInclude Include="Game\EnemyNormal.h" />
     <ClInclude Include="Game\ShotManager.h" />
     <ClInclude Include="Game\Collision.h" />
+    <ClInclude Include="Game\WaveData.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

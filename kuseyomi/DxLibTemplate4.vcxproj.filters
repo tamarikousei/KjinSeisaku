@@ -146,5 +146,8 @@
     <ClInclude Include="Game\Collision.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="Game\WaveData.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
